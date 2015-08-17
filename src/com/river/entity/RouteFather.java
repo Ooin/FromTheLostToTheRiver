@@ -12,7 +12,6 @@ public class RouteFather {
 	private Rafter creator;
 	
 	public RouteFather(){
-		
 	}
 	
 	public RouteFather(Integer id){
@@ -22,6 +21,17 @@ public class RouteFather {
 	public RouteFather(Integer id, String title, String description, String hashTag, Date timeStamp, Rafter creator) {
 		super();
 		this.id = id;
+		this.title = title;
+		this.description = description;
+		this.hashTag = hashTag;
+		this.timeStamp = timeStamp;
+		this.creator = creator;
+	}
+	
+	
+
+	public RouteFather(String title, String description, String hashTag, Date timeStamp, Rafter creator) {
+		super();
 		this.title = title;
 		this.description = description;
 		this.hashTag = hashTag;

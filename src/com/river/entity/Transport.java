@@ -14,6 +14,13 @@ public class Transport {
 		this.id = id;
 		this.name = name;
 	}
+	
+	
+
+	public Transport(String name) {
+		super();
+		this.name = name;
+	}
 
 	public Integer getId() {
 		return id;

@@ -6,6 +6,31 @@ public class Rate {
 	Rafter creator;
 	RouteFather route;
 	String comment;
+	
+	
+	public Rate(Integer id, Rafter creator, RouteFather route, String comment) {
+		super();
+		this.id = id;
+		this.creator = creator;
+		this.route = route;
+		this.comment = comment;
+	}
+	public Rate(Integer id) {
+		super();
+		this.id = id;
+	}
+	public Rate() {
+		super();
+	}
+	
+	
+	
+	public Rate(Rafter creator, RouteFather route, String comment) {
+		super();
+		this.creator = creator;
+		this.route = route;
+		this.comment = comment;
+	}
 	public Integer getId() {
 		return id;
 	}
@@ -79,19 +104,6 @@ public class Rate {
 		builder.append("]");
 		return builder.toString();
 	}
-	public Rate(Integer id, Rafter creator, RouteFather route, String comment) {
-		super();
-		this.id = id;
-		this.creator = creator;
-		this.route = route;
-		this.comment = comment;
-	}
-	public Rate(Integer id) {
-		super();
-		this.id = id;
-	}
-	public Rate() {
-		super();
-	}
+	
 	
 }

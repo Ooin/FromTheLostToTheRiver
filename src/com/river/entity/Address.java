@@ -1,12 +1,12 @@
-package com.river.entity.dao;
+package com.river.entity;
 
-public class AddressDAO {
+public class Address{
 	
 	Integer id;
 	Integer zipCode;
 	String roadType;
 	String roadName;
-	StopDAO stop;
+	Stop stop;
 	
 	public Integer getId() {
 		return id;
@@ -32,13 +32,13 @@ public class AddressDAO {
 	public void setRoadName(String roadName) {
 		this.roadName = roadName;
 	}
-	public StopDAO getStop() {
+	public Stop getStop() {
 		return stop;
 	}
-	public void setStop(StopDAO stop) {
+	public void setStop(Stop stop) {
 		this.stop = stop;
 	}
-	public AddressDAO() {
+	public Address() {
 		super();
 	}
 	@Override
@@ -54,9 +54,9 @@ public class AddressDAO {
 			return true;
 		if (obj == null)
 			return false;
-		if (!(obj instanceof AddressDAO))
+		if (!(obj instanceof Address))
 			return false;
-		AddressDAO other = (AddressDAO) obj;
+		Address other = (Address) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -68,7 +68,7 @@ public class AddressDAO {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("AddressDAO [");
+		builder.append("Address [");
 		if (id != null) {
 			builder.append("id=");
 			builder.append(id);

@@ -83,9 +83,13 @@ public class RouteStep {
 		}
 		return true;
 	}
-	
-	
-	
+
+	public RouteStep(RouteFather route, Address origin, Address destiny) {
+		super();
+		this.route = route;
+		this.origin = origin;
+		this.destiny = destiny;
+	}
 	
 	
 	

@@ -76,6 +76,11 @@ public class Stop {
 			return false;
 		return true;
 	}
+
+	public Stop(Address adress) {
+		super();
+		this.adress = adress;
+	}
 	
 	
 

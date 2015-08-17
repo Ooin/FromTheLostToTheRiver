@@ -3,9 +3,10 @@ package com.river.entity;
 public class Rate {
 	
 	private Integer id;
-	Rafter creator;
-	RouteFather route;
-	String comment;
+	private Rafter creator;
+	private RouteFather route;
+	private String comment;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -93,5 +94,12 @@ public class Rate {
 	public Rate() {
 		super();
 	}
+	public Rate(Rafter creator, RouteFather route, String comment) {
+		super();
+		this.creator = creator;
+		this.route = route;
+		this.comment = comment;
+	}
+	
 	
 }

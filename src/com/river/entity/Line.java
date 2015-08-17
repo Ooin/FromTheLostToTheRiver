@@ -4,7 +4,8 @@ public class Line {
 
 	private Integer id;
 	private String name;
-	Transport transport;
+	private Transport transport;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -80,5 +81,11 @@ public class Line {
 	public Line() {
 		super();
 	}
+	public Line(String name, Transport transport) {
+		super();
+		this.name = name;
+		this.transport = transport;
+	}
+	
 	
 }

@@ -111,6 +111,12 @@ public class Address{
 		builder.append("]");
 		return builder.toString();
 	}
-	
-	
+	public Address(Integer zipCode, String roadType, String roadName, Stop stop) {
+		super();
+		this.zipCode = zipCode;
+		this.roadType = roadType;
+		this.roadName = roadName;
+		this.stop = stop;
+	}
+		
 }

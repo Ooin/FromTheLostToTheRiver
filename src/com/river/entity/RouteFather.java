@@ -133,6 +133,17 @@ public class RouteFather {
 		}
 		return true;
 	}
+
+	public RouteFather(String title, String description, String hashTag,
+			Date timeStamp, Rafter creator) {
+		super();
+		this.title = title;
+		this.description = description;
+		this.hashTag = hashTag;
+		this.timeStamp = timeStamp;
+		this.creator = creator;
+	}
+	
 	
 	
 }

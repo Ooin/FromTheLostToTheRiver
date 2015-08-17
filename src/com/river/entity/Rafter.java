@@ -96,4 +96,14 @@ public class Rafter {
 		builder.append("]");
 		return builder.toString();
 	}
+	public Rafter(String rafterName, String password, String email,
+			Date registerDate) {
+		super();
+		this.rafterName = rafterName;
+		this.password = password;
+		this.email = email;
+		this.registerDate = registerDate;
+	}
+	
+	
 }

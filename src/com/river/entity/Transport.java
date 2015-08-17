@@ -74,4 +74,11 @@ public class Transport {
 		return builder.toString();
 	}
 
+	public Transport(String name) {
+		super();
+		this.name = name;
+	}
+	
+	
+
 }

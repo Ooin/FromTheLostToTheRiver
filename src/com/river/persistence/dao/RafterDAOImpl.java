@@ -1,5 +1,6 @@
 package com.river.persistence.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Hibernate;
@@ -31,19 +32,24 @@ public class RafterDAOImpl implements RafterDAO{
 	}
 
 	public Rafter read(Rafter toRead) {
+		Rafter readed = null;
 		Session session = sessionFactory.getCurrentSession();
 		Transaction transaction = session.beginTransaction();
-		//Query query = session.createQuery("from Rafter where id="+toRead.getId());
-		Rafter rafter = (Rafter) session.get(Rafter.class, toRead.getId());//(Rafter) query.list().get(0);
+		readed = (Rafter) session.get(Rafter.class, toRead.getId());//(Rafter) query.list().get(0);
 		transaction.commit();
 		
-		return rafter;
+		return readed;
 		
 	}
 
 	public List<Rafter> read() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Rafter> rafters = new ArrayList<>();
+		Session session = sessionFactory.getCurrentSession();
+		Transaction transaction = session.beginTransaction();
+		Query query = session.createQuery("from Rafter");
+		rafters = query.list();
+		transaction.commit();
+		return rafters;
 	}
 
 	public Rafter update(Rafter toUpdate) {

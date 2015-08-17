@@ -1,10 +1,10 @@
 package main;
 
 import java.sql.Connection;
+import java.util.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.Date;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -14,10 +14,13 @@ import com.river.persistence.dao.RafterDAO;
 import com.river.persistence.dao.RafterDAOImpl;
 
 
+
 public class TestingClass {
 
 	
 	void query(){
+		ApplicationContext context = new ClassPathXmlApplicationContext("config/spring-config.xml");
+		
 		Connection c = null;
 	    Statement stmt = null;
 	    try {
@@ -40,16 +43,19 @@ public class TestingClass {
 	    }
 	  }
 	
+	
 	void insertTest(){
 		ApplicationContext context = new ClassPathXmlApplicationContext("config/spring-config.xml");
 		RafterDAO dao = context.getBean(RafterDAOImpl.class);
-		dao.Create(new Rafter( "holoaasdf", "asdfaasdfasdfsf33d", "hosasdfdflo@gmail.com", new Date()));
+		dao.Create(new Rafter( "holoaasasdfasfddf", "asdfaasfdasfdasfdasdfasdfsf33d", "hosasfasfdasdfdflo@gmail.com", new Date()));
+		
 	}
 	
 	public static void main( String args[] )
 	  {
 	     TestingClass c = new TestingClass();
-	     c.query();
+//	     c.query();
+		c.insertTest();
 	  }
 
 }

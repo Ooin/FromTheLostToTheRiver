@@ -9,6 +9,6 @@ public interface RouteFatherDAO {
 	RouteFather create(RouteFather toCreate);
 	RouteFather read(RouteFather toRead);
 	List<RouteFather> read();
-	RouteFather update(RouteFather routeFather);
-	RouteFather delete(RouteFather routeFather);
+	RouteFather update(RouteFather toUpdate);
+	RouteFather delete(RouteFather toDelete);
 }

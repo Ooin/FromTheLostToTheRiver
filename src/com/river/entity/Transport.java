@@ -5,6 +5,16 @@ public class Transport {
 	private Integer id;
 	private String name;
 
+	public Transport() {
+		super();
+	}
+	
+	public Transport(Integer id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
+
 	public Integer getId() {
 		return id;
 	}
@@ -63,7 +73,5 @@ public class Transport {
 		builder.append("]");
 		return builder.toString();
 	}
-
-	
 
 }

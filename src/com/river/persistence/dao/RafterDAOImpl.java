@@ -3,6 +3,7 @@ package com.river.persistence.dao;
 import java.util.List;
 
 import org.hibernate.Hibernate;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -30,13 +31,13 @@ public class RafterDAOImpl implements RafterDAO{
 	}
 
 	public Rafter read(Rafter toRead) {
-		Rafter readed = null;
 		Session session = sessionFactory.getCurrentSession();
-		Transaction tx = session.beginTransaction();
-		readed = (Rafter) session.load(Rafter.class, toRead.getId());
-		Hibernate.initialize(readed);
-		tx.commit();
-		return readed;
+		Transaction transaction = session.beginTransaction();
+		//Query query = session.createQuery("from Rafter where id="+toRead.getId());
+		Rafter rafter = (Rafter) session.get(Rafter.class, toRead.getId());//(Rafter) query.list().get(0);
+		transaction.commit();
+		
+		return rafter;
 		
 	}
 

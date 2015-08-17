@@ -31,15 +31,14 @@ public class Rafter {
 	private String email;
 	
 	@Column(name = "registerDate")
-	@Temporal(TemporalType.DATE)
-	private Date registerDate; 
+	private String registerDate; 
 
 	
 	public Rafter() {
 		super();
 	}
 	
-	public Rafter(String rafterName, String password, String email, Date registerDate) {
+	public Rafter(String rafterName, String password, String email, String registerDate) {
 		super();
 		
 		this.rafterName = rafterName;
@@ -49,7 +48,7 @@ public class Rafter {
 	}
 	
 	
-	public Rafter(Integer id, String rafterName, String password, String email, Date registerDate) {
+	public Rafter(Integer id, String rafterName, String password, String email, String registerDate) {
 		super();
 		this.id = id;
 		this.rafterName = rafterName;
@@ -89,10 +88,10 @@ public class Rafter {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public Date getRegisterDate() {
+	public String getRegisterDate() {
 		return registerDate;
 	}
-	public void setRegisterDate(Date registerDate) {
+	public void setRegisterDate(String registerDate) {
 		this.registerDate = registerDate;
 	}
 	

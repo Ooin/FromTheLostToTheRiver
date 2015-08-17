@@ -6,9 +6,13 @@ import com.river.entity.RouteFather;
 
 public interface RouteFatherDAO {
 
-	RouteFather create(RouteFather toCreate);
-	RouteFather read(RouteFather toRead);
-	List<RouteFather> read();
-	RouteFather update(RouteFather toUpdate);
-	RouteFather delete(RouteFather toDelete);
+	public RouteFather create(RouteFather toCreate);
+	
+	public RouteFather read(RouteFather toRead);
+
+	public List<RouteFather> read();
+
+	public RouteFather update(RouteFather toUpdate);
+
+	public RouteFather delete(RouteFather toDelete);
 }

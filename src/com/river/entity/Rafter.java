@@ -1,14 +1,39 @@
 package com.river.entity;
 
-import java.sql.Date;
+import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+
+@Entity
+@Table(name="rafter")
 public class Rafter {
 	
+	@Id
+	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
+	@Column(name = "rafterName")
 	private String rafterName;
+	
+	@Column(name = "password")
 	private String password;
+	
+	@Column(name = "email")
 	private String email;
-	private Date registerDate;
+	
+	@Column(name = "registerDate")
+	@Temporal(TemporalType.DATE)
+	private Date registerDate; 
+
 	
 	public Integer getId() {
 		return id;
@@ -45,9 +70,9 @@ public class Rafter {
 		super();
 	}
 	
-	public Rafter(Integer id, String rafterName, String password, String email, Date registerDate) {
+	public Rafter(String rafterName, String password, String email, Date registerDate) {
 		super();
-		this.id = id;
+		
 		this.rafterName = rafterName;
 		this.password = password;
 		this.email = email;
@@ -96,14 +121,5 @@ public class Rafter {
 		builder.append("]");
 		return builder.toString();
 	}
-	public Rafter(String rafterName, String password, String email,
-			Date registerDate) {
-		super();
-		this.rafterName = rafterName;
-		this.password = password;
-		this.email = email;
-		this.registerDate = registerDate;
-	}
-	
-	
+		
 }

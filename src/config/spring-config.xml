@@ -24,7 +24,7 @@
                 http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.1.xsd">
                 
                 
-    <bean id="datasource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" lazy-init="true">
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" lazy-init="true">
     	<property name="driverClassName" value="org.sqlite.JDBC" />
     	<property name="url" value="jdbc:sqlite:riverDatabaseF" />
     	<property name="initialSize" value="1" />
@@ -32,5 +32,35 @@
     	<property name="maxIdle" value="1" />
     	<property name="poolPreparedStatements" value="true" />
 </bean>
+
+<bean id="sessionFactory"
+        class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="annotatedClasses">
+            <list>
+                <value>com.river.entity.Address</value>
+                <value>com.river.entity.Line</value>
+                <value>com.river.entity.Rafter</value>
+                <value>com.river.entity.Rate</value>
+                <value>com.river.entity.RouteFather</value>
+                <value>com.river.entity.RouteStep</value>
+                <value>com.river.entity.Stop</value>
+                <value>com.river.entity.Transport</value>
+               
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                <prop key="hibernate.current_session_context_class">thread</prop>
+                <prop key="hibernate.show_sql">true</prop>
+
+            </props>
+        </property>
+    </bean>
+    
+     <bean id="rafterDAO" class="com.river.persistence.dao.RafterDAOImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
                 
 </beans>

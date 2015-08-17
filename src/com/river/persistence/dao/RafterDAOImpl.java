@@ -33,7 +33,7 @@ public class RafterDAOImpl implements RafterDAO{
 		Rafter readed = null;
 		Session session = sessionFactory.getCurrentSession();
 		Transaction tx = session.beginTransaction();
-		readed = (Rafter) session.load(Rafter.class, toRead.getId());
+		readed = (Rafter) session.get(Rafter.class, toRead.getId());
 		Hibernate.initialize(readed);
 		tx.commit();
 		return readed;

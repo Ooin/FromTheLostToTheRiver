@@ -70,6 +70,11 @@ public class Rafter {
 		super();
 	}
 	
+	public Rafter(Integer id) {
+		super();
+		this.id = id;
+	}
+	
 	public Rafter(String rafterName, String password, String email, Date registerDate) {
 		super();
 		

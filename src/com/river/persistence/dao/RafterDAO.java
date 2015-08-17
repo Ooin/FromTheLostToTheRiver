@@ -6,14 +6,14 @@ import com.river.entity.Rafter;
 
 public interface RafterDAO {
 
-	public Rafter Create(Rafter rafter);
+	public Rafter Create(Rafter toCreate);
 	
-	public Rafter Read(Rafter rafter);
+	public Rafter Read(Rafter toRead);
 	
 	public List<Rafter> read();
 	
-	public Rafter Update(Rafter rafter);
+	public Rafter Update(Rafter toUpdate);
 	
-	public Rafter Delete(Rafter rafter);
+	public Rafter Delete(Rafter toDelete);
 
 }

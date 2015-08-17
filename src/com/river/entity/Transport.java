@@ -55,8 +55,15 @@ public class Transport {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Transport [id=").append(id).append(", name=").append(name).append("]");
+		builder.append("Transport [");
+		if (id != null)
+			builder.append("id=").append(id).append(", ");
+		if (name != null)
+			builder.append("name=").append(name);
+		builder.append("]");
 		return builder.toString();
 	}
+
+	
 
 }

@@ -1,15 +1,19 @@
 package com.river.persistence.dao;
 
+import java.util.List;
+
 import com.river.entity.Rafter;
 
 public interface RafterDAO {
 
-	public Rafter toCreate(Rafter rafter);
+	public Rafter Create(Rafter rafter);
 	
-	public Rafter toRead(Rafter rafter);
+	public Rafter Read(Rafter rafter);
 	
-	public Rafter toUpdate(Rafter rafter);
+	public List<Rafter> read();
 	
-	public Rafter toDelete(Rafter rafter);
+	public Rafter Update(Rafter rafter);
+	
+	public Rafter Delete(Rafter rafter);
 
 }

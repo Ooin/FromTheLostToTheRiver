@@ -1,5 +1,7 @@
 package com.river.entity;
 
+import java.util.Date;
+
 public class RouteFather {
 	private Integer id;
 	private String title;

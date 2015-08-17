@@ -7,13 +7,13 @@ import com.river.entity.Rate;
 public interface RateDAO {
 	
 	//CRUD
-	public Rate create(Rate rate);
+	public Rate create(Rate toCreate);
 	
-	public Rate read(Rate rate);
+	public Rate read(Rate toRead);
 	public List<Rate> read();
 	
-	public Rate update(Rate rate);
+	public Rate update(Rate toUpdate);
 	
-	public Rate delete(Rate rate);
+	public Rate delete(Rate toDelete);
 
 }

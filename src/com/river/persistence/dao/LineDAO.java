@@ -10,11 +10,11 @@ public interface LineDAO {
 	
 	public Line create(Line toCreate);
 	
-	public Line read(Line line);
+	public Line read(Line toRead);
 	public List<Line> read();
 	
-	public Line update(Line line);
+	public Line update(Line toUpdate);
 	
-	public Line delete(Line line);
+	public Line delete(Line toDelete);
 
 }

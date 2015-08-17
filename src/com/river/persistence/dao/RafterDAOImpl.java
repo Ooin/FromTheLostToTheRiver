@@ -2,6 +2,7 @@ package com.river.persistence.dao;
 
 import java.util.List;
 
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -20,7 +21,7 @@ public class RafterDAOImpl implements RafterDAO{
 		this.sessionFactory = sessionFactory;
 	}
 
-	public Rafter Create(Rafter toCreate) {
+	public Rafter create(Rafter toCreate) {
 		Session session = sessionFactory.getCurrentSession();
 		Transaction tx = session.beginTransaction();
 		session.persist(toCreate);
@@ -28,9 +29,15 @@ public class RafterDAOImpl implements RafterDAO{
 		return toCreate;
 	}
 
-	public Rafter Read(Rafter toRead) {
-		// TODO Auto-generated method stub
-		return null;
+	public Rafter read(Rafter toRead) {
+		Rafter readed = null;
+		Session session = sessionFactory.getCurrentSession();
+		Transaction tx = session.beginTransaction();
+		readed = (Rafter) session.load(Rafter.class, toRead.getId());
+		Hibernate.initialize(readed);
+		tx.commit();
+		return readed;
+		
 	}
 
 	public List<Rafter> read() {
@@ -38,12 +45,12 @@ public class RafterDAOImpl implements RafterDAO{
 		return null;
 	}
 
-	public Rafter Update(Rafter toUpdate) {
+	public Rafter update(Rafter toUpdate) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public Rafter Delete(Rafter toDelete) {
+	public Rafter delete(Rafter toDelete) {
 		// TODO Auto-generated method stub
 		return null;
 	}

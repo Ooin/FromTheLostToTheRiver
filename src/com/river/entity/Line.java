@@ -4,7 +4,29 @@ public class Line {
 
 	private Integer id;
 	private String name;
-	private Transport transport;
+	Transport transport;
+	
+	public Line(Integer id, String name, Transport transport) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.transport = transport;
+	}
+	
+	public Line(String name, Transport transport) {
+		super();
+		
+		this.name = name;
+		this.transport = transport;
+	}
+	
+	public Line(Integer id) {
+		super();
+		this.id = id;
+	}
+	public Line() {
+		super();
+	}
 	
 	public Integer getId() {
 		return id;
@@ -67,24 +89,6 @@ public class Line {
 		}
 		builder.append("]");
 		return builder.toString();
-	}
-	public Line(Integer id, String name, Transport transport) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.transport = transport;
-	}
-	public Line(Integer id) {
-		super();
-		this.id = id;
-	}
-	public Line() {
-		super();
-	}
-	public Line(String name, Transport transport) {
-		super();
-		this.name = name;
-		this.transport = transport;
 	}
 	
 	

@@ -14,6 +14,13 @@ public class Transport {
 		this.id = id;
 		this.name = name;
 	}
+	
+	
+
+	public Transport(String name) {
+		super();
+		this.name = name;
+	}
 
 	public Integer getId() {
 		return id;
@@ -73,12 +80,5 @@ public class Transport {
 		builder.append("]");
 		return builder.toString();
 	}
-
-	public Transport(String name) {
-		super();
-		this.name = name;
-	}
-	
-	
 
 }

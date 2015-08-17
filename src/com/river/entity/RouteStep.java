@@ -21,6 +21,15 @@ public class RouteStep {
 		this.origin = origin;
 		this.destiny = destiny;
 	}
+	
+	
+
+	public RouteStep(RouteFather route, Address origin, Address destiny) {
+		super();
+		this.route = route;
+		this.origin = origin;
+		this.destiny = destiny;
+	}
 
 	public Integer getId() {
 		return id;
@@ -83,13 +92,9 @@ public class RouteStep {
 		}
 		return true;
 	}
-
-	public RouteStep(RouteFather route, Address origin, Address destiny) {
-		super();
-		this.route = route;
-		this.origin = origin;
-		this.destiny = destiny;
-	}
+	
+	
+	
 	
 	
 	

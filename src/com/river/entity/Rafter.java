@@ -35,6 +35,36 @@ public class Rafter {
 	private Date registerDate; 
 
 	
+	public Rafter() {
+		super();
+	}
+	
+	public Rafter(String rafterName, String password, String email, Date registerDate) {
+		super();
+		
+		this.rafterName = rafterName;
+		this.password = password;
+		this.email = email;
+		this.registerDate = registerDate;
+	}
+	
+	
+	public Rafter(Integer id, String rafterName, String password, String email, Date registerDate) {
+		super();
+		this.id = id;
+		this.rafterName = rafterName;
+		this.password = password;
+		this.email = email;
+		this.registerDate = registerDate;
+	}
+	
+	
+
+	public Rafter(Integer id) {
+		super();
+		this.id = id;
+	}
+
 	public Integer getId() {
 		return id;
 	}
@@ -66,23 +96,7 @@ public class Rafter {
 		this.registerDate = registerDate;
 	}
 	
-	public Rafter() {
-		super();
-	}
 	
-	public Rafter(Integer id) {
-		super();
-		this.id = id;
-	}
-	
-	public Rafter(String rafterName, String password, String email, Date registerDate) {
-		super();
-		
-		this.rafterName = rafterName;
-		this.password = password;
-		this.email = email;
-		this.registerDate = registerDate;
-	}
 
 	@Override
 	public int hashCode() {
@@ -126,5 +140,4 @@ public class Rafter {
 		builder.append("]");
 		return builder.toString();
 	}
-		
 }

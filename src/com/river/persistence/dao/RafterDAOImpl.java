@@ -23,7 +23,7 @@ public class RafterDAOImpl implements RafterDAO{
 	public Rafter Create(Rafter toCreate) {
 		Session session = sessionFactory.getCurrentSession();
 		Transaction tx = session.beginTransaction();
-		session.save(toCreate);
+		session.persist(toCreate);
 		tx.commit();
 		return toCreate;
 	}

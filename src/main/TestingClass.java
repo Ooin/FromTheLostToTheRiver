@@ -47,7 +47,7 @@ public class TestingClass {
 	void insertTest(){
 		ApplicationContext context = new ClassPathXmlApplicationContext("config/spring-config.xml");
 		RafterDAO dao = context.getBean(RafterDAOImpl.class);
-		dao.Create(new Rafter(0, "holoa", "asdfasf33d", "hosdflo@gmail.com", new Date()));
+		dao.Create(new Rafter( "holoaasdf", "asdfaasdfasdfsf33d", "hosasdfdflo@gmail.com", new Date()));
 	}
 	
 	public static void main( String args[] )

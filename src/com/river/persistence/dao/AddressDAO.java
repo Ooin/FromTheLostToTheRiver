@@ -6,14 +6,14 @@ import com.river.entity.Address;
 
 public interface AddressDAO {
 
-	public Address create(Address address);
+	public Address create(Address toCreate);
 	
-	public Address read(Address address);
+	public Address read(Address toRead);
 	
 	public List<Address> read();
 	
-	public Address update(Address address);
+	public Address update(Address toUpdate);
 	
-	public Address delete(Address address);
+	public Address delete(Address toDelete);
 	
 }

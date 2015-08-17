@@ -1,20 +1,20 @@
 package com.river.entity;
 
-public class RouteSteps {
+public class RouteStep {
 	private Integer id;
 	private RouteFather route;
 	private Address origin;
 	private Address destiny;
 	
-	public RouteSteps(){
+	public RouteStep(){
 		
 	}
 	
-	public RouteSteps(Integer id){
+	public RouteStep(Integer id){
 		this.id = id;
 	}
 	
-	public RouteSteps(Integer id, RouteFather route, Address origin, Address destiny) {
+	public RouteStep(Integer id, RouteFather route, Address origin, Address destiny) {
 		super();
 		this.id = id;
 		this.route = route;
@@ -70,10 +70,10 @@ public class RouteSteps {
 		if (obj == null) {
 			return false;
 		}
-		if (!(obj instanceof RouteSteps)) {
+		if (!(obj instanceof RouteStep)) {
 			return false;
 		}
-		RouteSteps other = (RouteSteps) obj;
+		RouteStep other = (RouteStep) obj;
 		if (id == null) {
 			if (other.id != null) {
 				return false;

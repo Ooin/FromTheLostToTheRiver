@@ -6,10 +6,10 @@ import com.river.entity.Rate;
 
 public interface RateDAO {
 	
-	//CRUD
 	public Rate create(Rate toCreate);
 	
 	public Rate read(Rate toRead);
+	
 	public List<Rate> read();
 	
 	public Rate update(Rate toUpdate);

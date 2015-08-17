@@ -5,12 +5,11 @@ import java.util.List;
 import com.river.entity.Line;
 
 public interface LineDAO {
-	
-	//CRUD
-	
+		
 	public Line create(Line toCreate);
 	
 	public Line read(Line toRead);
+	
 	public List<Line> read();
 	
 	public Line update(Line toUpdate);

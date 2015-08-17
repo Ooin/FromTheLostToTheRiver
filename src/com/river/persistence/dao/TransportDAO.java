@@ -5,11 +5,11 @@ import java.util.List;
 import com.river.entity.Transport;
 
 public interface TransportDAO {
-	//CRUD
 	
 	public Transport create(Transport toCreate);
 	
 	public Transport read(Transport toRead);
+	
 	public List<Transport> read();
 	
 	public Transport update(Transport toUpdate);

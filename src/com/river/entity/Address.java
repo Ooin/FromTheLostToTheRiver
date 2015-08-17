@@ -2,11 +2,11 @@ package com.river.entity;
 
 public class Address{
 	
-	Integer id;
-	Integer zipCode;
-	String roadType;
-	String roadName;
-	Stop stop;
+	private Integer id;
+	private Integer zipCode;
+	private String roadType;
+	private String roadName;
+	private Stop stop;
 	
 	public Integer getId() {
 		return id;
@@ -41,6 +41,21 @@ public class Address{
 	public Address() {
 		super();
 	}
+	
+	public Address(Integer id) {
+		super();
+		this.id = id;
+	}
+	public Address(Integer id, Integer zipCode, String roadType,
+			String roadName, Stop stop) {
+		super();
+		this.id = id;
+		this.zipCode = zipCode;
+		this.roadType = roadType;
+		this.roadName = roadName;
+		this.stop = stop;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

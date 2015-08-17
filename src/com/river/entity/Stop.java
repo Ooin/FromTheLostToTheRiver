@@ -2,8 +2,9 @@ package com.river.entity;
 
 public class Stop {
 	
-	Integer id;
-	Address adress;
+	
+	private Integer id;
+	private Address adress;
 	
 	public Integer getId() {
 		return id;
@@ -21,6 +22,21 @@ public class Stop {
 		this.adress = adress;
 	}
 	
+	public Stop(Integer id) {
+		super();
+		this.id = id;
+	}
+
+	public Stop() {
+		super();
+	}
+
+	public Stop(Integer id, Address adress) {
+		super();
+		this.id = id;
+		this.adress = adress;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();

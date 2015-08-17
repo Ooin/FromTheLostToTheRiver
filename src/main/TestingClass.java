@@ -4,9 +4,14 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.Date;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.river.entity.Rafter;
+import com.river.persistence.dao.RafterDAO;
+import com.river.persistence.dao.RafterDAOImpl;
 
 
 public class TestingClass {
@@ -34,6 +39,12 @@ public class TestingClass {
 	      System.exit(0);
 	    }
 	  }
+	
+	void insertTest(){
+		ApplicationContext context = new ClassPathXmlApplicationContext("config/spring-config.xml");
+		RafterDAO dao = context.getBean(RafterDAOImpl.class);
+		dao.Create(new Rafter( "holoaasdf", "asdfaasdfasdfsf33d", "hosasdfdflo@gmail.com", new Date()));
+	}
 	
 	public static void main( String args[] )
 	  {

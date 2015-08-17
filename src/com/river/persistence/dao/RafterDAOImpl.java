@@ -20,7 +20,7 @@ public class RafterDAOImpl implements RafterDAO{
 		this.sessionFactory = sessionFactory;
 	}
 
-	public Rafter create(Rafter toCreate) {
+	public Rafter Create(Rafter toCreate) {
 		Session session = sessionFactory.getCurrentSession();
 		Transaction tx = session.beginTransaction();
 		session.persist(toCreate);
@@ -28,14 +28,9 @@ public class RafterDAOImpl implements RafterDAO{
 		return toCreate;
 	}
 
-	public Rafter read(Rafter toRead) {
-		Rafter readed = null;
-		Session session = sessionFactory.getCurrentSession();
-		Transaction tx = session.beginTransaction();
-		readed = (Rafter) session.load(Rafter.class, toRead.getId());
-		tx.commit();
-		
-		return readed;
+	public Rafter Read(Rafter toRead) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	public List<Rafter> read() {
@@ -43,12 +38,12 @@ public class RafterDAOImpl implements RafterDAO{
 		return null;
 	}
 
-	public Rafter update(Rafter toUpdate) {
+	public Rafter Update(Rafter toUpdate) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public Rafter delete(Rafter toDelete) {
+	public Rafter Delete(Rafter toDelete) {
 		// TODO Auto-generated method stub
 		return null;
 	}

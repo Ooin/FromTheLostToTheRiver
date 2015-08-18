@@ -62,11 +62,14 @@
      <bean id="rafterDAO" class="com.river.persistence.dao.RafterDAOImpl">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
-    <!--  <bean id="addressDAO" class="com.river.persistence.dao.AddressDAOImpl">
-        <property name="sessionFactory" ref="sessionFactory" />
-    </bean>
     <bean id="lineDAO" class="com.river.persistence.dao.LineDAOImpl">
         <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+    <!--  <bean id="addressDAO" class="com.river.persistence.dao.AddressDAOImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
+    <!--
+    </bean>
+    
     </bean>
     <bean id="routeFatherDAO" class="com.river.persistence.dao.routeFatherDAOImpl">
         <property name="sessionFactory" ref="sessionFactory" />

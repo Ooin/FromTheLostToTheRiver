@@ -8,6 +8,9 @@ import com.river.persistence.dao.interfaces.RafterDAO;
 
 
 
+import com.river.entity.Rafter;
+import com.river.persistence.dao.interfaces.RafterDAO;
+
 public class RafterDAOImplTest {
 	
 	RafterDAO rafterDAO;

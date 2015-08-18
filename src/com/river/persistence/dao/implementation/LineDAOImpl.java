@@ -2,15 +2,39 @@ package com.river.persistence.dao.implementation;
 
 import java.util.List;
 
-import com.river.entity.Line;
-import com.river.persistence.dao.DAO;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 
-public class LineDAOImpl implements DAO<Line>{
+import com.river.entity.Line;
+import com.river.persistence.dao.interfaces.LineDAO;
+
+public class LineDAOImpl implements LineDAO{
+	
+	SessionFactory sessionFactory;
+
+	public SessionFactory getSessionFactory() {
+		return sessionFactory;
+	}
+
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
 
 	@Override
 	public Line create(Line toCreate) {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = sessionFactory.getCurrentSession();
+		Transaction tx = session.beginTransaction();
+		
+		try{
+			session.persist(toCreate);
+			tx.commit();
+		}catch(HibernateException e){
+			e.printStackTrace();
+			toCreate = null;
+		}
+		return toCreate;
 	}
 
 	@Override

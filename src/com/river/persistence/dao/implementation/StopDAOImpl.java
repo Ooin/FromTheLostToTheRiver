@@ -10,8 +10,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import com.river.entity.Stop;
-import com.river.persistence.dao.DAO;
-import com.river.persistence.dao.StopDAO;
+import com.river.persistence.dao.interfaces.DAO;
 
 public class StopDAOImpl implements DAO<Stop> {
 
@@ -25,6 +24,7 @@ public class StopDAOImpl implements DAO<Stop> {
 		this.sessionFactory = sessionFactory;
 	}
 
+	@Override
 	public Stop create(Stop toCreate) {
 		Session session = sessionFactory.getCurrentSession();
 		Transaction tx = session.beginTransaction();
@@ -39,6 +39,7 @@ public class StopDAOImpl implements DAO<Stop> {
 		return toCreate;
 	}
 
+	@Override
 	public Stop read(Stop toRead) {
 		Stop readed = null;
 		Session session = sessionFactory.getCurrentSession();
@@ -49,6 +50,7 @@ public class StopDAOImpl implements DAO<Stop> {
 		return readed;
 	}
 
+	@Override
 	public List<Stop> read() {
 		List<Stop> stops = new ArrayList<Stop>();
 		Session session = sessionFactory.getCurrentSession();
@@ -59,6 +61,7 @@ public class StopDAOImpl implements DAO<Stop> {
 		return stops;
 	}
 
+	@Override
 	public Stop update(Stop toUpdate) {
 		Session session = sessionFactory.getCurrentSession();
 		Transaction tx = session.beginTransaction();
@@ -72,6 +75,7 @@ public class StopDAOImpl implements DAO<Stop> {
 		return toUpdate;
 	}
 
+	@Override
 	public Stop delete(Stop toDelete) {
 		Session session = sessionFactory.getCurrentSession();
 		Transaction tx = session.beginTransaction();

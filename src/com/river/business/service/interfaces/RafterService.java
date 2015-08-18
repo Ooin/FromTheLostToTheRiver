@@ -1,4 +1,4 @@
-package com.river.business.service;
+package com.river.business.service.interfaces;
 
 import java.util.List;
 

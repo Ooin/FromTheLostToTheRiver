@@ -1,10 +1,12 @@
 package main;
 
 import java.sql.Connection;
-import java.util.Date;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -44,14 +46,15 @@ public class TestingClass {
 	  }
 	
 	
-	void insertTest(){
+	void insertTest() throws ParseException{
 		ApplicationContext context = new ClassPathXmlApplicationContext("config/spring-config.xml");
 		RafterDAO dao = context.getBean(RafterDAOImpl.class);
-		//dao.create(new Rafter( "holoaasasdfasfddf", "asdfaasfdasfdasfdasdfasdfsf33d", "hosasfasfdasdfdflo@gmail.com", new Date()));
+		
+		//dao.create(new Rafter( "manolo3", "123adfasdf3df5", "hosaaefesfasfdasdfdddlo@gmail.com", new Date(02, 02, 02)));
 		System.out.println(dao.read(new Rafter(1)));
 	}
 	
-	public static void main( String args[] )
+	public static void main( String args[] ) throws ParseException
 	  {
 	     TestingClass c = new TestingClass();
 //	     c.query();

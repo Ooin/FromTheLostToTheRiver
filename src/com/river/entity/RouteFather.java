@@ -1,14 +1,11 @@
 package com.river.entity;
 
-
-import java.util.Date;
-
 public class RouteFather {
 	private Integer id;
 	private String title;
 	private String description;
 	private String hashTag;
-	private Date timeStamp;
+	private String timeStamp;
 	private Rafter creator;
 	
 	public RouteFather(){
@@ -18,7 +15,7 @@ public class RouteFather {
 		this.id = id;
 	}
 
-	public RouteFather(Integer id, String title, String description, String hashTag, Date timeStamp, Rafter creator) {
+	public RouteFather(Integer id, String title, String description, String hashTag, String timeStamp, Rafter creator) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -30,7 +27,7 @@ public class RouteFather {
 	
 	
 
-	public RouteFather(String title, String description, String hashTag, Date timeStamp, Rafter creator) {
+	public RouteFather(String title, String description, String hashTag, String timeStamp, Rafter creator) {
 		super();
 		this.title = title;
 		this.description = description;
@@ -71,11 +68,11 @@ public class RouteFather {
 		this.hashTag = hashTag;
 	}
 
-	public Date getTimeStamp() {
+	public String getTimeStamp() {
 		return timeStamp;
 	}
 
-	public void setTimeStamp(Date timeStamp) {
+	public void setTimeStamp(String timeStamp) {
 		this.timeStamp = timeStamp;
 	}
 

@@ -30,8 +30,6 @@ public class RouteFather {
 	@Column(name="timeStamp")
 	private String timeStamp;
 	
-	
-	@Column(name="creator")
 	@ManyToOne
 	@JoinColumn(name = "creator")
 	private Rafter creator;

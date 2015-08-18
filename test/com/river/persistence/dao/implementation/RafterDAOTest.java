@@ -1,4 +1,4 @@
-package com.river.persistence.dao;
+package com.river.persistence.dao.implementation;
 
 import java.util.Date;
 import java.util.Random;

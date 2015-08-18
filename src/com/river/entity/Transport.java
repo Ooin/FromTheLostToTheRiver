@@ -25,6 +25,7 @@ public class Transport {
 	@OneToMany(mappedBy = "transport")
 	private List<Line> lines;
 
+	
 	public Transport() {
 		super();
 	}

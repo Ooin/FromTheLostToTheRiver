@@ -5,7 +5,7 @@ import java.util.List;
 import com.river.entity.Rate;
 import com.river.persistence.dao.interfaces.DAO;
 
-public class RateDAOImpl  extends GenericDAO implements DAO<Rate> {
+public class RateDAOImpl  extends AbstractDAO implements DAO<Rate> {
 
 	@Override
 	public Rate create(Rate toCreate) {

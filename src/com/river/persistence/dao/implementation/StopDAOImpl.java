@@ -12,7 +12,7 @@ import org.hibernate.Transaction;
 import com.river.entity.Stop;
 import com.river.persistence.dao.interfaces.DAO;
 
-public class StopDAOImpl extends GenericDAO  implements DAO<Stop> {
+public class StopDAOImpl extends AbstractDAO  implements DAO<Stop> {
 
 	
 

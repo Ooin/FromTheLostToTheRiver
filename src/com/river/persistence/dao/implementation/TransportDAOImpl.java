@@ -14,7 +14,7 @@ import com.river.entity.Transport;
 import com.river.persistence.dao.interfaces.TransportDAO;
 
 
-public class TransportDAOImpl  extends GenericDAO implements TransportDAO{
+public class TransportDAOImpl  extends AbstractDAO implements TransportDAO{
 
 
 	/**

@@ -10,7 +10,7 @@ import org.hibernate.Transaction;
 import com.river.entity.Line;
 import com.river.persistence.dao.interfaces.LineDAO;
 
-public class LineDAOImpl extends GenericDAO implements LineDAO{
+public class LineDAOImpl extends AbstractDAO implements LineDAO{
 	
 
 	@Override

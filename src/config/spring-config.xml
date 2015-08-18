@@ -74,17 +74,17 @@
     
     
     
-    <bean id="routeFatherDAO" class="com.river.persistence.dao.routeFatherDAOImpl">
+    <bean id="routeFatherDAO" class="com.river.persistence.dao.implementation.RouteFatherDAOImpl">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
-    <bean id="routeStepDAO" class="com.river.persistence.dao.RouteStepDAOImpl">
+    <bean id="routeStepDAO" class="com.river.persistence.dao.implementation.RouteStepDAOImpl">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
     
-    <bean id="transportDAO" class="com.river.persistence.dao.TransportDAOImpl">
+    <bean id="transportDAO" class="com.river.persistence.dao.implementation.TransportDAOImpl">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
-    <bean id="rateDAO" class="com.river.persistence.dao.RateDAOImpl">
+    <bean id="rateDAO" class="com.river.persistence.dao.implementation.RateDAOImpl">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
     

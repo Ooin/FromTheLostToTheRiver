@@ -1,9 +1,10 @@
-package com.river.business.service;
+package com.river.business.service.implementation;
 
 import java.util.List;
 
+import com.river.business.service.interfaces.RafterService;
 import com.river.entity.Rafter;
-import com.river.persistence.dao.RafterDAO;
+import com.river.persistence.dao.interfaces.RafterDAO;
 
 public class RafterServiceImpl implements RafterService{
 

@@ -11,8 +11,10 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import com.river.entity.Transport;
+import com.river.persistence.dao.interfaces.TransportDAO;
 
-public class TransportDAOImpl implements DAO<Transport>{
+
+public class TransportDAOImpl implements TransportDAO{
 	
 	SessionFactory sessionFactory;
 

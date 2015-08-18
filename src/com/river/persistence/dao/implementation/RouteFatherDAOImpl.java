@@ -3,7 +3,7 @@ package com.river.persistence.dao.implementation;
 import java.util.List;
 
 import com.river.entity.RouteFather;
-import com.river.persistence.dao.DAO;
+import com.river.persistence.dao.interfaces.DAO;
 
 public class RouteFatherDAOImpl implements DAO<RouteFather>{
 

@@ -1,12 +1,54 @@
 package com.river.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="ROUTE_FATHER")
 public class RouteFather {
+	
+	@Id
+	@Column(name="id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	@Column(name="title")
 	private String title;
+	@Column(name="description")
 	private String description;
+	@Column(name="hashTag")
 	private String hashTag;
+	@Column(name="timeStamp")
 	private String timeStamp;
+	
+	
+	@Column(name="creator")
+	@ManyToOne
+	@JoinColumn(name = "creator")
 	private Rafter creator;
+	
+	@OneToMany(mappedBy ="route")
+	List<Rate> rates = new ArrayList<>();
+	
+	public void addRate(Rate rate){
+		this.rates.add(rate);
+	}
+	
+	@OneToMany(mappedBy ="route")
+	List<RouteStep> routeSteps = new ArrayList<>();
+	
+	public void addRouteStep(RouteStep routeStep){
+		this.routeSteps.add(routeStep);
+	}
 	
 	public RouteFather(){
 	}

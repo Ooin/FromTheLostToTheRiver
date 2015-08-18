@@ -1,9 +1,23 @@
 package com.river.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="stops")
 public class Stop {
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id")
 	private Integer id;
-	private Address adress;
+	
+	@Column(name="address")
+	private Address address;
 
 	public Stop(Integer id) {
 		super();
@@ -17,12 +31,12 @@ public class Stop {
 	public Stop(Integer id, Address adress) {
 		super();
 		this.id = id;
-		this.adress = adress;
+		this.address = adress;
 	}
 
 	public Stop(Address adress) {
 		super();
-		this.adress = adress;
+		this.address = adress;
 	}
 
 	public Integer getId() {
@@ -34,11 +48,11 @@ public class Stop {
 	}
 
 	public Address getAdress() {
-		return adress;
+		return address;
 	}
 
 	public void setAdress(Address adress) {
-		this.adress = adress;
+		this.address = adress;
 	}
 
 	@Override
@@ -50,9 +64,9 @@ public class Stop {
 			builder.append(id);
 			builder.append(", ");
 		}
-		if (adress != null) {
+		if (address != null) {
 			builder.append("adress=");
-			builder.append(adress);
+			builder.append(address);
 		}
 		builder.append("]");
 		return builder.toString();

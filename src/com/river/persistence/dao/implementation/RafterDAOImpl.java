@@ -55,7 +55,7 @@ public class RafterDAOImpl implements RafterDAO{
 		Session session = sessionFactory.getCurrentSession();
 		Transaction transaction = session.beginTransaction();
 		Query query = session.createQuery("from Rafter");
-		rafters = query.list();
+		rafters = (List<Rafter>) query.list();
 		transaction.commit();
 		return rafters;
 	}

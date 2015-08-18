@@ -31,9 +31,8 @@ public class Rafter {
 	@Column(name = "registerDate")
 	private String registerDate;
 
-	/* DELETE
-	@OneToMany(mappedBy = "rate")
-	private List<Rate> rates;*/
+	@OneToMany(mappedBy = "creator")
+	private List<Rate> rates;
 
 	public Rafter() {
 		super();

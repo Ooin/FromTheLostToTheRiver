@@ -26,7 +26,7 @@
                 
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" lazy-init="true">
     	<property name="driverClassName" value="org.sqlite.JDBC" />
-    	<property name="url" value="jdbc:sqlite:riverDatabaseF" />
+    	<property name="url" value="jdbc:sqlite:riverDatabase.db" />
     	<property name="initialSize" value="1" />
     	<property name="maxActive" value="1" />
     	<property name="maxIdle" value="1" />
@@ -62,11 +62,14 @@
      <bean id="rafterDAO" class="com.river.persistence.dao.RafterDAOImpl">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
-    <!--  <bean id="addressDAO" class="com.river.persistence.dao.AddressDAOImpl">
-        <property name="sessionFactory" ref="sessionFactory" />
-    </bean>
     <bean id="lineDAO" class="com.river.persistence.dao.LineDAOImpl">
         <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+    <!--  <bean id="addressDAO" class="com.river.persistence.dao.AddressDAOImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
+    <!--
+    </bean>
+    
     </bean>
     <bean id="routeFatherDAO" class="com.river.persistence.dao.routeFatherDAOImpl">
         <property name="sessionFactory" ref="sessionFactory" />
@@ -83,5 +86,36 @@
     <bean id="rateDAO" class="com.river.persistence.dao.RateDAOImpl">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>-->
+    
+    
+    <!-- SERVICIOS -->
+    
+    <!--  
+    <bean id="rafterService" class="com.river.persistence.business.RafterServiceImpl">
+        <property name="rafterDAO" ref="rafterDAO" />
+    </bean>
+    <bean id="addressService" class="com.river.persistence.business.AddressServiceImpl">
+        <property name="addressDAO" ref="addressDAO" />
+    </bean>
+    <bean id="lineService" class="com.river.persistence.business.RineServiceImpl">
+        <property name="lineDAO" ref="lineDAO" />
+    </bean>
+    <bean id="routeFatherService" class="com.river.persistence.business.RouteFatherServiceImpl">
+        <property name="routeFatherDAO" ref="routeFatherDAO" />
+    </bean>
+    <bean id="routeStepService" class="com.river.persistence.business.RouteStepServiceImpl">
+        <property name="routeStepDAO" ref="routeStepDAO" />
+    </bean>
+    <bean id="stopService" class="com.river.persistence.business.StopServiceImpl">
+        <property name="stopDAO" ref="stopDAO" />
+    </bean>
+    <bean id="transportService" class="com.river.persistence.business.TransportServiceImpl">
+        <property name="transportDAO" ref="transportDAO" />
+    </bean>
+    <bean id="rateDAO" class="com.river.persistence.business.RateServiceImpl">
+        <property name="rateDAO" ref="rateDAO" />
+    </bean>-->
+   
+    
                 
 </beans>

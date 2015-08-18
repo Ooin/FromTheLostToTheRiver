@@ -65,8 +65,11 @@
     <bean id="lineDAO" class="com.river.persistence.dao.LineDAOImpl">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
+    
     <!--  <bean id="addressDAO" class="com.river.persistence.dao.AddressDAOImpl">
-        <property name="sessionFactory" ref="sessionFactory" />
+        <property name="sessionFactory" ref="sessionFactory" />-->
+        
+    <!--
     </bean>
     
     </bean>

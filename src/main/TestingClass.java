@@ -14,7 +14,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.river.entity.Rafter;
 import com.river.persistence.dao.RafterDAO;
-import com.river.persistence.dao.RafterDAOImpl;
+import com.river.persistence.dao.implementation.RafterDAOImpl;
 
 
 

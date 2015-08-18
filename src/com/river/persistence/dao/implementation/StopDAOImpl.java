@@ -1,19 +1,20 @@
-package com.river.persistence.dao;
+package com.river.persistence.dao.implementation;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import com.river.entity.Rafter;
+import com.river.entity.Stop;
+import com.river.persistence.dao.DAO;
+import com.river.persistence.dao.StopDAO;
 
-public class RafterDAOImpl implements RafterDAO{
-	
+public class StopDAOImpl implements DAO<Stop> {
+
 	SessionFactory sessionFactory;
 
 	public SessionFactory getSessionFactory() {
@@ -23,69 +24,64 @@ public class RafterDAOImpl implements RafterDAO{
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
-	
-	public Rafter create(Rafter toCreate) {
+
+	public Stop create(Stop toCreate) {
 		Session session = sessionFactory.getCurrentSession();
 		Transaction tx = session.beginTransaction();
-		
-		try{
+
+		try {
 			session.persist(toCreate);
 			tx.commit();
-		}catch(HibernateException e){
+		} catch (HibernateException e) {
 			e.printStackTrace();
 			toCreate = null;
 		}
 		return toCreate;
 	}
 
-	public Rafter read(Rafter toRead) {
-		Rafter readed = null;
+	public Stop read(Stop toRead) {
+		Stop readed = null;
 		Session session = sessionFactory.getCurrentSession();
 		Transaction transaction = session.beginTransaction();
-		readed = (Rafter) session.get(Rafter.class, toRead.getId());//(Rafter) query.list().get(0);
+		readed = (Stop) session.get(Stop.class, toRead.getId());
 		transaction.commit();
-		
+
 		return readed;
-		
 	}
 
-	public List<Rafter> read() {
-		List<Rafter> rafters = new ArrayList<Rafter>();
+	public List<Stop> read() {
+		List<Stop> stops = new ArrayList<Stop>();
 		Session session = sessionFactory.getCurrentSession();
 		Transaction transaction = session.beginTransaction();
 		Query query = session.createQuery("from Rafter");
-		rafters = query.list();
+		stops = (List<Stop>) query.list();
 		transaction.commit();
-		return rafters;
+		return stops;
 	}
 
-	public Rafter update(Rafter toUpdate) {
+	public Stop update(Stop toUpdate) {
 		Session session = sessionFactory.getCurrentSession();
 		Transaction tx = session.beginTransaction();
-		try{
+		try {
 			session.update(toUpdate);
 			tx.commit();
-		}catch(HibernateException e){
+		} catch (HibernateException e) {
 			e.printStackTrace();
 			toUpdate = null;
 		}
 		return toUpdate;
 	}
 
-	public Rafter delete(Rafter toDelete) {
+	public Stop delete(Stop toDelete) {
 		Session session = sessionFactory.getCurrentSession();
 		Transaction tx = session.beginTransaction();
-		try{
+		try {
 			session.delete(toDelete);
 			tx.commit();
-		}catch(HibernateException e){
+		} catch (HibernateException e) {
 			e.printStackTrace();
 			toDelete = null;
 		}
 		return toDelete;
 	}
-	
-	
-	
-	
 }

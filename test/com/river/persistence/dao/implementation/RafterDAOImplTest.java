@@ -1,14 +1,12 @@
-package com.river.persistence.dao;
-
+package com.river.persistence.dao.implementation;
+import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.river.persistence.dao.interfaces.RafterDAO;
-
-
-
 import com.river.entity.Rafter;
+import com.river.persistence.dao.implementation.RafterDAOImpl;
 import com.river.persistence.dao.interfaces.RafterDAO;
 
 public class RafterDAOImplTest {
@@ -19,10 +17,10 @@ public class RafterDAOImplTest {
 	
 	 @Before
 	 public void initTest(){
-		 rafterDAO = context.getBean(RafterDAOImpl.class);
-		 rafter = new Rafter("99", "testRafter","1234", "testRafter@gmail.com", "9999-99-99");
+		 rafterDAO = (RafterDAO) context.getBean(RafterDAOImpl.class);
+		 rafter = new Rafter("testRafter","1234", "testRafter@gmail.com", "9999-99-99");
 		 rafterDAO.create(rafter);
-		 rafter = new Rafter("100", "testRafter2","1234", "testRafter2@gmail.com", "9999-99-99");
+		 rafter = new Rafter("testRafter2","1234", "testRafter2@gmail.com", "9999-99-99");
 	 }
 	 
 	 

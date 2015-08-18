@@ -19,15 +19,15 @@ public class RouteStep {
 	private Integer id;
 	
 	@ManyToOne
-	@JoinColumn(name="id")
+	@JoinColumn(name="route")
 	private RouteFather route;
 	
 	@ManyToOne
-	@JoinColumn(name="id")
+	@JoinColumn(name="origin")
 	private Address origin;
 	
 	@ManyToOne
-	@JoinColumn(name="id")
+	@JoinColumn(name="destiny")
 	private Address destiny;
 	
 	public RouteStep(){

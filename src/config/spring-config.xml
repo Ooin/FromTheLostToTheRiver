@@ -59,7 +59,7 @@
         </property>
     </bean>
     
-     <bean id="rafterDAO" class="com.river.persistence.dao.RafterDAOImpl">
+     <bean id="rafterDAO" class="com.river.persistence.dao.implementation.RafterDAOImpl">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
     <!--  <bean id="lineDAO" class="com.river.persistence.dao.LineDAOImpl">

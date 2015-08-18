@@ -19,6 +19,7 @@ public class Transport {
 	@Column(name="name")
 	private String name;
 
+	
 	public Transport() {
 		super();
 	}

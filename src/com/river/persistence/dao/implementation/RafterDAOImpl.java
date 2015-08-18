@@ -1,4 +1,4 @@
-package com.river.persistence.dao;
+package com.river.persistence.dao.implementation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +11,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import com.river.entity.Rafter;
+import com.river.persistence.dao.RafterDAO;
 
 public class RafterDAOImpl implements RafterDAO{
 	

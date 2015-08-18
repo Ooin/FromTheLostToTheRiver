@@ -27,6 +27,7 @@ public class RafterDAOImpl extends AbstractDAO implements RafterDAO{
 		}catch(HibernateException e){
 			e.printStackTrace();
 			toCreate = null;
+			tx.rollback();
 		}
 		return toCreate;
 	}
@@ -61,6 +62,7 @@ public class RafterDAOImpl extends AbstractDAO implements RafterDAO{
 		}catch(HibernateException e){
 			e.printStackTrace();
 			toUpdate = null;
+			tx.rollback();
 		}
 		return toUpdate;
 	}
@@ -74,6 +76,7 @@ public class RafterDAOImpl extends AbstractDAO implements RafterDAO{
 		}catch(HibernateException e){
 			e.printStackTrace();
 			toDelete = null;
+			tx.rollback();
 		}
 		return toDelete;
 	}

@@ -18,10 +18,10 @@ public class RafterDAOImplTest {
 	 @Before
 	 public void initTest(){
 		 rafterDAO = (RafterDAO) context.getBean(RafterDAOImpl.class);
-		 rafter = new Rafter("testRafter","1234", "testRafter@gmail.com", "9999-99-99");
-		 rafterDAO.create(rafter);
+		 //rafterDAO.create(rafter);
 		 rafter = new Rafter("testRafter2","1234", "testRafter2@gmail.com", "9999-99-99");
 	 }
+	 
 	 
 	 
 	 //#####CREATE TESTS########
@@ -31,9 +31,22 @@ public class RafterDAOImplTest {
 	 public void addANonExistingRafter(){
 		 Rafter test = rafterDAO.create(this.rafter);
 		 Assert.assertNotNull("it should returns not null", test);
+		 System.out.println(test);
+		 rafterDAO.delete(test);
+		 
 	 }
 	 
 	 //add a new EXISTING rafter
+	
+	 public void addAnExistingRafter(){
+		rafterDAO.create(rafter);
+		Rafter toAdd = new Rafter("testRafter","1234", "testRafter@gmail.com", "9999-99-99");
+		toAdd = rafterDAO.create(toAdd);
+		Assert.assertNull(toAdd);
+		rafterDAO.delete(this.rafter);
+		 
+	 }
+	 
 	 
 	 
 	 //add an empty rafter

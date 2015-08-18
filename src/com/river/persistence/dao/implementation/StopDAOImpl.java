@@ -10,9 +10,10 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import com.river.entity.Stop;
+import com.river.persistence.dao.DAO;
 import com.river.persistence.dao.StopDAO;
 
-public class StopDAOImpl implements StopDAO {
+public class StopDAOImpl implements DAO<Stop> {
 
 	SessionFactory sessionFactory;
 

@@ -38,6 +38,23 @@ public class Address{
 	List<RouteStep> destinies = new ArrayList<>();
 	
 	
+	
+	public Address(Integer zipCode, String roadType, String roadName) {
+		super();
+		this.zipCode = zipCode;
+		this.roadType = roadType;
+		this.roadName = roadName;
+	}
+	public Address(Integer zipCode, String roadType, String roadName, Stop stop, List<RouteStep> origins,
+			List<RouteStep> destinies) {
+		super();
+		this.zipCode = zipCode;
+		this.roadType = roadType;
+		this.roadName = roadName;
+		this.stop = stop;
+		this.origins = origins;
+		this.destinies = destinies;
+	}
 	public Integer getId() {
 		return id;
 	}

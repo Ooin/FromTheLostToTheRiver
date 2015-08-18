@@ -1,53 +1,52 @@
 package com.river.entity;
 
-import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
 
 @Entity
-@Table(name="rafter")
+@Table(name = "rafter")
 public class Rafter {
-	
+
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	@Column(name = "rafterName")
 	private String rafterName;
-	
+
 	@Column(name = "password")
 	private String password;
-	
+
 	@Column(name = "email")
 	private String email;
-	
-	@Column(name = "registerDate")
-	private String registerDate; 
 
-	
+	@Column(name = "registerDate")
+	private String registerDate;
+
+	@OneToMany(mappedBy = "rate")
+	private List<Rate> rates;
+
 	public Rafter() {
 		super();
 	}
-	
+
 	public Rafter(String rafterName, String password, String email, String registerDate) {
 		super();
-		
+
 		this.rafterName = rafterName;
 		this.password = password;
 		this.email = email;
 		this.registerDate = registerDate;
 	}
-	
-	
+
 	public Rafter(Integer id, String rafterName, String password, String email, String registerDate) {
 		super();
 		this.id = id;
@@ -56,8 +55,6 @@ public class Rafter {
 		this.email = email;
 		this.registerDate = registerDate;
 	}
-	
-	
 
 	public Rafter(Integer id) {
 		super();
@@ -67,35 +64,42 @@ public class Rafter {
 	public Integer getId() {
 		return id;
 	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
 	public String getRafterName() {
 		return rafterName;
 	}
+
 	public void setRafterName(String rafterName) {
 		this.rafterName = rafterName;
 	}
+
 	public String getPassword() {
 		return password;
 	}
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 	public String getRegisterDate() {
 		return registerDate;
 	}
+
 	public void setRegisterDate(String registerDate) {
 		this.registerDate = registerDate;
 	}
-	
-	
 
 	@Override
 	public int hashCode() {
@@ -104,7 +108,7 @@ public class Rafter {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -121,7 +125,7 @@ public class Rafter {
 			return false;
 		return true;
 	}
-	
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();

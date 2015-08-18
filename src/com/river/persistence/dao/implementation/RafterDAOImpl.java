@@ -6,11 +6,9 @@ import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import com.river.entity.Rafter;
-import com.river.persistence.dao.interfaces.DAO;
 import com.river.persistence.dao.interfaces.RafterDAO;
 
 public class RafterDAOImpl extends AbstractDAO implements RafterDAO{
@@ -27,6 +25,7 @@ public class RafterDAOImpl extends AbstractDAO implements RafterDAO{
 		}catch(HibernateException e){
 			e.printStackTrace();
 			toCreate = null;
+			tx.rollback();
 		}
 		return toCreate;
 	}
@@ -61,6 +60,7 @@ public class RafterDAOImpl extends AbstractDAO implements RafterDAO{
 		}catch(HibernateException e){
 			e.printStackTrace();
 			toUpdate = null;
+			tx.rollback();
 		}
 		return toUpdate;
 	}
@@ -74,6 +74,7 @@ public class RafterDAOImpl extends AbstractDAO implements RafterDAO{
 		}catch(HibernateException e){
 			e.printStackTrace();
 			toDelete = null;
+			tx.rollback();
 		}
 		return toDelete;
 	}

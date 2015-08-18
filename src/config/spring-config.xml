@@ -62,32 +62,31 @@
      <bean id="rafterDAO" class="com.river.persistence.dao.implementation.RafterDAOImpl">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
+    <bean id="stopDAO" class="com.river.persistence.dao.implementation.StopDAOImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+    <bean id="addressDAO" class="com.river.persistence.dao.implementation.AddressDAOImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
     <!--  <bean id="lineDAO" class="com.river.persistence.dao.LineDAOImpl">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>-->
     
-    <!--  <bean id="addressDAO" class="com.river.persistence.dao.AddressDAOImpl">
-        <property name="sessionFactory" ref="sessionFactory" />-->
-        
-    <!--
+    
+    
+    <bean id="routeFatherDAO" class="com.river.persistence.dao.implementation.RouteFatherDAOImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+    <bean id="routeStepDAO" class="com.river.persistence.dao.implementation.RouteStepDAOImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
     </bean>
     
-    </bean>
-    <bean id="routeFatherDAO" class="com.river.persistence.dao.routeFatherDAOImpl">
+    <bean id="transportDAO" class="com.river.persistence.dao.implementation.TransportDAOImpl">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
-    <bean id="routeStepDAO" class="com.river.persistence.dao.RouteStepDAOImpl">
+    <bean id="rateDAO" class="com.river.persistence.dao.implementation.RateDAOImpl">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
-    <bean id="stopDAO" class="com.river.persistence.dao.StopDAOImpl">
-        <property name="sessionFactory" ref="sessionFactory" />
-    </bean>
-    <bean id="transportDAO" class="com.river.persistence.dao.TransportDAOImpl">
-        <property name="sessionFactory" ref="sessionFactory" />
-    </bean>
-    <bean id="rateDAO" class="com.river.persistence.dao.RateDAOImpl">
-        <property name="sessionFactory" ref="sessionFactory" />
-    </bean>-->
     
     
     <!-- SERVICIOS -->

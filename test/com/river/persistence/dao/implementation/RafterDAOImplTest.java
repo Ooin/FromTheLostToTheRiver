@@ -18,10 +18,9 @@ public class RafterDAOImplTest {
 	 @Before
 	 public void initTest(){
 		 rafterDAO = (RafterDAO) context.getBean(RafterDAOImpl.class);
-		 rafter = new Rafter("testRafter","1234", "testRafter@gmail.com", "9999-99-99");
-		 rafterDAO.create(rafter);
-		 rafter = new Rafter("testRafter2","1234", "testRafter2@gmail.com", "9999-99-99");
+		 //rafterDAO.create(rafter);
 	 }
+	 
 	 
 	 
 	 //#####CREATE TESTS########
@@ -29,14 +28,34 @@ public class RafterDAOImplTest {
 	 //add a new rafter
 	 @Test
 	 public void addANonExistingRafter(){
-		 Rafter test = rafterDAO.create(this.rafter);
+		 Rafter test = rafterDAO.create(new Rafter("capullo","12354", "testRaft3er@gmail.com", "9999-99-99"));
 		 Assert.assertNotNull("it should returns not null", test);
+		 System.out.println(test);
+		 rafterDAO.delete(test);
+		 
 	 }
 	 
 	 //add a new EXISTING rafter
+	@Test
+	 public void addAnExistingRafter(){
+		Rafter rafter = new Rafter("testRafter","1234", "testRafter@gmail.com", "9999-99-99");
+		rafterDAO.create(rafter);
+		Rafter toAdd = new Rafter("testRafter","1234", "testRafter@gmail.com", "9999-99-99");
+		toAdd = rafterDAO.create(toAdd);
+		Assert.assertNull(toAdd);
+		rafterDAO.delete(rafter);
+		
+		 
+	 }
+	 
 	 
 	 
 	 //add an empty rafter
+	@Test
+	 public void addAnEmptyRafter(){
+		 Rafter test = rafterDAO.create(new Rafter());
+		 Assert.assertNull("it should returns null", test);
+	 }
 	 
 	 //add a null rafter
 	 

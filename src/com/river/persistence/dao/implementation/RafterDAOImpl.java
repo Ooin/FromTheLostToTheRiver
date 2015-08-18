@@ -13,7 +13,7 @@ import com.river.entity.Rafter;
 import com.river.persistence.dao.interfaces.DAO;
 import com.river.persistence.dao.interfaces.RafterDAO;
 
-public class RafterDAOImpl implements RafterDAO<Rafter>{
+public class RafterDAOImpl implements RafterDAO{
 	
 	SessionFactory sessionFactory;
 
@@ -86,30 +86,7 @@ public class RafterDAOImpl implements RafterDAO<Rafter>{
 		return toDelete;
 	}
 
-	@Override
-	public Object create(Object toCreate) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	@Override
-	public Object read(Object toRead) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Object update(Object toUpdate) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Object delete(Object toDelete) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
 	
 	
 	

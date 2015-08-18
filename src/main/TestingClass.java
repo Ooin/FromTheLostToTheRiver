@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -52,6 +53,10 @@ public class TestingClass {
 		
 		//dao.create(new Rafter( "manolo3", "123adfasdf3df5", "hosaaefesfasfdasdfdddlo@gmail.com", new Date(02, 02, 02)));
 		System.out.println(dao.read(new Rafter(1)));
+		List<Rafter> list = dao.read();
+		for(Rafter r: list){
+			System.out.println(r);
+		}
 	}
 	
 	public static void main( String args[] ) throws ParseException

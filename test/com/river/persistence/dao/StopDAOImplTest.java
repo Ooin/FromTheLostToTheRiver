@@ -42,6 +42,7 @@ public class StopDAOImplTest {
 	public void createStopWithGoodValues() {
 		stopGood = dao.create(stopGood);
 		Assert.assertNotNull("Stop must be not null", !stopGood.equals(null));
+		deleteInserted(stopGood);
 	}
 
 }

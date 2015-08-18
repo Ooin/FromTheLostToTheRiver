@@ -9,6 +9,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.river.entity.Rafter;
+import com.river.persistence.dao.implementation.RafterDAOImpl;
+import com.river.persistence.dao.interfaces.RafterDAO;
 
 public class RafterDAOTest {
 	

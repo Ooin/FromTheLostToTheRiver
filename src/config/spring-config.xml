@@ -83,5 +83,36 @@
     <bean id="rateDAO" class="com.river.persistence.dao.RateDAOImpl">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>-->
+    
+    
+    <!-- SERVICIOS -->
+    
+    <!--  
+    <bean id="rafterService" class="com.river.persistence.business.RafterServiceImpl">
+        <property name="rafterDAO" ref="rafterDAO" />
+    </bean>
+    <bean id="addressService" class="com.river.persistence.business.AddressServiceImpl">
+        <property name="addressDAO" ref="addressDAO" />
+    </bean>
+    <bean id="lineService" class="com.river.persistence.business.RineServiceImpl">
+        <property name="lineDAO" ref="lineDAO" />
+    </bean>
+    <bean id="routeFatherService" class="com.river.persistence.business.RouteFatherServiceImpl">
+        <property name="routeFatherDAO" ref="routeFatherDAO" />
+    </bean>
+    <bean id="routeStepService" class="com.river.persistence.business.RouteStepServiceImpl">
+        <property name="routeStepDAO" ref="routeStepDAO" />
+    </bean>
+    <bean id="stopService" class="com.river.persistence.business.StopServiceImpl">
+        <property name="stopDAO" ref="stopDAO" />
+    </bean>
+    <bean id="transportService" class="com.river.persistence.business.TransportServiceImpl">
+        <property name="transportDAO" ref="transportDAO" />
+    </bean>
+    <bean id="rateDAO" class="com.river.persistence.business.RateServiceImpl">
+        <property name="rateDAO" ref="rateDAO" />
+    </bean>-->
+   
+    
                 
 </beans>

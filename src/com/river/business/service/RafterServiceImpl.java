@@ -5,7 +5,7 @@ import java.util.List;
 import com.river.entity.Rafter;
 import com.river.persistence.dao.RafterDAO;
 
-public class RafterServiceTest implements RafterService{
+public class RafterServiceImpl implements RafterService{
 
 	
 	RafterDAO rafterDAO;

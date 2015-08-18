@@ -26,11 +26,6 @@ public class TransportDAOImpl implements TransportDAO{
 		this.sessionFactory = sessionFactory;
 	}
 
-	/**
-	 * Retrieve a Transport and insert to the data base all information about Transport 
-	 * @param toCreate object for persist to the data base.
-	 * @return the transport object the id assigned. If the persist couldn't be created return Null.
-	 */
 	@Override
 	public Transport create(Transport toCreate) {
 		Session session = sessionFactory.getCurrentSession();
@@ -46,12 +41,6 @@ public class TransportDAOImpl implements TransportDAO{
 		return toCreate;
 	}
 
-
-	/**
-	 * Retrieve a Transport and show the Transport object
-	 * @param toRead object for read on data base.
-	 * @return the transport object the id assigned. If couldn't be read return Null.
-	 */
 	@Override
 	public Transport read(Transport toRead) {
 		Transport readed = null;
@@ -63,10 +52,6 @@ public class TransportDAOImpl implements TransportDAO{
 		return readed;
 	}
 
-	/**
-	 * Retrieve a Transport list and show the Transport object
-	 * @return the transport object the id assigned. If the persist couldn't be created return Null.
-	 */
 	@Override
 	public List<Transport> read() {
 		List<Transport> transports = new ArrayList<Transport>();

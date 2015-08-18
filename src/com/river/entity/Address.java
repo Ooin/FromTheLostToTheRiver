@@ -1,6 +1,5 @@
 package com.river.entity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -10,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -28,14 +26,15 @@ public class Address{
 	@Column(name = "roadName")
 	private String roadName;
 	
-	@OneToOne
+	@OneToMany(mappedBy="address")
+	private List<Stop> stops;
 	@JoinColumn(name="stopId")
 	private Stop stop;
 	
 	@OneToMany(mappedBy="origin")
-	List<RouteStep> origins = new ArrayList<>();
+	List<RouteStep> origins;
 	@OneToMany(mappedBy="destiny")
-	List<RouteStep> destinies = new ArrayList<>();
+	List<RouteStep> destinies;
 	
 	
 	

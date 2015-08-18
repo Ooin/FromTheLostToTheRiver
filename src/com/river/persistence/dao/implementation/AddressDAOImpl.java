@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.river.entity.Address;
 import com.river.entity.Line;
-import com.river.persistence.dao.DAO;
+import com.river.persistence.dao.interfaces.DAO;
 
 public class AddressDAOImpl implements DAO<Address> {
 

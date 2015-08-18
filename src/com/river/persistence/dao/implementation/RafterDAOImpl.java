@@ -10,8 +10,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import com.river.entity.Rafter;
-import com.river.persistence.dao.DAO;
-import com.river.persistence.dao.RafterDAO;
+import com.river.persistence.dao.interfaces.DAO;
+import com.river.persistence.dao.interfaces.RafterDAO;
 
 public class RafterDAOImpl implements DAO<Rafter>{
 	

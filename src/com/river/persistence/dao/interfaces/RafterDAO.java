@@ -1,4 +1,4 @@
-package com.river.persistence.dao;
+package com.river.persistence.dao.interfaces;
 
 import java.util.List;
 

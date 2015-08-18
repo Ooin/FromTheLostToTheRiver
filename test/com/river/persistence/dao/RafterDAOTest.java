@@ -14,7 +14,7 @@ public class RafterDAOTest {
 	
 	@Test
 	public void writesOk(){
-		Rafter rafter = new Rafter("Emilio"+ new Random().nextInt(Integer.MAX_VALUE), "contraDeEmilio", "emilio@emiliomola.god" + new Random().nextInt(Integer.MAX_VALUE), new Date());
+		Rafter rafter = new Rafter("Emilio"+ new Random().nextInt(Integer.MAX_VALUE), "contraDeEmilio", "emilio@emiliomola.god" + new Random().nextInt(Integer.MAX_VALUE), new Date().toString());
 		ApplicationContext context = new ClassPathXmlApplicationContext("config/spring-config.xml");
 		
 		RafterDAO dao = context.getBean(RafterDAOImpl.class);

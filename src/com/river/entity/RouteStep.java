@@ -1,9 +1,33 @@
 package com.river.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="route_steps")
 public class RouteStep {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id")
 	private Integer id;
+	
+	@OneToMany
+	@JoinColumn(name="id")
 	private RouteFather route;
+	
+	@OneToMany
+	@JoinColumn(name="id")
 	private Address origin;
+	
+	@OneToMany
+	@JoinColumn(name="id")
 	private Address destiny;
 	
 	public RouteStep(){

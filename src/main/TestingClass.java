@@ -61,9 +61,9 @@ public class TestingClass {
 	
 	public static void main( String args[] ) throws ParseException
 	  {
-	     TestingClass c = new TestingClass();
-//	     c.query();
-		c.deleteTest();
+	    Integer i = null;
+	    System.out.println(i);
+	    Rafter r = null;
 			
 	  }
 

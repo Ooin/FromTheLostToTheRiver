@@ -26,7 +26,7 @@
                 
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" lazy-init="true">
     	<property name="driverClassName" value="org.sqlite.JDBC" />
-    	<property name="url" value="jdbc:sqlite:riverDatabaseF" />
+    	<property name="url" value="jdbc:sqlite:riverDatabase.db" />
     	<property name="initialSize" value="1" />
     	<property name="maxActive" value="1" />
     	<property name="maxIdle" value="1" />

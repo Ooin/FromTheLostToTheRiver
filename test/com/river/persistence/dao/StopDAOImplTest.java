@@ -18,6 +18,7 @@ public class StopDAOImplTest {
 			"config/spring-config.xml");
 	Stop stopNull;
 	Stop stopGood;
+	Stop stopNotExists;
 	StopDAOImpl dao = (StopDAOImpl) appContext.getBean(StopDAOImpl.class);
 
 	public void deleteInserted(Stop toDelete) {
@@ -27,22 +28,39 @@ public class StopDAOImplTest {
 	@Before
 	public void init(){
 		stopNull = new Stop(null,null);
-		stopGood = new Stop(1,new Address(0,"paticagüena","pata"));
+		stopGood = new Stop(new Address(1,0,"patica","pata"));
+		stopNotExists = new Stop(3,new Address(1,0,"patica","pata"));
 	}
-	
-	
+		
 	@Test
 	public void createStopWithNullValues(){
 		stopNull = dao.create(stopNull);
-		
 		Assert.assertNull("Stop must be null", stopNull);
 	}
 	
 	@Test
 	public void createStopWithGoodValues() {
 		stopGood = dao.create(stopGood);
-		Assert.assertNotNull("Stop must be not null", !stopGood.equals(null));
-		deleteInserted(stopGood);
+		Assert.assertNotNull("Stop must be not null", stopGood);
+		if(stopGood != null){
+			deleteInserted(stopGood);
+		}
+	}
+	
+	@Test
+	public void readStopThatExistsOnDatabase(){
+		dao.create(stopGood);
+		stopGood = dao.read(stopGood);
+		Assert.assertNotNull("Stop must be not null", stopGood);
+		if(stopGood != null){
+			deleteInserted(stopGood);
+		}
+	}
+	
+	@Test
+	public void readStopThatNotExistsOnDatabase(){
+		stopNotExists = dao.read(stopNotExists);
+		Assert.assertNull("Stop must be null", stopNotExists);
 	}
 
 }

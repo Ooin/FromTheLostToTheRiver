@@ -47,23 +47,27 @@ public class TestingClass {
 	  }
 	
 	
-	void insertTest() throws ParseException{
+	void deleteTest() throws ParseException{
 		ApplicationContext context = new ClassPathXmlApplicationContext("config/spring-config.xml");
 		RafterDAO dao = context.getBean(RafterDAOImpl.class);
 		
-		//dao.create(new Rafter( "manolo3", "123adfasdf3df5", "hosaaefesfasfdasdfdddlo@gmail.com", new Date(02, 02, 02)));
-		System.out.println(dao.read(new Rafter(1)));
-		List<Rafter> list = dao.read();
-		for(Rafter r: list){
-			System.out.println(r);
-		}
+		if (dao.delete(new Rafter( 1,"juan12asdfasdf3", "ddfdddddd", "hosaeadeo@gmail.com", "2012-02-09"))!=null){
+	
+			System.out.println("Borrao!");
+		};
+		//System.out.println(dao.read(new Rafter(1)));
+		//List<Rafter> list = dao.read();
+		//for(Rafter r: list){
+		//	System.out.println(r);
+		//}
 	}
 	
 	public static void main( String args[] ) throws ParseException
 	  {
 	     TestingClass c = new TestingClass();
 //	     c.query();
-		c.insertTest();
+		c.deleteTest();
+			
 	  }
 
 }

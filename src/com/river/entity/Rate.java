@@ -1,11 +1,46 @@
 package com.river.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+
+@Entity
+@Table(name="rate")
 public class Rate {
 	
+	/**
+	 * CREATE TABLE `RATE` (
+		`id`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+		`creator`	TEXT NOT NULL,
+		`routeId`	INTEGER NOT NULL,
+		`comment`	TEXT,
+	        FOREIGN KEY(creator) REFERENCES RAFTER(id),
+	        FOREIGN KEY(routeId) REFERENCES ROUTE_FATHER(id)
+	        
+		);
+	 */
+	
+	@Id
+	@Column(name="id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	Rafter creator;
-	RouteFather route;
-	String comment;
+	
+	@ManyToOne
+	@JoinColumn(name="creator")
+	private Rafter creator;
+	
+	@ManyToOne
+	@JoinColumn(name="routeId")
+	private RouteFather route;
+	
+	@Column(name="comment")
+	private String comment;
 	
 	
 	public Rate(Integer id, Rafter creator, RouteFather route, String comment) {

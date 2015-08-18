@@ -3,7 +3,6 @@ package com.river.persistence.dao.implementation;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -11,9 +10,10 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import com.river.entity.Rafter;
+import com.river.persistence.dao.DAO;
 import com.river.persistence.dao.RafterDAO;
 
-public class RafterDAOImpl implements RafterDAO{
+public class RafterDAOImpl implements DAO<Rafter>{
 	
 	SessionFactory sessionFactory;
 
@@ -55,7 +55,7 @@ public class RafterDAOImpl implements RafterDAO{
 		Session session = sessionFactory.getCurrentSession();
 		Transaction transaction = session.beginTransaction();
 		Query query = session.createQuery("from Rafter");
-		rafters = query.list();
+		rafters = (List<Rafter>) query.list();
 		transaction.commit();
 		return rafters;
 	}

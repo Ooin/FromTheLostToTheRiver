@@ -1,5 +1,6 @@
 package com.river.persistence.dao.implementation;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,9 +11,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import com.river.entity.Transport;
-import com.river.persistence.dao.TransportDAO;
 
-public class TransportDAOImpl implements TransportDAO{
+public class TransportDAOImpl implements DAO<Transport>{
 	
 	SessionFactory sessionFactory;
 
@@ -103,5 +103,5 @@ public class TransportDAOImpl implements TransportDAO{
 		}
 		return toDelete;
 	}
-
+	
 }

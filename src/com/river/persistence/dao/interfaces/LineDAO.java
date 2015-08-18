@@ -2,7 +2,6 @@ package com.river.persistence.dao.interfaces;
 
 import java.util.List;
 
-import com.river.entity.Address;
 import com.river.entity.Line;
 
 public interface LineDAO{

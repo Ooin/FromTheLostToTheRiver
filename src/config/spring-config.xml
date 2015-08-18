@@ -62,6 +62,9 @@
      <bean id="rafterDAO" class="com.river.persistence.dao.implementation.RafterDAOImpl">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
+    <bean id="stopDAO" class="com.river.persistence.dao.implementation.StopDAOImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
     <!--  <bean id="lineDAO" class="com.river.persistence.dao.LineDAOImpl">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>-->
@@ -79,9 +82,7 @@
     <bean id="routeStepDAO" class="com.river.persistence.dao.RouteStepDAOImpl">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
-    <bean id="stopDAO" class="com.river.persistence.dao.StopDAOImpl">
-        <property name="sessionFactory" ref="sessionFactory" />
-    </bean>
+    
     <bean id="transportDAO" class="com.river.persistence.dao.TransportDAOImpl">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>

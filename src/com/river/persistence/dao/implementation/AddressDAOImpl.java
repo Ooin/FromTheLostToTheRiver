@@ -3,7 +3,6 @@ package com.river.persistence.dao.implementation;
 import java.util.List;
 
 import com.river.entity.Address;
-import com.river.entity.Line;
 import com.river.persistence.dao.interfaces.DAO;
 
 public class AddressDAOImpl extends AbstractDAO implements DAO<Address>  {

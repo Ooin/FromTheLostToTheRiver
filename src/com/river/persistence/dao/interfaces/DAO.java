@@ -2,8 +2,6 @@ package com.river.persistence.dao.interfaces;
 
 import java.util.List;
 
-import com.river.entity.Line;
-
 public interface DAO<T> {
 	public T create(T toCreate);
 

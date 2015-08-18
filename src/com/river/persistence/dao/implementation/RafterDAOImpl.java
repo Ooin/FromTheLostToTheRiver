@@ -13,17 +13,9 @@ import com.river.entity.Rafter;
 import com.river.persistence.dao.interfaces.DAO;
 import com.river.persistence.dao.interfaces.RafterDAO;
 
-public class RafterDAOImpl implements RafterDAO{
+public class RafterDAOImpl extends GenericDAO implements RafterDAO{
 	
-	SessionFactory sessionFactory;
-
-	public SessionFactory getSessionFactory() {
-		return sessionFactory;
-	}
-
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
+	
 	
 	public Rafter create(Rafter toCreate) {
 		Session session = sessionFactory.getCurrentSession();

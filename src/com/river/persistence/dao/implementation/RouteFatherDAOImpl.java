@@ -5,7 +5,7 @@ import java.util.List;
 import com.river.entity.RouteFather;
 import com.river.persistence.dao.interfaces.DAO;
 
-public class RouteFatherDAOImpl implements DAO<RouteFather>{
+public class RouteFatherDAOImpl extends GenericDAO implements DAO<RouteFather>{
 
 	@Override
 	public RouteFather create(RouteFather toCreate) {

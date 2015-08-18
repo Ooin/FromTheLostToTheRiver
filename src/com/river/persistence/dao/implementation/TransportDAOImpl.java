@@ -5,7 +5,7 @@ import java.util.List;
 import com.river.entity.Transport;
 import com.river.persistence.dao.interfaces.DAO;
 
-public class TransportDAOImpl implements DAO<Transport>{
+public class TransportDAOImpl  extends GenericDAO implements DAO<Transport>{
 
 	@Override
 	public Transport create(Transport toCreate) {

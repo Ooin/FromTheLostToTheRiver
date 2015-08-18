@@ -12,17 +12,9 @@ import org.hibernate.Transaction;
 import com.river.entity.Stop;
 import com.river.persistence.dao.interfaces.DAO;
 
-public class StopDAOImpl implements DAO<Stop> {
+public class StopDAOImpl extends GenericDAO  implements DAO<Stop> {
 
-	SessionFactory sessionFactory;
-
-	public SessionFactory getSessionFactory() {
-		return sessionFactory;
-	}
-
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
+	
 
 	@Override
 	public Stop create(Stop toCreate) {

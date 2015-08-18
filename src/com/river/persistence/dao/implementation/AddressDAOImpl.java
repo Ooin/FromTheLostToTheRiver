@@ -6,7 +6,7 @@ import com.river.entity.Address;
 import com.river.entity.Line;
 import com.river.persistence.dao.interfaces.DAO;
 
-public class AddressDAOImpl implements DAO<Address> {
+public class AddressDAOImpl extends AbstractDAO implements DAO<Address>  {
 
 	@Override
 	public Address create(Address toCreate) {

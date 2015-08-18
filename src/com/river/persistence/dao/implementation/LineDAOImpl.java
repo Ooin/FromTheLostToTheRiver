@@ -10,17 +10,8 @@ import org.hibernate.Transaction;
 import com.river.entity.Line;
 import com.river.persistence.dao.interfaces.LineDAO;
 
-public class LineDAOImpl implements LineDAO{
+public class LineDAOImpl extends AbstractDAO implements LineDAO{
 	
-	SessionFactory sessionFactory;
-
-	public SessionFactory getSessionFactory() {
-		return sessionFactory;
-	}
-
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
 
 	@Override
 	public Line create(Line toCreate) {

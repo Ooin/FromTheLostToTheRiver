@@ -14,17 +14,8 @@ import com.river.entity.Transport;
 import com.river.persistence.dao.interfaces.TransportDAO;
 
 
-public class TransportDAOImpl implements TransportDAO{
-	
-	SessionFactory sessionFactory;
+public class TransportDAOImpl  extends AbstractDAO implements TransportDAO{
 
-	public SessionFactory getSessionFactory() {
-		return sessionFactory;
-	}
-
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
 
 	@Override
 	public Transport create(Transport toCreate) {

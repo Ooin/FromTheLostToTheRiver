@@ -5,7 +5,7 @@ import java.util.List;
 import com.river.entity.RouteStep;
 import com.river.persistence.dao.interfaces.DAO;
 
-public class RouteStepDAOImpl implements DAO<RouteStep>{
+public class RouteStepDAOImpl extends AbstractDAO  implements DAO<RouteStep>{
 
 	@Override
 	public RouteStep create(RouteStep toCreate) {

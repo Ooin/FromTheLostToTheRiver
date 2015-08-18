@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.river.entity.Rafter;
 
-public interface RafterService {
+public interface RafterService extends Service<Rafter> {
 	
 	public Rafter create(Rafter toCreate);
 	

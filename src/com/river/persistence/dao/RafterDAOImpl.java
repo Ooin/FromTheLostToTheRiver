@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Hibernate;
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -26,8 +27,14 @@ public class RafterDAOImpl implements RafterDAO{
 	public Rafter create(Rafter toCreate) {
 		Session session = sessionFactory.getCurrentSession();
 		Transaction tx = session.beginTransaction();
-		session.persist(toCreate);
-		tx.commit();
+		
+		try{
+			session.persist(toCreate);
+			tx.commit();
+		}catch(HibernateException e){
+			e.printStackTrace();
+			toCreate = null;
+		}
 		return toCreate;
 	}
 
@@ -53,13 +60,29 @@ public class RafterDAOImpl implements RafterDAO{
 	}
 
 	public Rafter update(Rafter toUpdate) {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = sessionFactory.getCurrentSession();
+		Transaction tx = session.beginTransaction();
+		try{
+			session.update(toUpdate);
+			tx.commit();
+		}catch(HibernateException e){
+			e.printStackTrace();
+			toUpdate = null;
+		}
+		return toUpdate;
 	}
 
 	public Rafter delete(Rafter toDelete) {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = sessionFactory.getCurrentSession();
+		Transaction tx = session.beginTransaction();
+		try{
+			session.delete(toDelete);
+			tx.commit();
+		}catch(HibernateException e){
+			e.printStackTrace();
+			toDelete = null;
+		}
+		return toDelete;
 	}
 	
 	

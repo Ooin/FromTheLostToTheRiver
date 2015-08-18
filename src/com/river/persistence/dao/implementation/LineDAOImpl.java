@@ -12,7 +12,6 @@ import com.river.persistence.dao.interfaces.LineDAO;
 
 public class LineDAOImpl extends GenericDAO implements LineDAO{
 	
-	
 
 	@Override
 	public Line create(Line toCreate) {

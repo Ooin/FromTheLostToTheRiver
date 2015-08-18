@@ -11,32 +11,30 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="transport")
+@Table(name = "transport")
 public class Transport {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private Integer id;
-	
-	@Column(name="name")
+
+	@Column(name = "name")
 	private String name;
-	
-	@OneToMany(mappedBy="transport")
+
+	@OneToMany(mappedBy = "transport")
 	private List<Line> lines;
 
 	
 	public Transport() {
 		super();
 	}
-	
+
 	public Transport(Integer id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
 	}
-	
-	
 
 	public Transport(String name) {
 		super();
@@ -57,6 +55,14 @@ public class Transport {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public List<Line> getLines() {
+		return lines;
+	}
+
+	public void setLines(List<Line> lines) {
+		this.lines = lines;
 	}
 
 	@Override

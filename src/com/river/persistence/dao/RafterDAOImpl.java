@@ -50,7 +50,7 @@ public class RafterDAOImpl implements RafterDAO{
 	}
 
 	public List<Rafter> read() {
-		List<Rafter> rafters = new ArrayList<>();
+		List<Rafter> rafters = new ArrayList<Rafter>();
 		Session session = sessionFactory.getCurrentSession();
 		Transaction transaction = session.beginTransaction();
 		Query query = session.createQuery("from Rafter");

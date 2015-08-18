@@ -6,7 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -18,15 +18,15 @@ public class RouteStep {
 	@Column(name="id")
 	private Integer id;
 	
-	@OneToMany
+	@ManyToOne
 	@JoinColumn(name="id")
 	private RouteFather route;
 	
-	@OneToMany
+	@ManyToOne
 	@JoinColumn(name="id")
 	private Address origin;
 	
-	@OneToMany
+	@ManyToOne
 	@JoinColumn(name="id")
 	private Address destiny;
 	

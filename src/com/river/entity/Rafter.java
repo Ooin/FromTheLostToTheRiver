@@ -31,8 +31,9 @@ public class Rafter {
 	@Column(name = "registerDate")
 	private String registerDate;
 
+	/* DELETE
 	@OneToMany(mappedBy = "rate")
-	private List<Rate> rates;
+	private List<Rate> rates;*/
 
 	public Rafter() {
 		super();

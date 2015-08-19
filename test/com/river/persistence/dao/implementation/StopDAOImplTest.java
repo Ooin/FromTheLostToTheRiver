@@ -1,4 +1,4 @@
-package com.river.persistence.dao;
+package com.river.persistence.dao.implementation;
 
 import java.util.List;
 
@@ -10,7 +10,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.river.entity.Address;
 import com.river.entity.Stop;
-import com.river.persistence.dao.implementation.StopDAOImpl;
 
 
 

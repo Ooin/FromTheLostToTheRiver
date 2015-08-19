@@ -20,34 +20,43 @@ public class StopServiceImpl implements StopService {
 
 	@Override
 	public Stop create(Stop toCreate) {
-		// TODO Auto-generated method stub
-		return null;
+		Stop stop = null;
+		if (toCreate != null) {
+			stop = stopDAO.create(toCreate);
+		}
+		return stop;
 	}
 
 	@Override
 	public Stop read(Stop toRead) {
-		// TODO Auto-generated method stub
-		return null;
+		Stop stop = null;
+		if (toRead != null && toRead.getId() != null) {
+			stop = stopDAO.read(toRead);
+		}
+		return stop;
 	}
 
 	@Override
 	public List<Stop> read() {
-		// TODO Auto-generated method stub
-		return null;
+		return stopDAO.read();
 	}
 
 	@Override
 	public Stop update(Stop toUpdate) {
-		// TODO Auto-generated method stub
-		return null;
+		Stop stop = null;
+		if(toUpdate != null && toUpdate.getId() != null){
+			stop = stopDAO.update(toUpdate);
+		}
+		return stop;
 	}
 
 	@Override
 	public Stop delete(Stop toDelete) {
-		// TODO Auto-generated method stub
-		return null;
+		Stop stop = null;
+		if(toDelete != null && toDelete.getId() != null){
+			stop = stopDAO.delete(toDelete);
+		}
+		return stop;
 	}
-
-	
 
 }

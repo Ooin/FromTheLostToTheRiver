@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns:aop="http://www.springframework.org/schema/aop"
-        xmlns:c="http://www.springframework.org/schema/c"
-        xmlns:cache="http://www.springframework.org/schema/cache"
-        xmlns:context="http://www.springframework.org/schema/context"
-        xmlns:jdbc="http://www.springframework.org/schema/jdbc"
-        xmlns:jee="http://www.springframework.org/schema/jee"
-        xmlns:lang="http://www.springframework.org/schema/lang"
-        xmlns:p="http://www.springframework.org/schema/p"
-        xmlns:task="http://www.springframework.org/schema/task"
-        xmlns:tx="http://www.springframework.org/schema/tx"
-        xmlns:util="http://www.springframework.org/schema/util"
-        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:c="http://www.springframework.org/schema/c" xmlns:cache="http://www.springframework.org/schema/cache"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:lang="http://www.springframework.org/schema/lang" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:task="http://www.springframework.org/schema/task" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
                 http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
                 http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache-4.1.xsd
                 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd
@@ -22,53 +17,62 @@
                 http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.1.xsd
                 http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd
                 http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.1.xsd">
-                
-                
-    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" lazy-init="true">
-    	<property name="driverClassName" value="org.sqlite.JDBC" />
-    	<property name="url" value="jdbc:sqlite:riverDatabase.db" />
-    	<property name="initialSize" value="1" />
-    	<property name="maxActive" value="1" />
-    	<property name="maxIdle" value="1" />
-    	<property name="poolPreparedStatements" value="true" />
-</bean>
 
-<bean id="sessionFactory"
-        class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-        <property name="dataSource" ref="dataSource" />
-        <property name="annotatedClasses">
-            <list>
-                <value>com.river.entity.Address</value>
-                <value>com.river.entity.Line</value>
-                <value>com.river.entity.Rafter</value>
-                <value>com.river.entity.Rate</value>
-                <value>com.river.entity.RouteFather</value>
-                <value>com.river.entity.RouteStep</value>
-                <value>com.river.entity.Stop</value>
-                <value>com.river.entity.Transport</value>
-               
-            </list>
-        </property>
-        <property name="hibernateProperties">
-            <props>
-                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
-                <prop key="hibernate.current_session_context_class">thread</prop>
-                <prop key="hibernate.show_sql">true</prop>
 
-            </props>
-        </property>
-    </bean>
-    
-     <bean id="rafterDAO" class="com.river.persistence.dao.implementation.RafterDAOImpl">
-        <property name="sessionFactory" ref="sessionFactory" />
-    </bean>
-    <bean id="stopDAO" class="com.river.persistence.dao.implementation.StopDAOImpl">
-        <property name="sessionFactory" ref="sessionFactory" />
-    </bean>
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close" lazy-init="true">
+		<property name="driverClassName" value="org.sqlite.JDBC" />
+		<property name="url" value="jdbc:sqlite:riverDatabase.db" />
+		<property name="initialSize" value="1" />
+		<property name="maxActive" value="1" />
+		<property name="maxIdle" value="1" />
+		<property name="poolPreparedStatements" value="true" />
+	</bean>
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="annotatedClasses">
+			<list>
+				<value>com.river.entity.Address</value>
+				<value>com.river.entity.Line</value>
+				<value>com.river.entity.Rafter</value>
+				<value>com.river.entity.Rate</value>
+				<value>com.river.entity.RouteFather</value>
+				<value>com.river.entity.RouteStep</value>
+				<value>com.river.entity.Stop</value>
+				<value>com.river.entity.Transport</value>
+
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.current_session_context_class">thread</prop>
+				<prop key="hibernate.show_sql">true</prop>
+
+			</props>
+		</property>
+	</bean>
+
+	<bean id="rafterDAO" class="com.river.persistence.dao.implementation.RafterDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="stopDAO" class="com.river.persistence.dao.implementation.StopDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
 	<bean id="addressDAO" class="com.river.persistence.dao.implementation.AddressDAOImpl">
-        <property name="sessionFactory" ref="sessionFactory" />
-    </bean>
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
 
+
+	<bean id="transportDAO"
+		class="com.river.persistence.dao.implementation.TransportDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
     <bean id="lineDAO" class="com.river.persistence.dao.implementation.LineDAOImpl">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
@@ -81,10 +85,7 @@
     <bean id="routeStepDAO" class="com.river.persistence.dao.implementation.RouteStepDAOImpl">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
-    
-    <bean id="transportDAO" class="com.river.persistence.dao.implementation.TransportDAOImpl">
-        <property name="sessionFactory" ref="sessionFactory" />
-    </bean>
+
     <bean id="rateDAO" class="com.river.persistence.dao.implementation.RateDAOImpl">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
@@ -100,26 +101,9 @@
     <bean id="routeFatherService" class="com.river.business.service.implementation.RouteFatherServiceImpl">
         <property name="routeFatherDAO" ref="routeFatherDAO" />
     </bean>
-    <!--  
-    
-    
-    <bean id="lineService" class="com.river.persistence.business.RineServiceImpl">
-        <property name="lineDAO" ref="lineDAO" />
-    </bean>
-    
-    <bean id="routeStepService" class="com.river.persistence.business.RouteStepServiceImpl">
-        <property name="routeStepDAO" ref="routeStepDAO" />
-    </bean>
-    <bean id="stopService" class="com.river.persistence.business.StopServiceImpl">
-        <property name="stopDAO" ref="stopDAO" />
-    </bean>
-    <bean id="transportService" class="com.river.persistence.business.TransportServiceImpl">
-        <property name="transportDAO" ref="transportDAO" />
-    </bean>
-    <bean id="rateDAO" class="com.river.persistence.business.RateServiceImpl">
-        <property name="rateDAO" ref="rateDAO" />
-    </bean>-->
-   
-    
-                
+	<bean id="stopService" 
+		class="com.river.business.service.implementation.StopServiceImpl"> 
+		<property name="stopDAO" ref="stopDAO" /> 
+	</bean>
+
 </beans>

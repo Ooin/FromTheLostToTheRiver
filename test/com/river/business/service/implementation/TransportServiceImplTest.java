@@ -1,62 +1,60 @@
-package com.river.persistence.dao.implementation;
+package com.river.business.service.implementation;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.river.business.service.interfaces.TransportService;
 import com.river.entity.Transport;
-import com.river.persistence.dao.interfaces.TransportDAO;
 
-public class TransportDAOImplTest {
+public class TransportServiceImplTest {
 
-	TransportDAO transportDAO;
-	ApplicationContext context = new ClassPathXmlApplicationContext("config/spring-config.xml");
-
+	TransportService transportService;
 	Transport transport;
 	Transport transportNull;
+	ApplicationContext context = new ClassPathXmlApplicationContext("config/spring-config.xml");
 
 	@Before
 	public void initTest() {
-		transport = new Transport("Linea 2 metro");
-		transportNull = new Transport(null, null);
-		transportDAO = context.getBean(TransportDAOImpl.class);
+		this.transport = new Transport("Linea 2 metro");
+		this.transportNull = new Transport(null, null);
+		transportService = (TransportService) context.getBean(TransportServiceImpl.class);
 	}
 
 	// ############## CREATE ##############
 	@Test
 	public void createTransportIfCorrectTest() {
-		Transport test = transportDAO.create(transport);
+		Transport test = transportService.create(transport);
 		if (test != null) {
-			transportDAO.delete(test);
+			transportService.delete(test);
 		}
 		Assert.assertNotNull("It should returns not null", test);
 
 	}
 
-	
 	@Test
 	public void createTransportNullValues() {
-		Transport test = transportDAO.create(transportNull);
+		Transport test = transportService.create(transportNull);
 		if (test != null) {
-			transportDAO.delete(test);
+			transportService.delete(test);
 		}
 		Assert.assertNull("It should returns null", test);
 
 	}
 
-	
 	// ############## READ ##############
 	@Test
 	public void readTransportIfExistNotNullTest() {
-		transportDAO.create(transport);
-		Transport test = transportDAO.read(transport);
+		transportService.create(transport);
+		Transport test = transportService.read(transport);
 		if (test != null) {
-			transportDAO.delete(test);
+			transportService.delete(test);
 		}
 		Assert.assertNotNull("The Transport exist on the data base.", test);
 
@@ -64,62 +62,59 @@ public class TransportDAOImplTest {
 
 	@Test
 	public void readTransportIfNoExistTest() {
-		Transport test = transportDAO.read(transport);
+		Transport test = transportService.read(transport);
 		Assert.assertNull("it should returns null", test);
 	}
 
-	
 	// ############## LIST ##############
 	@Test
 	public void transportListIsEmptyTest() {
 		List<Transport> transList = new ArrayList<Transport>();
-		transList = transportDAO.read();
+		transList = transportService.read();
 		Assert.assertTrue("It should returns empty list", transList.isEmpty());
 	}
 
 	@Test
 	public void transportListIsFullTest() {
-		Transport test = transportDAO.create(transport);
+		Transport test = transportService.create(transport);
 		List<Transport> transList = new ArrayList<Transport>();
-		transList = transportDAO.read();
+		transList = transportService.read();
 		if (test != null) {
-			transportDAO.delete(test);
+			transportService.delete(test);
 		}
 		Assert.assertFalse("It should returns empty list", transList.isEmpty());
 	}
 
-	
 	// ############## UPDATE ##############
 	@Test
 	public void updateAnExistingTransportTest() {
-		transportDAO.create(transport);
+		transportService.create(transport);
 		transport.setName("Merengue");
-		Transport test = transportDAO.update(transport);
+		Transport test = transportService.update(transport);
 		if (test.getId() != null) {
-			transportDAO.delete(test);
+			transportService.delete(test);
 		}
 		Assert.assertNotNull("It should returns not null.", test);
 	}
 
 	@Test
 	public void updateAnNotExistingTransportTest() {
-		Transport test = transportDAO.update(transport);
+		Transport test = transportService.update(transport);
 
 		Assert.assertNull("It should returns null.", test);
 	}
 
-	
 	// ############## DELETE ##############
 	@Test
 	public void deleteAnExistingTransportTest() {
-		transportDAO.create(transport);
-		Transport test = transportDAO.delete(transport);
+		transportService.create(transport);
+		Transport test = transportService.delete(transport);
 		Assert.assertNotNull("It should returns not null.", test);
 	}
 
 	@Test
 	public void deleteAnNotExistingTransportTest() {
-		Transport test = transportDAO.delete(transport);
+		Transport test = transportService.delete(transport);
 		Assert.assertNull("It should returns null.", test);
 	}
 

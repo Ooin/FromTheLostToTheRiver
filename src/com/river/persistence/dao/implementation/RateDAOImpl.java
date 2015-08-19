@@ -1,40 +1,90 @@
 package com.river.persistence.dao.implementation;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import com.river.entity.Rate;
-import com.river.persistence.dao.interfaces.DAO;
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
-public class RateDAOImpl  extends AbstractDAO implements DAO<Rate> {
+import com.river.entity.Rate;
+import com.river.persistence.dao.interfaces.RateDAO;
+
+public class RateDAOImpl extends AbstractDAO implements RateDAO {
 
 	@Override
 	public Rate create(Rate toCreate) {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = sessionFactory.getCurrentSession();
+		Transaction tx = session.beginTransaction();
+
+		try {
+			session.persist(toCreate);
+			tx.commit();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			toCreate = null;
+			tx.rollback();
+		}
+		return toCreate;
 	}
 
 	@Override
 	public Rate read(Rate toRead) {
-		// TODO Auto-generated method stub
-		return null;
+		Rate readed = null;
+		if (toRead.getId() != null) {
+			Session session = sessionFactory.getCurrentSession();
+			Transaction transaction = session.beginTransaction();
+			readed = (Rate) session.get(Rate.class, toRead.getId());
+			transaction.commit();
+		}
+		return readed;
 	}
 
 	@Override
 	public List<Rate> read() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Rate> rates = new ArrayList<Rate>();
+		Session session = sessionFactory.getCurrentSession();
+		Transaction transaction = session.beginTransaction();
+		Query query = session.createQuery("from Transport");
+		rates = (List<Rate>) query.list();
+		System.out.println(rates);
+		transaction.commit();
+		return rates;
 	}
 
 	@Override
 	public Rate update(Rate toUpdate) {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = sessionFactory.getCurrentSession();
+		Transaction tx = session.beginTransaction();
+		try {
+			session.update(toUpdate);
+			tx.commit();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			toUpdate = null;
+			tx.rollback();
+		}
+		return toUpdate;
 	}
 
 	@Override
 	public Rate delete(Rate toDelete) {
-		// TODO Auto-generated method stub
-		return null;
+		if (toDelete.getId() != null) {
+			Session session = sessionFactory.getCurrentSession();
+			Transaction tx = session.beginTransaction();
+			try {
+				session.delete(toDelete);
+				tx.commit();
+			} catch (HibernateException e) {
+				e.printStackTrace();
+				toDelete = null;
+				tx.rollback();
+			}
+		} else {
+			toDelete = null;
+		}
+		return toDelete;
 	}
 
 }

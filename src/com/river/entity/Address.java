@@ -41,6 +41,14 @@ public class Address {
 		this.roadName = roadName;
 	}
 
+	public Address(Integer id, Integer zipCode, String roadType, String roadName) {
+		super();
+		this.id = id;
+		this.zipCode = zipCode;
+		this.roadType = roadType;
+		this.roadName = roadName;
+	}
+
 	public Address(Integer id, Integer zipCode, String roadType, String roadName, List<Stop> stops,
 			List<RouteStep> origins, List<RouteStep> destinies) {
 		super();

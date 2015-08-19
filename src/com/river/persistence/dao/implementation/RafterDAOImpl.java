@@ -26,7 +26,6 @@ public class RafterDAOImpl extends AbstractDAO implements RafterDAO{
 			e.printStackTrace();
 			toCreate = null;
 			tx.rollback();
-			System.out.println(" THI IS AN ERROR \n /**/*/*/*/*/*/*/*/*/-/-*/*//**-*/-*-*-/-*-*-+-*+*-+-*/-+/-");
 		}
 		return toCreate;
 	}

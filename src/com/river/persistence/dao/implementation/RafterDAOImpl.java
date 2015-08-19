@@ -26,6 +26,7 @@ public class RafterDAOImpl extends AbstractDAO implements RafterDAO{
 			e.printStackTrace();
 			toCreate = null;
 			tx.rollback();
+			System.out.println(" THI IS AN ERROR \n /**/*/*/*/*/*/*/*/*/-/-*/*//**-*/-*-*-/-*-*-+-*+*-+-*/-+/-");
 		}
 		return toCreate;
 	}
@@ -76,15 +77,19 @@ public class RafterDAOImpl extends AbstractDAO implements RafterDAO{
 	}
 
 	public Rafter delete(Rafter toDelete) {
-		Session session = sessionFactory.getCurrentSession();
-		Transaction tx = session.beginTransaction();
-		try{
-			session.delete(toDelete);
-			tx.commit();
-		}catch(HibernateException e){
-			e.printStackTrace();
+		if (toDelete.getId() != null) {
+			Session session = sessionFactory.getCurrentSession();
+			Transaction tx = session.beginTransaction();
+			try{
+				session.delete(toDelete);
+				tx.commit();
+			}catch(HibernateException e){
+				e.printStackTrace();
+				toDelete = null;
+				tx.rollback();
+			}
+		}else{
 			toDelete = null;
-			tx.rollback();
 		}
 		return toDelete;
 	}

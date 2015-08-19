@@ -68,12 +68,12 @@
     <bean id="addressDAO" class="com.river.persistence.dao.implementation.AddressDAOImpl">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
-    <!--  <bean id="lineDAO" class="com.river.persistence.dao.LineDAOImpl">
+    <bean id="lineDAO" class="com.river.persistence.dao.implementation.LineDAOImpl">
         <property name="sessionFactory" ref="sessionFactory" />
-    </bean>-->
+    </bean>
     
     
-    
+    <!--
     <bean id="routeFatherDAO" class="com.river.persistence.dao.implementation.RouteFatherDAOImpl">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
@@ -87,14 +87,14 @@
     <bean id="rateDAO" class="com.river.persistence.dao.implementation.RateDAOImpl">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
-    
+    -->
     
     <!-- SERVICIOS -->
-    
-    <!--  
-    <bean id="rafterService" class="com.river.persistence.business.RafterServiceImpl">
+    <bean id="rafterService" class="com.river.business.service.implementation.RafterServiceImpl">
         <property name="rafterDAO" ref="rafterDAO" />
     </bean>
+    <!--  
+    
     <bean id="addressService" class="com.river.persistence.business.AddressServiceImpl">
         <property name="addressDAO" ref="addressDAO" />
     </bean>

@@ -8,8 +8,8 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import com.river.entity.Address;
 import com.river.entity.RouteFather;
-import com.river.persistence.dao.interfaces.DAO;
 import com.river.persistence.dao.interfaces.RouteFatherDAO;
 
 public class RouteFatherDAOImpl extends AbstractDAO implements RouteFatherDAO {
@@ -94,5 +94,12 @@ public class RouteFatherDAOImpl extends AbstractDAO implements RouteFatherDAO {
 		}
 		return toDelete;
 	}
+
+	@Override
+	public List<RouteFather> listMatchingRoutes(Address address) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }

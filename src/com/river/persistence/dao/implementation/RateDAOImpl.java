@@ -50,7 +50,7 @@ public class RateDAOImpl extends AbstractDAO implements RateDAO {
 		List<Rate> rates = new ArrayList<Rate>();
 		Session session = sessionFactory.getCurrentSession();
 		Transaction transaction = session.beginTransaction();
-		Query query = session.createQuery("from Transport");
+		Query query = session.createQuery("from Rate");
 		rates = (List<Rate>) query.list();
 		System.out.println(rates);
 		transaction.commit();

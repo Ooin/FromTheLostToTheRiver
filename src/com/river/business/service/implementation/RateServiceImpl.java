@@ -25,7 +25,7 @@ public class RateServiceImpl implements RateService {
 
 	@Override
 	public Rate read(Rate toRead) {
-		return rateDAO.create(toRead);
+		return rateDAO.read(toRead);
 	}
 
 	@Override
@@ -35,12 +35,12 @@ public class RateServiceImpl implements RateService {
 
 	@Override
 	public Rate update(Rate toUpdate) {
-		return rateDAO.create(toUpdate);
+		return rateDAO.update(toUpdate);
 	}
 
 	@Override
 	public Rate delete(Rate toDelete) {
-		return rateDAO.create(toDelete);
+		return rateDAO.delete(toDelete);
 	}
 
 }

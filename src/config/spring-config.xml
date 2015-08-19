@@ -80,11 +80,12 @@
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
     
-    <!--
-    
     <bean id="routeStepDAO" class="com.river.persistence.dao.implementation.RouteStepDAOImpl">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
+    <!--
+    
+    
 
     <bean id="rateDAO" class="com.river.persistence.dao.implementation.RateDAOImpl">
         <property name="sessionFactory" ref="sessionFactory" />
@@ -104,6 +105,10 @@
 	<bean id="stopService" 
 		class="com.river.business.service.implementation.StopServiceImpl"> 
 		<property name="stopDAO" ref="stopDAO" /> 
+	</bean>
+	<bean id="routeStepService" 
+		class="com.river.business.service.implementation.RouteStepServiceImpl"> 
+		<property name="routeStepDAO" ref="routeStepDAO" /> 
 	</bean>
 
 </beans>

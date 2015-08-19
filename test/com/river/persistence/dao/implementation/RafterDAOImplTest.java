@@ -1,5 +1,4 @@
 package com.river.persistence.dao.implementation;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.After;

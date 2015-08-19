@@ -72,13 +72,12 @@
     <bean id="lineDAO" class="com.river.persistence.dao.implementation.LineDAOImpl">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
-    
-    
-    <!--
->>>>>>> branch 'master' of https://github.com/Ooin/FromTheLostToTheRiver.git
     <bean id="routeFatherDAO" class="com.river.persistence.dao.implementation.RouteFatherDAOImpl">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
+    
+    <!--
+    
     <bean id="routeStepDAO" class="com.river.persistence.dao.implementation.RouteStepDAOImpl">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
@@ -98,15 +97,16 @@
     <bean id="addressService" class="com.river.business.service.implementation.AddressServiceImpl">
         <property name="addressDAO" ref="addressDAO" />
     </bean>
+    <bean id="routeFatherService" class="com.river.business.service.implementation.RouteFatherServiceImpl">
+        <property name="routeFatherDAO" ref="routeFatherDAO" />
+    </bean>
     <!--  
     
     
     <bean id="lineService" class="com.river.persistence.business.RineServiceImpl">
         <property name="lineDAO" ref="lineDAO" />
     </bean>
-    <bean id="routeFatherService" class="com.river.persistence.business.RouteFatherServiceImpl">
-        <property name="routeFatherDAO" ref="routeFatherDAO" />
-    </bean>
+    
     <bean id="routeStepService" class="com.river.persistence.business.RouteStepServiceImpl">
         <property name="routeStepDAO" ref="routeStepDAO" />
     </bean>

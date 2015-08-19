@@ -74,11 +74,16 @@
 	<bean id="lineDAO" class="com.river.persistence.dao.implementation.LineDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+
 	<bean id="routeFatherDAO"
 		class="com.river.persistence.dao.implementation.RouteFatherDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	<bean id="rateDAO" class="com.river.persistence.dao.implementation.RateDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="routeStepDAO"
+		class="com.river.persistence.dao.implementation.RouteStepDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
@@ -102,11 +107,18 @@
 		class="com.river.business.service.implementation.StopServiceImpl">
 		<property name="stopDAO" ref="stopDAO" />
 	</bean>
+
+	<bean id="routeStepService"
+		class="com.river.business.service.implementation.RouteStepServiceImpl">
+		<property name="routeStepDAO" ref="routeStepDAO" />
+	</bean>
+
 	<bean id="transportService"
 		class="com.river.business.service.implementation.TransportServiceImpl">
 		<property name="transportDAO" ref="transportDAO" />
 	</bean>
-	<bean id="rateService" class="com.river.business.service.implementation.RateServiceImpl">
+	<bean id="rateService"
+		class="com.river.business.service.implementation.RateServiceImpl">
 		<property name="rateDAO" ref="rateDAO" />
 	</bean>
 
@@ -117,6 +129,5 @@
 		class="com.river.persistence.business.RouteStepServiceImpl"> <property name="routeStepDAO" 
 		ref="routeStepDAO" /> </bean> <bean id="stopService" class="com.river.persistence.business.StopServiceImpl"> 
 		<property name="stopDAO" ref="stopDAO" /> </bean> -->
-
 
 </beans>

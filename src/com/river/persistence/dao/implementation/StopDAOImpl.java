@@ -9,9 +9,9 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import com.river.entity.Stop;
-import com.river.persistence.dao.interfaces.DAO;
+import com.river.persistence.dao.interfaces.StopDAO;
 
-public class StopDAOImpl extends AbstractDAO implements DAO<Stop> {
+public class StopDAOImpl extends AbstractDAO implements StopDAO {
 
 	@Override
 	public Stop create(Stop toCreate) {

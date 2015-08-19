@@ -22,7 +22,7 @@ public class RafterServiceImpl implements RafterService{
 	@Override
 	public Rafter create(Rafter toCreate) {
 		Rafter rafter = null;
-		if(toCreate != null && toCreate.getId() != null){
+		if(toCreate != null){
 			rafter = rafterDAO.create(toCreate);
 		}
 		return rafter;

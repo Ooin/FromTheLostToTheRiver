@@ -1,4 +1,8 @@
 package com.river.persistence.dao.implementation;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,8 +21,14 @@ public class RafterDAOImplTest {
 	
 	 @Before
 	 public void initTest(){
-		 rafterDAO = (RafterDAO) context.getBean(RafterDAOImpl.class);
-		 //rafterDAO.create(rafter);
+		rafterDAO = (RafterDAO) context.getBean(RafterDAOImpl.class);
+		this.rafter = new Rafter("testRafter","1234", "testRafter@gmail.com", "9999-99-99");
+		rafterDAO.create(rafter);
+	 }
+	 
+	 @After
+	 public void deleteRows(){
+		 rafterDAO.delete(this.rafter);
 	 }
 	 
 	 
@@ -37,12 +47,9 @@ public class RafterDAOImplTest {
 	 //add a new EXISTING rafter
 	@Test
 	 public void addAnExistingRafter(){
-		Rafter rafter = new Rafter("testRafter","1234", "testRafter@gmail.com", "9999-99-99");
-		rafterDAO.create(rafter);
 		Rafter toAdd = new Rafter("testRafter","1234", "testRafter@gmail.com", "9999-99-99");
 		toAdd = rafterDAO.create(toAdd);
 		Assert.assertNull(toAdd);
-		rafterDAO.delete(rafter);
 		
 	 }
 	 
@@ -65,32 +72,46 @@ public class RafterDAOImplTest {
 		 //read a non existing rafter
 		@Test
 		public void readANonExistingRafter(){
-			Rafter rafter = new Rafter(1234123);
-			rafter = rafterDAO.read(rafter);
-			Assert.assertNull("it should returns null", rafter);
+			Rafter toRead = new Rafter(1234123);
+			toRead = rafterDAO.read(toRead);
+			Assert.assertNull("it should returns null", toRead);
 		}
 		 
 		 //read an existing rafter
 		@Test
 		public void readAnExistingRafter(){
-			Rafter rafter = new Rafter("testRafter5","12345", "testRafter5@gmail.com", "9999-99-99");
-			rafterDAO.create(rafter);
-			rafter = rafterDAO.read(rafter);
-			Assert.assertNotNull("it should returns not null", rafter);
-			rafterDAO.delete(rafter);
+			this.rafter = rafterDAO.read(rafter);
+			Assert.assertNotNull("it should returns not null", this.rafter);
 		}
+		
+		 //read a non existing rafter list
+		@Test
+		public void readANonExistingRafterList(){
+			rafterDAO.delete(this.rafter);
+			List<Rafter> rafters = rafterDAO.read();
+			Assert.assertTrue("it should returns empty list", rafters.isEmpty());
+		}
+		 
+		 //read an existing rafter list
+		@Test
+		public void readAnExistingRafterList(){
+			List<Rafter> rafters = rafterDAO.read();
+			Assert.assertTrue("it should returns full list", !rafters.isEmpty());
+		}
+		
+		
+		
+		
 		//#####UPDATE TESTS########
 	 
 	//#####UPDATE TESTS########
 	 //update an existing rafter
 	 @Test
 	 public void updateAnExistingRafter(){
-		 Rafter rafter = new Rafter("testRafter","1234", "testRafter@gmail.com", "9999-99-99");
-		 rafterDAO.create(rafter);
-		 rafter.setEmail("capullo");
-		 rafterDAO.update(rafter);
-		 Assert.assertNotNull("it should returns not null", rafter);
-		 Assert.assertEquals("email should be capullo", rafter.getEmail(), "capullo");
+		 this.rafter.setEmail("capullo");
+		 rafterDAO.update(this.rafter);
+		 Assert.assertNotNull("it should returns not null", this.rafter);
+		 Assert.assertEquals("email should be capullo", this.rafter.getEmail(), "capullo");
 		 rafterDAO.delete(rafter);
 		 
 	 }
@@ -117,19 +138,15 @@ public class RafterDAOImplTest {
 		 //delete an existing rafter
 	@Test
 	public void deleteAnExistingRafter(){
-		Rafter rafter = new Rafter("testRafter","1234", "testRafter@gmail.com", "9999-99-99");
-		rafterDAO.create(rafter);
-		rafter = rafterDAO.delete(rafter);
-		Assert.assertNotNull("it should returns a not null object", rafter);
+		Rafter deleted = rafterDAO.delete(this.rafter);
+		Assert.assertNotNull("it should returns a not null object", deleted);
 	}
 		 //delete a non existing rafter
 	@Test
 	public void deleteANonExistingRafter(){
-		Rafter rafter = new Rafter("testRafter","1234", "testRafter@gmail.com", "9999-99-99");
-		rafterDAO.create(rafter);
-		rafter.setId(234234);
-		rafter = rafterDAO.delete(rafter);
-		Assert.assertNull("it should returns a null object", rafter);
+		Rafter toDelete = new Rafter(123123);
+		Rafter deleted = rafterDAO.delete(toDelete);
+		Assert.assertNull("it should returns a null object", deleted);
 	}
 	 	
 	//TODO delete a rafter with dependencies

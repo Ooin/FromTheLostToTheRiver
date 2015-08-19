@@ -90,11 +90,11 @@
     
     
     <!-- SERVICIOS -->
-    
-    <!--  
-    <bean id="rafterService" class="com.river.persistence.business.RafterServiceImpl">
+    <bean id="rafterService" class="com.river.business.service.implementation.RafterServiceImpl">
         <property name="rafterDAO" ref="rafterDAO" />
     </bean>
+    <!--  
+    
     <bean id="addressService" class="com.river.persistence.business.AddressServiceImpl">
         <property name="addressDAO" ref="addressDAO" />
     </bean>

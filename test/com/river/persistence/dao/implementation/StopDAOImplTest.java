@@ -10,7 +10,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.river.entity.Address;
 import com.river.entity.Stop;
-import com.river.persistence.dao.implementation.StopDAOImpl;
 
 
 

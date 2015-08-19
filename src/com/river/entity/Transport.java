@@ -61,6 +61,11 @@ public class Transport {
 		return lines;
 	}
 
+	public Transport(Integer id) {
+		super();
+		this.id = id;
+	}
+
 	public void setLines(List<Line> lines) {
 		this.lines = lines;
 	}

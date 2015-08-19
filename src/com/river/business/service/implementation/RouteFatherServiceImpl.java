@@ -3,6 +3,7 @@ package com.river.business.service.implementation;
 import java.util.List;
 
 import com.river.business.service.interfaces.RouteFatherService;
+import com.river.entity.Address;
 import com.river.entity.RouteFather;
 import com.river.persistence.dao.interfaces.RouteFatherDAO;
 
@@ -57,6 +58,12 @@ public class RouteFatherServiceImpl implements RouteFatherService {
 			routeFather = routeFatherDAO.delete(toDelete);
 		}
 		return routeFather;
+	}
+
+	@Override
+	public List<RouteFather> listMatchingRoutes(Address address) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

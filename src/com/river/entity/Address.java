@@ -19,11 +19,11 @@ public class Address {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Integer id;
-	@Column(name = "zipCode")
+	@Column(name = "zipCode", unique = true)
 	private Integer zipCode;
 	@Column(name = "roadType")
 	private String roadType;
-	@Column(name = "roadName")
+	@Column(name = "roadName", unique = true)
 	private String roadName;
 
 	@OneToMany(mappedBy = "address")
@@ -74,6 +74,13 @@ public class Address {
 
 	public Address() {
 		super();
+	}
+	
+	
+
+	public Address(Integer id) {
+		super();
+		this.id = id;
 	}
 
 	@Override

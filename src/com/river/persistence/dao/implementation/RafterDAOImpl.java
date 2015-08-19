@@ -41,6 +41,7 @@ public class RafterDAOImpl extends AbstractDAO implements RafterDAO{
 		
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Rafter> read() {
 		List<Rafter> rafters = new ArrayList<Rafter>();
 		Session session = sessionFactory.getCurrentSession();

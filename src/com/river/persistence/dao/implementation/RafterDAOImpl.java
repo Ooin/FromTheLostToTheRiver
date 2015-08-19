@@ -25,6 +25,8 @@ public class RafterDAOImpl extends AbstractDAO implements RafterDAO{
 		}catch(HibernateException e){
 			e.printStackTrace();
 			toCreate = null;
+			tx.rollback();
+			System.out.println(" THI IS AN ERROR \n /**/*/*/*/*/*/*/*/*/-/-*/*//**-*/-*-*-/-*-*-+-*+*-+-*/-+/-");
 		}
 		return toCreate;
 	}
@@ -51,26 +53,42 @@ public class RafterDAOImpl extends AbstractDAO implements RafterDAO{
 	}
 
 	public Rafter update(Rafter toUpdate) {
-		Session session = sessionFactory.getCurrentSession();
-		Transaction tx = session.beginTransaction();
-		try{
-			session.update(toUpdate);
-			tx.commit();
-		}catch(HibernateException e){
-			e.printStackTrace();
-			toUpdate = null;
-		}
+		
+		if(toUpdate.getId() != null){
+			
+			
+			Session session = sessionFactory.getCurrentSession();
+			Transaction tx = session.beginTransaction();
+			try{
+				session.update(toUpdate);
+				tx.commit();
+			}catch(HibernateException e){
+				e.printStackTrace();
+				toUpdate = null;
+				tx.rollback();
+			}
+			}else{
+				toUpdate = null;
+			}
+			
+			
+		
 		return toUpdate;
 	}
 
 	public Rafter delete(Rafter toDelete) {
-		Session session = sessionFactory.getCurrentSession();
-		Transaction tx = session.beginTransaction();
-		try{
-			session.delete(toDelete);
-			tx.commit();
-		}catch(HibernateException e){
-			e.printStackTrace();
+		if (toDelete.getId() != null) {
+			Session session = sessionFactory.getCurrentSession();
+			Transaction tx = session.beginTransaction();
+			try{
+				session.delete(toDelete);
+				tx.commit();
+			}catch(HibernateException e){
+				e.printStackTrace();
+				toDelete = null;
+				tx.rollback();
+			}
+		}else{
 			toDelete = null;
 		}
 		return toDelete;

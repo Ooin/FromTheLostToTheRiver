@@ -6,7 +6,6 @@ import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import com.river.entity.Stop;
@@ -25,6 +24,7 @@ public class StopDAOImpl extends AbstractDAO  implements DAO<Stop> {
 			session.persist(toCreate);
 			tx.commit();
 		} catch (HibernateException e) {
+			tx.rollback();
 			e.printStackTrace();
 			toCreate = null;
 		}
@@ -62,6 +62,7 @@ public class StopDAOImpl extends AbstractDAO  implements DAO<Stop> {
 			tx.commit();
 		} catch (HibernateException e) {
 			e.printStackTrace();
+			tx.rollback();
 			toUpdate = null;
 		}
 		return toUpdate;
@@ -76,6 +77,7 @@ public class StopDAOImpl extends AbstractDAO  implements DAO<Stop> {
 			tx.commit();
 		} catch (HibernateException e) {
 			e.printStackTrace();
+			tx.rollback();
 			toDelete = null;
 		}
 		return toDelete;

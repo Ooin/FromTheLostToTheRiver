@@ -1,13 +1,10 @@
 package main;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.List;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -64,9 +61,9 @@ public class TestingClass {
 	
 	public static void main( String args[] ) throws ParseException
 	  {
-	     TestingClass c = new TestingClass();
-//	     c.query();
-		c.deleteTest();
+	    Integer i = null;
+	    System.out.println(i);
+	    Rafter r = null;
 			
 	  }
 

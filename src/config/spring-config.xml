@@ -105,10 +105,6 @@
 		class="com.river.business.service.implementation.StopServiceImpl"> 
 		<property name="stopDAO" ref="stopDAO" /> 
 	</bean>
-	<bean id="addressService"
-		class="com.river.business.service.implementation.AddressServiceImpl">
-		<property name="addressDAO" ref="addressDAO" />
-	</bean>
 	<bean id="transportService"
 	class="com.river.business.service.implementation.TransportServiceImpl">
 		<property name="transportDAO" ref="transportDAO" />

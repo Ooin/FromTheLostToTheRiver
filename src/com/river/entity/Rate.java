@@ -9,40 +9,35 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-
 @Entity
-@Table(name="rate")
+@Table(name = "rate")
 public class Rate {
-	
+
 	/**
-	 * CREATE TABLE `RATE` (
-		`id`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
-		`creator`	TEXT NOT NULL,
-		`routeId`	INTEGER NOT NULL,
-		`comment`	TEXT,
-	        FOREIGN KEY(creator) REFERENCES RAFTER(id),
-	        FOREIGN KEY(routeId) REFERENCES ROUTE_FATHER(id)
-	        
-		);
+	 * CREATE TABLE `RATE` ( `id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT
+	 * UNIQUE, `creator` TEXT NOT NULL, `routeId` INTEGER NOT NULL, `comment`
+	 * TEXT, FOREIGN KEY(creator) REFERENCES RAFTER(id), FOREIGN KEY(routeId)
+	 * REFERENCES ROUTE_FATHER(id)
+	 * 
+	 * );
 	 */
-	
+
 	@Id
-	@Column(name="id")
+	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	@ManyToOne
-	@JoinColumn(name="creator")
+	@JoinColumn(name = "creator")
 	private Rafter creator;
-	
+
 	@ManyToOne
-	@JoinColumn(name="routeId")
+	@JoinColumn(name = "routeId")
 	private RouteFather route;
-	
-	@Column(name="comment")
+
+	@Column(name = "comment")
 	private String comment;
-	
-	
+
 	public Rate(Integer id, Rafter creator, RouteFather route, String comment) {
 		super();
 		this.id = id;
@@ -50,46 +45,55 @@ public class Rate {
 		this.route = route;
 		this.comment = comment;
 	}
+
 	public Rate(Integer id) {
 		super();
 		this.id = id;
 	}
+
 	public Rate() {
 		super();
 	}
-	
-	
-	
+
 	public Rate(Rafter creator, RouteFather route, String comment) {
 		super();
 		this.creator = creator;
 		this.route = route;
 		this.comment = comment;
 	}
+
 	public Integer getId() {
 		return id;
 	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
 	public Rafter getCreator() {
 		return creator;
 	}
+
 	public void setCreator(Rafter creator) {
 		this.creator = creator;
 	}
+
 	public RouteFather getRoute() {
 		return route;
 	}
+
 	public void setRoute(RouteFather route) {
 		this.route = route;
 	}
+
 	public String getComment() {
 		return comment;
 	}
+
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -97,6 +101,7 @@ public class Rate {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -113,6 +118,7 @@ public class Rate {
 			return false;
 		return true;
 	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -139,6 +145,5 @@ public class Rate {
 		builder.append("]");
 		return builder.toString();
 	}
-	
-	
+
 }

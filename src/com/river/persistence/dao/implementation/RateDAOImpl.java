@@ -15,16 +15,20 @@ public class RateDAOImpl extends AbstractDAO implements RateDAO {
 
 	@Override
 	public Rate create(Rate toCreate) {
-		Session session = sessionFactory.getCurrentSession();
-		Transaction tx = session.beginTransaction();
+		if (toCreate.getCreator() != null && toCreate.getComment() != null && toCreate.getRoute() != null) {
+			Session session = sessionFactory.getCurrentSession();
+			Transaction tx = session.beginTransaction();
 
-		try {
-			session.persist(toCreate);
-			tx.commit();
-		} catch (HibernateException e) {
-			e.printStackTrace();
+			try {
+				session.persist(toCreate);
+				tx.commit();
+			} catch (HibernateException e) {
+				e.printStackTrace();
+				toCreate = null;
+				tx.rollback();
+			}
+		} else {
 			toCreate = null;
-			tx.rollback();
 		}
 		return toCreate;
 	}

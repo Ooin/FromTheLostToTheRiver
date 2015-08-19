@@ -52,16 +52,26 @@ public class RafterDAOImpl extends AbstractDAO implements RafterDAO{
 	}
 
 	public Rafter update(Rafter toUpdate) {
-		Session session = sessionFactory.getCurrentSession();
-		Transaction tx = session.beginTransaction();
-		try{
-			session.update(toUpdate);
-			tx.commit();
-		}catch(HibernateException e){
-			e.printStackTrace();
-			toUpdate = null;
-			tx.rollback();
-		}
+		
+		if(toUpdate.getId() != null){
+			
+			
+			Session session = sessionFactory.getCurrentSession();
+			Transaction tx = session.beginTransaction();
+			try{
+				session.update(toUpdate);
+				tx.commit();
+			}catch(HibernateException e){
+				e.printStackTrace();
+				toUpdate = null;
+				tx.rollback();
+			}
+			}else{
+				toUpdate = null;
+			}
+			
+			
+		
 		return toUpdate;
 	}
 

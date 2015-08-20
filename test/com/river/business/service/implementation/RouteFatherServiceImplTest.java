@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import com.river.entity.Rafter;
 import com.river.entity.RouteFather;
 import com.river.persistence.dao.implementation.RafterDAOImpl;

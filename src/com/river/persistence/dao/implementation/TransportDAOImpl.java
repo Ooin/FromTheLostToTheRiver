@@ -3,12 +3,14 @@ package com.river.persistence.dao.implementation;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Service;
 
+import com.river.entity.Rafter;
 import com.river.entity.Transport;
 import com.river.persistence.dao.interfaces.TransportDAO;
 
@@ -19,15 +21,12 @@ public class TransportDAOImpl extends AbstractDAO implements TransportDAO {
 	public Transport create(Transport toCreate) {
 		if (toCreate.getName() != null) {
 			Session session = sessionFactory.getCurrentSession();
-			Transaction tx = session.beginTransaction();
 
 			try {
 				session.persist(toCreate);
-				tx.commit();
 			} catch (HibernateException e) {
 				e.printStackTrace();
 				toCreate = null;
-				tx.rollback();
 			}
 		} else {
 			toCreate = null;
@@ -40,9 +39,7 @@ public class TransportDAOImpl extends AbstractDAO implements TransportDAO {
 		Transport readed = null;
 		if (toRead.getId() != null) {
 			Session session = sessionFactory.getCurrentSession();
-			Transaction transaction = session.beginTransaction();
 			readed = (Transport) session.get(Transport.class, toRead.getId());
-			transaction.commit();
 		}
 		return readed;
 	}
@@ -51,25 +48,20 @@ public class TransportDAOImpl extends AbstractDAO implements TransportDAO {
 	public List<Transport> read() {
 		List<Transport> transports = new ArrayList<Transport>();
 		Session session = sessionFactory.getCurrentSession();
-		Transaction transaction = session.beginTransaction();
 		Query query = session.createQuery("from Transport");
 		transports = (List<Transport>) query.list();
 		System.out.println(transports);
-		transaction.commit();
 		return transports;
 	}
 
 	@Override
 	public Transport update(Transport toUpdate) {
 		Session session = sessionFactory.getCurrentSession();
-		Transaction tx = session.beginTransaction();
 		try {
 			session.update(toUpdate);
-			tx.commit();
 		} catch (HibernateException e) {
 			e.printStackTrace();
 			toUpdate = null;
-			tx.rollback();
 		}
 		return toUpdate;
 	}
@@ -78,19 +70,26 @@ public class TransportDAOImpl extends AbstractDAO implements TransportDAO {
 	public Transport delete(Transport toDelete) {
 		if (toDelete.getId() != null) {
 			Session session = sessionFactory.getCurrentSession();
-			Transaction tx = session.beginTransaction();
 			try {
 				session.delete(toDelete);
-				tx.commit();
 			} catch (HibernateException e) {
 				e.printStackTrace();
 				toDelete = null;
-				tx.rollback();
 			}
 		} else {
 			toDelete = null;
 		}
 		return toDelete;
+	}
+
+	@Override
+	public Transport readWithInitializedLineslist(Transport transport) {
+		Transport readed = null;
+		Session session = sessionFactory.getCurrentSession();
+		readed = (Transport) session.get(Transport.class, transport.getId());
+		Hibernate.initialize(readed);
+		Hibernate.initialize(readed.getLines());
+		return readed;
 	}
 
 }

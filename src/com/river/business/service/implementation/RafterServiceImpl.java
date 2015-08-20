@@ -70,9 +70,16 @@ public class RafterServiceImpl implements RafterService{
 		return rafter;
 	}
 
+	
 	@Override
 	@Transactional
-	public Rafter readWithInitializedlist(Rafter rafter){
-		return rafterDAO.readWithInitializedlist(rafter);
+	public Rafter readWithInitializedRateslist(Rafter rafter) {
+		return rafterDAO.readWithInitializedRateslist(rafter);
+	}
+
+	@Override
+	@Transactional
+	public Rafter readWithInitializedRouteslist(Rafter rafter) {
+		return rafterDAO.readWithInitializedRouteslist(rafter);
 	}
 }

@@ -3,29 +3,32 @@ package com.river.persistence.dao.implementation;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.river.entity.Rafter;
 import com.river.persistence.dao.interfaces.RafterDAO;
 
+@Service
 public class RafterDAOImpl extends AbstractDAO implements RafterDAO{
 	
 	
 	
 	public Rafter create(Rafter toCreate) {
 		Session session = sessionFactory.getCurrentSession();
-		Transaction tx = session.beginTransaction();
 		
 		try{
 			session.persist(toCreate);
-			tx.commit();
+			
 		}catch(HibernateException e){
 			e.printStackTrace();
 			toCreate = null;
-			tx.rollback();
 		}
 		return toCreate;
 	}
@@ -33,9 +36,7 @@ public class RafterDAOImpl extends AbstractDAO implements RafterDAO{
 	public Rafter read(Rafter toRead) {
 		Rafter readed = null;
 		Session session = sessionFactory.getCurrentSession();
-		Transaction transaction = session.beginTransaction();
 		readed = (Rafter) session.get(Rafter.class, toRead.getId());//(Rafter) query.list().get(0);
-		transaction.commit();
 		
 		return readed;
 		
@@ -45,10 +46,8 @@ public class RafterDAOImpl extends AbstractDAO implements RafterDAO{
 	public List<Rafter> read() {
 		List<Rafter> rafters = new ArrayList<Rafter>();
 		Session session = sessionFactory.getCurrentSession();
-		Transaction transaction = session.beginTransaction();
 		Query query = session.createQuery("from Rafter");
 		rafters = (List<Rafter>) query.list();
-		transaction.commit();
 		return rafters;
 	}
 
@@ -92,6 +91,16 @@ public class RafterDAOImpl extends AbstractDAO implements RafterDAO{
 			toDelete = null;
 		}
 		return toDelete;
+	}
+
+	@Override
+	public Rafter readWithInitializedlist(Rafter rafter) {
+		Rafter readed = null;
+		Session session = sessionFactory.getCurrentSession();
+		readed = (Rafter) session.get(Rafter.class, rafter.getId());//(Rafter) query.list().get(0);
+		Hibernate.initialize(readed);
+		Hibernate.initialize(readed.getRoutes());
+		return readed;
 	}
 
 

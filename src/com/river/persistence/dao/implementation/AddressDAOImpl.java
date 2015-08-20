@@ -7,10 +7,12 @@ import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Service;
 
 import com.river.entity.Address;
 import com.river.persistence.dao.interfaces.AddressDAO;
 
+@Service
 public class AddressDAOImpl extends AbstractDAO implements AddressDAO  {
 
 	public Address create(Address toCreate) {

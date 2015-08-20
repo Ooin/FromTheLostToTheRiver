@@ -2,12 +2,17 @@ package com.river.business.service.implementation;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.river.business.service.interfaces.RateService;
 import com.river.entity.Rate;
 import com.river.persistence.dao.interfaces.RateDAO;
 
+@Service
 public class RateServiceImpl implements RateService {
 
+	@Autowired
 	RateDAO rateDAO;
 
 	public RateDAO getRateDAO() {

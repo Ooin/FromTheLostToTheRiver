@@ -2,13 +2,20 @@ package com.river.business.service.implementation;
 
 import java.util.List;
 
+import org.hibernate.Hibernate;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.river.business.service.interfaces.RafterService;
 import com.river.entity.Rafter;
 import com.river.persistence.dao.interfaces.RafterDAO;
 
+@Service
 public class RafterServiceImpl implements RafterService{
 
-	
+	@Autowired
 	RafterDAO rafterDAO;
 	
 	public RafterDAO getRafterDAO() {
@@ -20,6 +27,7 @@ public class RafterServiceImpl implements RafterService{
 	}
 
 	@Override
+	@Transactional 
 	public Rafter create(Rafter toCreate) {
 		Rafter rafter = null;
 		if(toCreate != null){
@@ -29,6 +37,7 @@ public class RafterServiceImpl implements RafterService{
 	}
 
 	@Override
+	@Transactional
 	public Rafter read(Rafter toRead) {
 		Rafter rafter = null;
 		if(toRead != null && toRead.getId() != null){
@@ -38,6 +47,7 @@ public class RafterServiceImpl implements RafterService{
 	}
 
 	@Override
+	@Transactional 
 	public List<Rafter> read() {
 		return rafterDAO.read();
 	}
@@ -60,4 +70,9 @@ public class RafterServiceImpl implements RafterService{
 		return rafter;
 	}
 
+	@Override
+	@Transactional
+	public Rafter readWithInitializedlist(Rafter rafter){
+		return rafterDAO.readWithInitializedlist(rafter);
+	}
 }

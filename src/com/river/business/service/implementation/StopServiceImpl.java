@@ -2,12 +2,17 @@ package com.river.business.service.implementation;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.river.business.service.interfaces.StopService;
 import com.river.entity.Stop;
 import com.river.persistence.dao.interfaces.StopDAO;
 
+@Service
 public class StopServiceImpl implements StopService {
 
+	@Autowired
 	StopDAO stopDAO;
 
 	public StopDAO getStopDAO() {

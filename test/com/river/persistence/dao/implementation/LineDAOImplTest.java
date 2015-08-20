@@ -166,5 +166,4 @@ public class LineDAOImplTest {
 		
 		Assert.assertNull("If the line deoesn't exists, the return must be null", line);
 	}
-
 }

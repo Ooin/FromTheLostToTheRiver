@@ -3,6 +3,7 @@ package com.river.persistence.dao.implementation;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -10,18 +11,19 @@ import org.hibernate.Transaction;
 import org.springframework.stereotype.Service;
 
 import com.river.entity.Address;
+import com.river.entity.Rafter;
 import com.river.persistence.dao.interfaces.AddressDAO;
 
 @Service
-public class AddressDAOImpl extends AbstractDAO implements AddressDAO  {
+public class AddressDAOImpl extends AbstractDAO implements AddressDAO {
 
 	public Address create(Address toCreate) {
 		Session session = sessionFactory.getCurrentSession();
 		Transaction tx = session.beginTransaction();
-		try{
+		try {
 			session.persist(toCreate);
 			tx.commit();
-		}catch(HibernateException e){
+		} catch (HibernateException e) {
 			e.printStackTrace();
 			toCreate = null;
 			tx.rollback();
@@ -33,11 +35,12 @@ public class AddressDAOImpl extends AbstractDAO implements AddressDAO  {
 		Address readed = null;
 		Session session = sessionFactory.getCurrentSession();
 		Transaction transaction = session.beginTransaction();
-		readed = (Address) session.get(Address.class, toRead.getId());//(Rafter) query.list().get(0);
+		readed = (Address) session.get(Address.class, toRead.getId());// (Rafter)
+																		// query.list().get(0);
 		transaction.commit();
-		
+
 		return readed;
-		
+
 	}
 
 	@SuppressWarnings("unchecked")
@@ -52,26 +55,23 @@ public class AddressDAOImpl extends AbstractDAO implements AddressDAO  {
 	}
 
 	public Address update(Address toUpdate) {
-		
-		if(toUpdate.getId() != null){
-			
-			
+
+		if (toUpdate.getId() != null) {
+
 			Session session = sessionFactory.getCurrentSession();
 			Transaction tx = session.beginTransaction();
-			try{
+			try {
 				session.update(toUpdate);
 				tx.commit();
-			}catch(HibernateException e){
+			} catch (HibernateException e) {
 				e.printStackTrace();
 				toUpdate = null;
 				tx.rollback();
 			}
-			}else{
-				toUpdate = null;
-			}
-			
-			
-		
+		} else {
+			toUpdate = null;
+		}
+
 		return toUpdate;
 	}
 
@@ -79,22 +79,48 @@ public class AddressDAOImpl extends AbstractDAO implements AddressDAO  {
 		if (toDelete.getId() != null) {
 			Session session = sessionFactory.getCurrentSession();
 			Transaction tx = session.beginTransaction();
-			try{
+			try {
 				session.delete(toDelete);
 				tx.commit();
-			}catch(HibernateException e){
+			} catch (HibernateException e) {
 				e.printStackTrace();
 				toDelete = null;
 				tx.rollback();
 			}
-		}else{
+		} else {
 			toDelete = null;
 		}
 		return toDelete;
 	}
 
+	@Override
+	public Address readWithInitializedStopslist(Address address) {
+		Address readed = null;
+		Session session = sessionFactory.getCurrentSession();
+		readed = (Address) session.get(Address.class, address.getId());
+		Hibernate.initialize(readed);
+		Hibernate.initialize(readed.getStops());
+		return readed;
+	}
 
-	
-	
-	
+	@Override
+	public Address readWithInitializedOriginslist(Address address) {
+		Address readed = null;
+		Session session = sessionFactory.getCurrentSession();
+		readed = (Address) session.get(Address.class, address.getId());
+		Hibernate.initialize(readed);
+		Hibernate.initialize(readed.getOrigins());
+		return readed;
+	}
+
+	@Override
+	public Address readWithInitializedDestinieslist(Address address) {
+		Address readed = null;
+		Session session = sessionFactory.getCurrentSession();
+		readed = (Address) session.get(Address.class, address.getId());
+		Hibernate.initialize(readed);
+		Hibernate.initialize(readed.getDestinies());
+		return readed;
+	}
+
 }

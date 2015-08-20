@@ -71,6 +71,7 @@ public class TransportServiceImpl implements TransportService {
 	}
 
 	@Override
+	@Transactional
 	public Transport readWithInitializedLineslist(Transport transport) {
 		Transport read = null;
 		if (transport != null) {

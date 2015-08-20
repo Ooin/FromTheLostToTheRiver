@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.river.business.service.interfaces.StopService;
 import com.river.entity.Stop;
@@ -24,6 +25,7 @@ public class StopServiceImpl implements StopService {
 	}
 
 	@Override
+	@Transactional
 	public Stop create(Stop toCreate) {
 		Stop stop = null;
 		if (toCreate != null) {
@@ -33,6 +35,7 @@ public class StopServiceImpl implements StopService {
 	}
 
 	@Override
+	@Transactional
 	public Stop read(Stop toRead) {
 		Stop stop = null;
 		if (toRead != null && toRead.getId() != null) {
@@ -42,23 +45,26 @@ public class StopServiceImpl implements StopService {
 	}
 
 	@Override
+	@Transactional
 	public List<Stop> read() {
 		return stopDAO.read();
 	}
 
 	@Override
+	@Transactional
 	public Stop update(Stop toUpdate) {
 		Stop stop = null;
-		if(toUpdate != null && toUpdate.getId() != null){
+		if (toUpdate != null && toUpdate.getId() != null) {
 			stop = stopDAO.update(toUpdate);
 		}
 		return stop;
 	}
 
 	@Override
+	@Transactional
 	public Stop delete(Stop toDelete) {
 		Stop stop = null;
-		if(toDelete != null && toDelete.getId() != null){
+		if (toDelete != null && toDelete.getId() != null) {
 			stop = stopDAO.delete(toDelete);
 		}
 		return stop;

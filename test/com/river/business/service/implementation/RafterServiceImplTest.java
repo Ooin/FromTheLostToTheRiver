@@ -6,29 +6,34 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.river.business.service.interfaces.RafterService;
 import com.river.entity.Rafter;
-import com.river.persistence.dao.implementation.RafterDAOImpl;
-import com.river.persistence.dao.interfaces.RafterDAO;
 
-
+@TransactionConfiguration(defaultRollback = true)
+@ContextConfiguration({ "classpath:config/spring-config.xml" })
+@Transactional  
+@RunWith(SpringJUnit4ClassRunner.class)  
 public class RafterServiceImplTest {
 	RafterService rafterService;
 	Rafter rafter;
-	ApplicationContext context = new ClassPathXmlApplicationContext("config/spring-config.xml");
+	ApplicationContext context = new ClassPathXmlApplicationContext("classpath:config/spring-config.xml");
 	
-	 
+	 @Before
 	 public void initTest(){
 		rafterService = (RafterService) context.getBean("rafterServiceImpl");
 		this.rafter = new Rafter("testRafter","1234", "testRafter@gmail.com", "9999-99-99");
 		rafterService.create(rafter);
 	 }
 	 
-	
+	@After
 	 public void deleteRows(){
 		 rafterService.delete(this.rafter);
 	 }

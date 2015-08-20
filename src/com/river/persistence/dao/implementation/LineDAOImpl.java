@@ -10,7 +10,6 @@ import org.hibernate.Transaction;
 import org.springframework.stereotype.Service;
 
 import com.river.entity.Line;
-import com.river.entity.Rafter;
 import com.river.persistence.dao.interfaces.LineDAO;
 
 @Service

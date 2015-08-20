@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.river.business.service.interfaces.AddressService;
 import com.river.entity.Address;
-import com.river.entity.Rafter;
 import com.river.persistence.dao.interfaces.AddressDAO;
 
 @Service

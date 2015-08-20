@@ -98,6 +98,7 @@ public class Rafter {
 		this.email = email;
 	}
 
+	
 	public String getRegisterDate() {
 		return registerDate;
 	}

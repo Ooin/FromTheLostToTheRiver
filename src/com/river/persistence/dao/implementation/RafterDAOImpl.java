@@ -85,12 +85,22 @@ public class RafterDAOImpl extends AbstractDAO implements RafterDAO {
 		return toDelete;
 	}
 
+	
 	@Override
-	public Rafter readWithInitializedlist(Rafter rafter) {
+	public Rafter readWithInitializedRateslist(Rafter rafter) {
 		Rafter readed = null;
 		Session session = sessionFactory.getCurrentSession();
-		readed = (Rafter) session.get(Rafter.class, rafter.getId());// (Rafter)
-																	// query.list().get(0);
+		readed = (Rafter) session.get(Rafter.class, rafter.getId());
+		Hibernate.initialize(readed);
+		Hibernate.initialize(readed.getRates());
+		return readed;
+	}
+
+	@Override
+	public Rafter readWithInitializedRouteslist(Rafter rafter) {
+		Rafter readed = null;
+		Session session = sessionFactory.getCurrentSession();
+		readed = (Rafter) session.get(Rafter.class, rafter.getId());
 		Hibernate.initialize(readed);
 		Hibernate.initialize(readed.getRoutes());
 		return readed;

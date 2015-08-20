@@ -14,8 +14,10 @@ import com.river.entity.RouteFather;
 import com.river.persistence.dao.interfaces.DAO;
 import com.river.persistence.dao.interfaces.RouteFatherDAO;
 
+
 @Service
-public class RouteFatherDAOImpl extends AbstractDAO implements RouteFatherDAO{
+public class RouteFatherDAOImpl extends AbstractDAO implements RouteFatherDAO {
+
 
 	public RouteFather create(RouteFather toCreate) {
 
@@ -40,11 +42,12 @@ public class RouteFatherDAOImpl extends AbstractDAO implements RouteFatherDAO{
 		RouteFather readed = null;
 		Session session = sessionFactory.getCurrentSession();
 		Transaction transaction = session.beginTransaction();
-		readed = (RouteFather) session.get(RouteFather.class, toRead.getId());//(RouteFather) query.list().get(0);
+		readed = (RouteFather) session.get(RouteFather.class, toRead.getId());// (RouteFather)
+																				// query.list().get(0);
 		transaction.commit();
-		
+
 		return readed;
-		
+
 	}
 
 	@SuppressWarnings("unchecked")
@@ -59,26 +62,23 @@ public class RouteFatherDAOImpl extends AbstractDAO implements RouteFatherDAO{
 	}
 
 	public RouteFather update(RouteFather toUpdate) {
-		
-		if(toUpdate.getId() != null){
-			
-			
+
+		if (toUpdate.getId() != null) {
+
 			Session session = sessionFactory.getCurrentSession();
 			Transaction tx = session.beginTransaction();
-			try{
+			try {
 				session.update(toUpdate);
 				tx.commit();
-			}catch(HibernateException e){
+			} catch (HibernateException e) {
 				e.printStackTrace();
 				toUpdate = null;
 				tx.rollback();
 			}
-			}else{
-				toUpdate = null;
-			}
-			
-			
-		
+		} else {
+			toUpdate = null;
+		}
+
 		return toUpdate;
 	}
 
@@ -86,15 +86,15 @@ public class RouteFatherDAOImpl extends AbstractDAO implements RouteFatherDAO{
 		if (toDelete.getId() != null) {
 			Session session = sessionFactory.getCurrentSession();
 			Transaction tx = session.beginTransaction();
-			try{
+			try {
 				session.delete(toDelete);
 				tx.commit();
-			}catch(HibernateException e){
+			} catch (HibernateException e) {
 				e.printStackTrace();
 				toDelete = null;
 				tx.rollback();
 			}
-		}else{
+		} else {
 			toDelete = null;
 		}
 		return toDelete;
@@ -106,9 +106,4 @@ public class RouteFatherDAOImpl extends AbstractDAO implements RouteFatherDAO{
 		return null;
 	}
 
-
-	
-	
-	
 }
-

@@ -8,21 +8,30 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.transaction.TransactionConfiguration;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.river.entity.Line;
 import com.river.entity.Transport;
 import com.river.persistence.dao.interfaces.LineDAO;
 import com.river.persistence.dao.interfaces.TransportDAO;
 
+@TransactionConfiguration(defaultRollback = true)
+@ContextConfiguration({ "classpath:config/spring-config.xml" })
+@Transactional  
+@RunWith(SpringJUnit4ClassRunner.class)
 public class LineDAOImplTest {
 	
 	LineDAO lineDAO;
 	TransportDAO transportDAO;
 	Transport transport;
 	Line line;
-	ApplicationContext context = new ClassPathXmlApplicationContext("config/spring-config.xml");
+	ApplicationContext context = new ClassPathXmlApplicationContext("classpath:config/spring-config.xml");
 	
 	private Integer EXISTING_ID = 1;
 	

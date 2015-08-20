@@ -8,27 +8,36 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.transaction.TransactionConfiguration;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.river.business.service.interfaces.LineService;
 import com.river.business.service.interfaces.TransportService;
 import com.river.entity.Line;
 import com.river.entity.Transport;
 
+@TransactionConfiguration(defaultRollback = true)
+@ContextConfiguration({ "classpath:config/spring-config.xml" })
+@Transactional  
+@RunWith(SpringJUnit4ClassRunner.class)
 public class LineServiceImplTest {
 	
 	LineService lineService;
 	Line line;
 	TransportService transportService;
 	Transport transport;
-	ApplicationContext context = new ClassPathXmlApplicationContext("config/spring-config.xml");
+	ApplicationContext context = new ClassPathXmlApplicationContext("classpath:config/spring-config.xml");
 	private Integer EXISTING_ID;
 	
 	@Before
 	public void init(){
-		lineService = context.getBean(LineServiceImpl.class);
-		transportService = context.getBean(TransportServiceImpl.class);
+		lineService = (LineService) context.getBean("lineServiceImpl");
+		transportService = (TransportService) context.getBean("transportServiceImpl");
 		transport = transportService.create(new Transport("Cercanias" +  new Random().nextInt()));
 	}
 	

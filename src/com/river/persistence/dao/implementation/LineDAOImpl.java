@@ -19,15 +19,15 @@ public class LineDAOImpl extends AbstractDAO implements LineDAO{
 	@Override
 	public Line create(Line toCreate) {
 		Session session = sessionFactory.getCurrentSession();
-		Transaction tx = session.beginTransaction();
+		
 		
 		try{
 			session.persist(toCreate);
-			tx.commit();
+			
 		}catch(HibernateException e){
 			e.printStackTrace();
 			toCreate = null;
-			tx.rollback();
+			
 		}
 		return toCreate;
 	}
@@ -37,9 +37,9 @@ public class LineDAOImpl extends AbstractDAO implements LineDAO{
 		Line readed = null;
 		if(toRead != null && toRead.getId() != null) {
 			Session session = sessionFactory.getCurrentSession();
-			Transaction transaction = session.beginTransaction();
+			
 			readed = (Line) session.get(Line.class, toRead.getId());
-			transaction.commit();
+			
 		}
 		
 		return readed;
@@ -49,24 +49,24 @@ public class LineDAOImpl extends AbstractDAO implements LineDAO{
 	public List<Line> read() {
 		List<Line> lines = new ArrayList<Line>();
 		Session session = sessionFactory.getCurrentSession();
-		Transaction transaction = session.beginTransaction();
+		
 		Query query = session.createQuery("from Line");
 		lines = (List<Line>) query.list();
-		transaction.commit();
+		
 		return lines;
 	}
 
 	@Override
 	public Line update(Line toUpdate) {
 		Session session = sessionFactory.getCurrentSession();
-		Transaction tx = session.beginTransaction();
+		
 		try{
 			session.update(toUpdate);
-			tx.commit();
+			
 		}catch(HibernateException e){
 			e.printStackTrace();
 			toUpdate = null;
-			tx.rollback();
+			
 		}
 		return toUpdate;
 	}
@@ -74,16 +74,16 @@ public class LineDAOImpl extends AbstractDAO implements LineDAO{
 	@Override
 	public Line delete(Line toDelete) {
 		Session session = sessionFactory.getCurrentSession();
-		Transaction tx = session.beginTransaction();
+		
 		try{
 			session.delete(toDelete);
-			tx.commit();
+			
 		}catch(HibernateException e){
 			//e.printStackTrace();
 			System.out.println("**********************************************");
 			System.out.println("//////////////////////////////////////////////");
 			toDelete = null;
-			tx.rollback();
+			
 		}
 		return toDelete;
 	}

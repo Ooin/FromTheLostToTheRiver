@@ -25,7 +25,6 @@ public class LineDAOImplTest {
 	ApplicationContext context = new ClassPathXmlApplicationContext("config/spring-config.xml");
 	
 	private Integer EXISTING_ID = 1;
-	//private Integer EXISTING_TRANSPORT = 12;
 	
 	@Before
 	public void init(){

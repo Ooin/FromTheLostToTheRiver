@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.river.business.service.interfaces.RouteStepService;
 import com.river.entity.RouteStep;
@@ -24,6 +25,7 @@ public class RouteStepServiceImpl implements RouteStepService{
 	}
 
 	@Override
+	@Transactional
 	public RouteStep create(RouteStep toCreate) {
 		RouteStep routeStep = null;
 		if (toCreate.getRoute() != null && toCreate.getOrigin() != null && toCreate.getDestiny() != null) {
@@ -38,6 +40,8 @@ public class RouteStepServiceImpl implements RouteStepService{
 	}
 
 	@Override
+	@Transactional
+
 	public RouteStep read(RouteStep toRead) {
 		RouteStep rafter = null;
 		if(toRead != null && toRead.getId() != null){
@@ -47,11 +51,14 @@ public class RouteStepServiceImpl implements RouteStepService{
 	}
 
 	@Override
+	@Transactional
 	public List<RouteStep> read() {
 		return rafterDAO.read();
 	}
 
 	@Override
+	@Transactional
+
 	public RouteStep update(RouteStep toUpdate) {
 		RouteStep rafter = null;
 		if(toUpdate != null && toUpdate.getId() != null){
@@ -61,6 +68,8 @@ public class RouteStepServiceImpl implements RouteStepService{
 	}
 
 	@Override
+	@Transactional
+
 	public RouteStep delete(RouteStep toDelete) {
 		RouteStep rafter = null;
 		if(toDelete != null && toDelete.getId() != null){

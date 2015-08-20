@@ -19,15 +19,15 @@ public class RouteStepDAOImpl extends AbstractDAO  implements RouteStepDAO{
 
 		if (toCreate.getRoute() != null && toCreate.getOrigin() != null && toCreate.getDestiny() != null) {
 			Session session = sessionFactory.getCurrentSession();
-			Transaction tx = session.beginTransaction();
+			
 
 			try {
 				session.persist(toCreate);
-				tx.commit();
+				
 			} catch (HibernateException e) {
 				e.printStackTrace();
 				toCreate = null;
-				tx.rollback();
+				
 			}
 
 		} else {
@@ -39,9 +39,9 @@ public class RouteStepDAOImpl extends AbstractDAO  implements RouteStepDAO{
 	public RouteStep read(RouteStep toRead) {
 		RouteStep readed = null;
 		Session session = sessionFactory.getCurrentSession();
-		Transaction transaction = session.beginTransaction();
+		
 		readed = (RouteStep) session.get(RouteStep.class, toRead.getId());//(RouteStep) query.list().get(0);
-		transaction.commit();
+		
 		
 		return readed;
 		
@@ -51,10 +51,10 @@ public class RouteStepDAOImpl extends AbstractDAO  implements RouteStepDAO{
 	public List<RouteStep> read() {
 		List<RouteStep> routeSteps = new ArrayList<RouteStep>();
 		Session session = sessionFactory.getCurrentSession();
-		Transaction transaction = session.beginTransaction();
+		
 		Query query = session.createQuery("from RouteStep");
 		routeSteps = (List<RouteStep>) query.list();
-		transaction.commit();
+		
 		return routeSteps;
 	}
 
@@ -64,14 +64,14 @@ public class RouteStepDAOImpl extends AbstractDAO  implements RouteStepDAO{
 			
 			
 			Session session = sessionFactory.getCurrentSession();
-			Transaction tx = session.beginTransaction();
+			
 			try{
 				session.update(toUpdate);
-				tx.commit();
+				
 			}catch(HibernateException e){
 				e.printStackTrace();
 				toUpdate = null;
-				tx.rollback();
+				
 			}
 			}else{
 				toUpdate = null;
@@ -85,14 +85,14 @@ public class RouteStepDAOImpl extends AbstractDAO  implements RouteStepDAO{
 	public RouteStep delete(RouteStep toDelete) {
 		if (toDelete.getId() != null) {
 			Session session = sessionFactory.getCurrentSession();
-			Transaction tx = session.beginTransaction();
+		
 			try{
 				session.delete(toDelete);
-				tx.commit();
+				
 			}catch(HibernateException e){
 				e.printStackTrace();
 				toDelete = null;
-				tx.rollback();
+				
 			}
 		}else{
 			toDelete = null;

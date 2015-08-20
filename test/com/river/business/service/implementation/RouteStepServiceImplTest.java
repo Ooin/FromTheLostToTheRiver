@@ -6,8 +6,13 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.transaction.TransactionConfiguration;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.river.business.service.interfaces.AddressService;
 import com.river.business.service.interfaces.RafterService;
@@ -19,13 +24,18 @@ import com.river.entity.RouteFather;
 import com.river.entity.RouteStep;
 
 
+
+@TransactionConfiguration(defaultRollback = true)
+@ContextConfiguration({ "classpath:config/spring-config.xml" })
+@Transactional  
+@RunWith(SpringJUnit4ClassRunner.class) 
 public class RouteStepServiceImplTest {
 	RouteStepService routeStepService;
 	RouteFatherService routeFatherService;
 	AddressService addressService;
 	RafterService rafterService;
 	RouteStep routeStep;
-	ApplicationContext context = new ClassPathXmlApplicationContext("config/spring-config.xml");
+	ApplicationContext context = new ClassPathXmlApplicationContext("classpath:config/spring-config.xml");
 	Address origin;
 	Address destiny;
 	RouteFather routeFather;
@@ -33,10 +43,10 @@ public class RouteStepServiceImplTest {
 	
 	 @Before
 	 public void initTest(){
-		this.routeStepService = (RouteStepService) context.getBean(RouteStepServiceImpl.class);
-		this.routeFatherService = (RouteFatherService) context.getBean(RouteFatherServiceImpl.class);
-		this.rafterService = (RafterService) context.getBean(RafterServiceImpl.class);
-		this.addressService = (AddressService) context.getBean(AddressServiceImpl.class);
+		this.routeStepService = (RouteStepService) context.getBean("routeStepServiceImpl");
+		this.routeFatherService = (RouteFatherService) context.getBean("routeFatherServiceImpl");
+		this.rafterService = (RafterService) context.getBean("rafterServiceImpl");
+		this.addressService = (AddressService) context.getBean("addressServiceImpl");
 		
 		this.rafter = rafterService.create(new Rafter("testRafter","1234", "testRafter@gmail.com", "9999-99-99"));
 		this.origin = addressService.create( new Address(11111,"street", "alcalde barnils"));

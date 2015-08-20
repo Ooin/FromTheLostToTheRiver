@@ -56,9 +56,9 @@ public class TestingClass {
 		service.read(rafter);
 		List<RouteFather> list = rafter.getRoutes();
 		for(RouteFather r: list){
-			if(r.getTitle().equals("paco")){
+			
 				System.out.println(r);
-			}
+			
 		}
 		
 		

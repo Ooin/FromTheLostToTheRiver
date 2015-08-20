@@ -19,14 +19,11 @@ public class AddressDAOImpl extends AbstractDAO implements AddressDAO {
 
 	public Address create(Address toCreate) {
 		Session session = sessionFactory.getCurrentSession();
-		Transaction tx = session.beginTransaction();
 		try {
 			session.persist(toCreate);
-			tx.commit();
 		} catch (HibernateException e) {
 			e.printStackTrace();
 			toCreate = null;
-			tx.rollback();
 		}
 		return toCreate;
 	}
@@ -34,11 +31,7 @@ public class AddressDAOImpl extends AbstractDAO implements AddressDAO {
 	public Address read(Address toRead) {
 		Address readed = null;
 		Session session = sessionFactory.getCurrentSession();
-		Transaction transaction = session.beginTransaction();
-		readed = (Address) session.get(Address.class, toRead.getId());// (Rafter)
-																		// query.list().get(0);
-		transaction.commit();
-
+		readed = (Address) session.get(Address.class, toRead.getId());
 		return readed;
 
 	}
@@ -47,10 +40,8 @@ public class AddressDAOImpl extends AbstractDAO implements AddressDAO {
 	public List<Address> read() {
 		List<Address> addresses = new ArrayList<Address>();
 		Session session = sessionFactory.getCurrentSession();
-		Transaction transaction = session.beginTransaction();
 		Query query = session.createQuery("from Address");
 		addresses = (List<Address>) query.list();
-		transaction.commit();
 		return addresses;
 	}
 
@@ -59,14 +50,11 @@ public class AddressDAOImpl extends AbstractDAO implements AddressDAO {
 		if (toUpdate.getId() != null) {
 
 			Session session = sessionFactory.getCurrentSession();
-			Transaction tx = session.beginTransaction();
 			try {
 				session.update(toUpdate);
-				tx.commit();
 			} catch (HibernateException e) {
 				e.printStackTrace();
 				toUpdate = null;
-				tx.rollback();
 			}
 		} else {
 			toUpdate = null;
@@ -78,14 +66,11 @@ public class AddressDAOImpl extends AbstractDAO implements AddressDAO {
 	public Address delete(Address toDelete) {
 		if (toDelete.getId() != null) {
 			Session session = sessionFactory.getCurrentSession();
-			Transaction tx = session.beginTransaction();
 			try {
 				session.delete(toDelete);
-				tx.commit();
 			} catch (HibernateException e) {
 				e.printStackTrace();
 				toDelete = null;
-				tx.rollback();
 			}
 		} else {
 			toDelete = null;

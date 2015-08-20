@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -14,19 +14,29 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.river.entity.Line;
 import com.river.entity.Transport;
 import com.river.persistence.dao.interfaces.LineDAO;
+import com.river.persistence.dao.interfaces.TransportDAO;
 
 public class LineDAOImplTest {
 	
 	LineDAO lineDAO;
+	TransportDAO transportDAO;
+	Transport transport;
 	Line line;
 	ApplicationContext context = new ClassPathXmlApplicationContext("config/spring-config.xml");
 	
 	private Integer EXISTING_ID = 1;
-	private static final Integer EXISTING_TRANSPORT = 1;
 	
 	@Before
 	public void init(){
 		lineDAO = context.getBean(LineDAOImpl.class);
+		transportDAO = context.getBean(TransportDAOImpl.class);
+		transport = transportDAO.create(new Transport("Cercanias" +  new Random().nextInt()));
+	}
+	
+	@After
+	public void after(){
+		transportDAO.delete(transport);
+		if(line!=null && line.getId() != null) lineDAO.delete(line);
 	}
 	
 	
@@ -50,7 +60,7 @@ public class LineDAOImplTest {
 	
 	@Test
 	public void createGetAnAcceptableObject(){
-		line = new Line("R"+new Random().nextInt(), new Transport(1));
+		line = new Line("R"+new Random().nextInt(), transport);
 		line = lineDAO.create(line);
 		
 		Assert.assertNotNull("When the values inserted are acceptable the return value must be not null", line);
@@ -78,7 +88,7 @@ public class LineDAOImplTest {
 	@Test
 	public void readGetsACorrectObject(){
 		//Preparing the test
-		Line aux = lineDAO.create(new Line("R"+ new Random().nextInt(), new Transport(EXISTING_TRANSPORT)));
+		Line aux = lineDAO.create(new Line("R"+ new Random().nextInt(), transport));
 		EXISTING_ID = aux.getId();
 		
 		line = new Line(EXISTING_ID);
@@ -90,10 +100,15 @@ public class LineDAOImplTest {
 	
 	@Test
 	public void readGetsNoParameter(){
+		
+		Line aux = lineDAO.create(new Line("R8", transport));
+		
 		List<Line> lines = new ArrayList<Line>();
 		lines = lineDAO.read();
 		
 		Assert.assertFalse("If there are any lines in the database, the return must be a populated list", lines.isEmpty());
+		
+		lineDAO.delete(aux);
 	}
 	
 //	 * Update
@@ -104,7 +119,7 @@ public class LineDAOImplTest {
 	@Test
 	public void updateGetsAnExistingLine(){
 		//Preparing the test
-		Line aux = lineDAO.create(new Line("R"+ new Random().nextInt(), new Transport(EXISTING_TRANSPORT)));
+		Line aux = lineDAO.create(new Line("R"+ new Random().nextInt(), transport));
 		EXISTING_ID = aux.getId();
 		
 		line = new Line(EXISTING_ID);
@@ -112,7 +127,7 @@ public class LineDAOImplTest {
 		
 		Assert.assertNull("If the parameters are no ok object can't be updated", line);
 
-		line = new Line(EXISTING_ID, "R"+new Random().nextInt(), new Transport(EXISTING_TRANSPORT));
+		line = new Line(EXISTING_ID, "R"+new Random().nextInt(), transport);
 		line = lineDAO.update(line);
 		
 		Assert.assertNotNull("If the parameters are ok object is updated", line);
@@ -134,7 +149,7 @@ public class LineDAOImplTest {
 	@Test
 	public void deleteGetsAnExistingLine(){
 		//Preparing the test
-		Line aux = lineDAO.create(new Line("R"+ new Random().nextInt(), new Transport(EXISTING_TRANSPORT)));
+		Line aux = lineDAO.create(new Line("R"+ new Random().nextInt(), transport));
 		EXISTING_ID = aux.getId();
 		
 		line = new Line(EXISTING_ID);
@@ -151,5 +166,4 @@ public class LineDAOImplTest {
 		
 		Assert.assertNull("If the line deoesn't exists, the return must be null", line);
 	}
-
 }

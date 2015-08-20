@@ -2,11 +2,17 @@ package com.river.business.service.implementation;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.river.business.service.interfaces.RouteStepService;
 import com.river.entity.RouteStep;
 import com.river.persistence.dao.interfaces.RouteStepDAO;
 
+@Service
 public class RouteStepServiceImpl implements RouteStepService{
+	
+	@Autowired
 	RouteStepDAO rafterDAO;
 	
 	public RouteStepDAO getRouteStepDAO() {

@@ -7,10 +7,12 @@ import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Service;
 
 import com.river.entity.Rate;
 import com.river.persistence.dao.interfaces.RateDAO;
 
+@Service
 public class RateDAOImpl extends AbstractDAO implements RateDAO {
 
 	@Override

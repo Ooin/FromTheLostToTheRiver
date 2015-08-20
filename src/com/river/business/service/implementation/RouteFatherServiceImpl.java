@@ -2,13 +2,18 @@ package com.river.business.service.implementation;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.river.business.service.interfaces.RouteFatherService;
 import com.river.entity.Address;
 import com.river.entity.RouteFather;
 import com.river.persistence.dao.interfaces.RouteFatherDAO;
 
+@Service
 public class RouteFatherServiceImpl implements RouteFatherService {
 
+	@Autowired
 	RouteFatherDAO routeFatherDAO;
 	
 	public RouteFatherDAO getRouteFatherDAO() {

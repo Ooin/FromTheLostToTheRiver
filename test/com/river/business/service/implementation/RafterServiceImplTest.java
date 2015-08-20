@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.river.business.service.interfaces.RafterService;
 import com.river.entity.Rafter;
@@ -20,14 +21,14 @@ public class RafterServiceImplTest {
 	Rafter rafter;
 	ApplicationContext context = new ClassPathXmlApplicationContext("config/spring-config.xml");
 	
-	 @Before
+	 
 	 public void initTest(){
-		 rafterService = (RafterService) context.getBean(RafterServiceImpl.class);
+		rafterService = (RafterService) context.getBean("rafterServiceImpl");
 		this.rafter = new Rafter("testRafter","1234", "testRafter@gmail.com", "9999-99-99");
 		rafterService.create(rafter);
 	 }
 	 
-	 @After
+	
 	 public void deleteRows(){
 		 rafterService.delete(this.rafter);
 	 }
@@ -39,6 +40,7 @@ public class RafterServiceImplTest {
 	 //add a new rafter
 	 @Test
 	 public void addANonExistingRafter(){
+		 System.out.println(rafterService.toString());
 		 Rafter test = rafterService.create(new Rafter("capullo","12354", "testRaft3er@gmail.com", "9999-99-99"));
 		 Assert.assertNotNull("it should returns not null", test);
 		 rafterService.delete(test);

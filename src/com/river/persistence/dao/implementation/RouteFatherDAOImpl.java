@@ -7,12 +7,14 @@ import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Service;
 
 import com.river.entity.Address;
-import com.river.entity.Rafter;
 import com.river.entity.RouteFather;
 import com.river.persistence.dao.interfaces.RouteFatherDAO;
 
+
+@Service
 public class RouteFatherDAOImpl extends AbstractDAO implements RouteFatherDAO {
 
 	public RouteFather create(RouteFather toCreate) {
@@ -101,7 +103,5 @@ public class RouteFatherDAOImpl extends AbstractDAO implements RouteFatherDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-
-
+	
 }

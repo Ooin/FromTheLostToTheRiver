@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.river.business.service.interfaces.RouteFatherService;
 import com.river.entity.Address;
@@ -25,6 +26,7 @@ public class RouteFatherServiceImpl implements RouteFatherService {
 	}
 
 	@Override
+	@Transactional
 	public RouteFather create(RouteFather toCreate) {
 		RouteFather routeFather = null;
 		if(toCreate != null){
@@ -34,6 +36,8 @@ public class RouteFatherServiceImpl implements RouteFatherService {
 	}
 
 	@Override
+	@Transactional
+
 	public RouteFather read(RouteFather toRead) {
 		RouteFather routeFather = null;
 		if(toRead != null && toRead.getId() != null){
@@ -43,11 +47,15 @@ public class RouteFatherServiceImpl implements RouteFatherService {
 	}
 
 	@Override
+	@Transactional
+
 	public List<RouteFather> read() {
 		return routeFatherDAO.read();
 	}
 
 	@Override
+	@Transactional
+
 	public RouteFather update(RouteFather toUpdate) {
 		RouteFather routeFather = null;
 		if(toUpdate != null && toUpdate.getId() != null){
@@ -57,6 +65,8 @@ public class RouteFatherServiceImpl implements RouteFatherService {
 	}
 
 	@Override
+	@Transactional
+
 	public RouteFather delete(RouteFather toDelete) {
 		RouteFather routeFather = null;
 		if(toDelete != null && toDelete.getId() != null){
@@ -66,9 +76,23 @@ public class RouteFatherServiceImpl implements RouteFatherService {
 	}
 
 	@Override
+	@Transactional
+
 	public List<RouteFather> listMatchingRoutes(Address address) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public RouteFather readRouteFatherWithRatesList(RouteFather routeFather) {
+		
+		return routeFatherDAO.readRouteFatherWithRatesList(routeFather);
+	}
+
+	@Override
+	public RouteFather readRouteFatherWithStepsList(RouteFather routeFather) {
+		
+		return routeFatherDAO.readRouteFatherWithStepsList(routeFather);
 	}
 
 }

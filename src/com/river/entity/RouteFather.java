@@ -76,6 +76,23 @@ public class RouteFather {
 		this.creator = creator;
 	}
 
+	
+	public List<Rate> getRates() {
+		return rates;
+	}
+
+	public void setRates(List<Rate> rates) {
+		this.rates = rates;
+	}
+
+	public List<RouteStep> getRouteSteps() {
+		return routeSteps;
+	}
+
+	public void setRouteSteps(List<RouteStep> routeSteps) {
+		this.routeSteps = routeSteps;
+	}
+
 	public Integer getId() {
 		return id;
 	}

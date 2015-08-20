@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.river.business.service.interfaces.TransportService;
 import com.river.entity.Transport;
@@ -24,28 +25,58 @@ public class TransportServiceImpl implements TransportService {
 	}
 
 	@Override
+	@Transactional
 	public Transport create(Transport toCreate) {
-		return transportDAO.create(toCreate);
+		Transport transport = null;
+		if (toCreate != null) {
+			transport = transportDAO.create(toCreate);
+		}
+		return transport;
 	}
 
 	@Override
+	@Transactional
 	public Transport read(Transport toRead) {
-		return transportDAO.read(toRead);
+		Transport transport = null;
+		if (toRead != null) {
+			transport = transportDAO.read(toRead);
+		}
+		return transport;
 	}
 
 	@Override
+	@Transactional
 	public List<Transport> read() {
 		return transportDAO.read();
 	}
 
 	@Override
+	@Transactional
 	public Transport update(Transport toUpdate) {
-		return transportDAO.update(toUpdate);
+		Transport transport = null;
+		if (toUpdate != null) {
+			transport = transportDAO.update(toUpdate);
+		}
+		return transport;
 	}
 
 	@Override
+	@Transactional
 	public Transport delete(Transport toDelete) {
-		return transportDAO.delete(toDelete);
+		Transport transport = null;
+		if (toDelete != null) {
+			transport = transportDAO.delete(toDelete);
+		}
+		return transport;
+	}
+
+	@Override
+	public Transport readWithInitializedLineslist(Transport transport) {
+		Transport read = null;
+		if (transport != null) {
+			read = transportDAO.readWithInitializedLineslist(transport);
+		}
+		return read;
 	}
 
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,22 +23,26 @@ public class Transport {
 	@Column(name = "name")
 	private String name;
 
-	@OneToMany(mappedBy = "transport")
+	@OneToMany(mappedBy = "transport", fetch = FetchType.LAZY)
 	private List<Line> lines;
 
-	
 	public Transport() {
 		super();
+	}
+
+	public Transport(Integer id) {
+		super();
+		this.id = id;
+	}
+
+	public Transport(String name) {
+		super();
+		this.name = name;
 	}
 
 	public Transport(Integer id, String name) {
 		super();
 		this.id = id;
-		this.name = name;
-	}
-
-	public Transport(String name) {
-		super();
 		this.name = name;
 	}
 
@@ -59,11 +64,6 @@ public class Transport {
 
 	public List<Line> getLines() {
 		return lines;
-	}
-
-	public Transport(Integer id) {
-		super();
-		this.id = id;
 	}
 
 	public void setLines(List<Line> lines) {

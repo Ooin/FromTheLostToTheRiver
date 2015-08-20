@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,8 +33,11 @@ public class Rafter {
 	@Column(name = "registerDate")
 	private String registerDate;
 
-	@OneToMany(mappedBy = "creator")
+	@OneToMany(mappedBy = "creator", fetch = FetchType.LAZY)
 	private List<Rate> rates;
+	
+	@OneToMany(mappedBy = "creator", fetch = FetchType.LAZY)
+	private List<RouteFather> routes;
 
 	public Rafter() {
 		super();
@@ -100,6 +104,24 @@ public class Rafter {
 
 	public void setRegisterDate(String registerDate) {
 		this.registerDate = registerDate;
+	}
+
+	
+	
+	public List<Rate> getRates() {
+		return rates;
+	}
+
+	public void setRates(List<Rate> rates) {
+		this.rates = rates;
+	}
+
+	public List<RouteFather> getRoutes() {
+		return routes;
+	}
+
+	public void setRoutes(List<RouteFather> routes) {
+		this.routes = routes;
 	}
 
 	@Override

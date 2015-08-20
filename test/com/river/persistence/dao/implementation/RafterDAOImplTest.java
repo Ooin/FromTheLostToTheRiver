@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.river.entity.Rafter;
 import com.river.persistence.dao.implementation.RafterDAOImpl;
@@ -80,8 +81,11 @@ public class RafterDAOImplTest {
 		@Test
 		public void readAnExistingRafter(){
 			this.rafter = rafterDAO.read(rafter);
-			Assert.assertNotNull("it should returns not null", this.rafter);
+			int id = this.rafter.getId();
+			Rafter rafter = new Rafter(id);
+			Assert.assertNotNull("it should returns not null", rafter);
 		}
+		
 		
 		 //read a non existing rafter list
 		@Test

@@ -7,10 +7,12 @@ import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Service;
 
 import com.river.entity.Stop;
 import com.river.persistence.dao.interfaces.StopDAO;
 
+@Service
 public class StopDAOImpl extends AbstractDAO implements StopDAO {
 
 	@Override

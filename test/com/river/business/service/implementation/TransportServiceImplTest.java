@@ -23,7 +23,7 @@ public class TransportServiceImplTest {
 	public void initTest() {
 		this.transport = new Transport("Linea 2 metro");
 		this.transportNull = new Transport(null, null);
-		transportService = (TransportService) context.getBean(TransportServiceImpl.class);
+		transportService = (TransportService) context.getBean("transportServiceImpl");
 	}
 
 	// ############## CREATE ##############

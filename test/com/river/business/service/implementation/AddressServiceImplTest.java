@@ -19,7 +19,7 @@ public class AddressServiceImplTest {
 	
 	 @Before
 	 public void initTest(){
-		addressService = (AddressService) context.getBean(AddressServiceImpl.class);
+		addressService = (AddressService) context.getBean("addressServiceImpl");
 		this.address = new Address(11111,"street", "alcalde barnils");
 		addressService.create(this.address);
 	 }

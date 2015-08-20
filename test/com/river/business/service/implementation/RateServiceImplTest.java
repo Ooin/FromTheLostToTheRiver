@@ -30,7 +30,7 @@ public class RateServiceImplTest {
 		route = new RouteFather(1, "Buena ruta", "description", "hashTag", "timeStamp", creator);
 		rate = new Rate(creator, route, "Me gusta");
 		rateNull = new Rate(null, null, null);
-		rateService = context.getBean(RateServiceImpl.class);
+		rateService = (RateService) context.getBean("rateServiceImpl");
 	}
 
 	// ############## CREATE ##############

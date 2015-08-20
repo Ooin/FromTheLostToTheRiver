@@ -7,10 +7,12 @@ import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Service;
 
 import com.river.entity.Transport;
 import com.river.persistence.dao.interfaces.TransportDAO;
 
+@Service
 public class TransportDAOImpl extends AbstractDAO implements TransportDAO {
 
 	@Override

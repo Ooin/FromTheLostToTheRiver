@@ -17,28 +17,28 @@ public class Line {
 	@Column(name="id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	@Column(name="name")
 	private String name;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "transportId")
 	Transport transport;
-	
+
 	public Line(Integer id, String name, Transport transport) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.transport = transport;
 	}
-	
+
 	public Line(String name, Transport transport) {
 		super();
-		
+
 		this.name = name;
 		this.transport = transport;
 	}
-	
+
 	public Line(Integer id) {
 		super();
 		this.id = id;
@@ -46,7 +46,7 @@ public class Line {
 	public Line() {
 		super();
 	}
-	
+
 	public Integer getId() {
 		return id;
 	}
@@ -109,6 +109,6 @@ public class Line {
 		builder.append("]");
 		return builder.toString();
 	}
-	
-	
+
+
 }

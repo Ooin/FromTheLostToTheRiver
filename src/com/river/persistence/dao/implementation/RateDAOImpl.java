@@ -56,7 +56,7 @@ public class RateDAOImpl extends AbstractDAO implements RateDAO {
 	public Rate update(Rate toUpdate) {
 		Session session = sessionFactory.getCurrentSession();
 		try {
-			session.update(toUpdate);
+			session.save(toUpdate);
 		} catch (HibernateException e) {
 			e.printStackTrace();
 			toUpdate = null;

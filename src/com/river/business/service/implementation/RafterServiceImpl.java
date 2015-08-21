@@ -15,7 +15,7 @@ public class RafterServiceImpl implements RafterService{
 
 	@Autowired
 	RafterDAO rafterDAO;
-	
+
 	public RafterDAO getRafterDAO() {
 		return rafterDAO;
 	}
@@ -70,7 +70,7 @@ public class RafterServiceImpl implements RafterService{
 		return rafter;
 	}
 
-	
+
 	@Override
 	@Transactional
 	public Rafter readWithInitializedRateslist(Rafter rafter) {

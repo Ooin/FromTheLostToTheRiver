@@ -16,7 +16,7 @@ public class RouteFatherServiceImpl implements RouteFatherService {
 
 	@Autowired
 	RouteFatherDAO routeFatherDAO;
-	
+
 	public RouteFatherDAO getRouteFatherDAO() {
 		return routeFatherDAO;
 	}
@@ -85,13 +85,13 @@ public class RouteFatherServiceImpl implements RouteFatherService {
 
 	@Override
 	public RouteFather readRouteFatherWithRatesList(RouteFather routeFather) {
-		
+
 		return routeFatherDAO.readRouteFatherWithRatesList(routeFather);
 	}
 
 	@Override
 	public RouteFather readRouteFatherWithStepsList(RouteFather routeFather) {
-		
+
 		return routeFatherDAO.readRouteFatherWithStepsList(routeFather);
 	}
 

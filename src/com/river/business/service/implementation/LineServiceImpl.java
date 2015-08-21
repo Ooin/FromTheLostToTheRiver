@@ -12,10 +12,10 @@ import com.river.persistence.dao.interfaces.LineDAO;
 
 @Service
 public class LineServiceImpl implements LineService {
-	
+
 	@Autowired
 	LineDAO lineDAO;
-	
+
 	public LineDAO getLineDAO() {
 		return lineDAO;
 	}

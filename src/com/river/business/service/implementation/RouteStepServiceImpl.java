@@ -28,7 +28,7 @@ public class RouteStepServiceImpl implements RouteStepService{
 	@Transactional
 	public RouteStep create(RouteStep toCreate) {
 		RouteStep routeStep = null;
-		if (toCreate.getRoute() != null && toCreate.getOrigin() != null && toCreate.getDestiny() != null) {
+		if (toCreate.getOrigin() != null && toCreate.getDestiny() != null) {
 
 			if(toCreate != null){
 				routeStep = rafterDAO.create(toCreate);

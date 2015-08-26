@@ -1,11 +1,15 @@
 package com.river.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -18,9 +22,8 @@ public class RouteStep {
 	@Column(name="id")
 	private Integer id;
 	
-	@ManyToOne
-	@JoinColumn(name="route")
-	private RouteFather route;
+	@ManyToMany(mappedBy ="routeSteps")
+	private List<RouteFather> routeFathers;
 	
 	@ManyToOne
 	@JoinColumn(name="origin")
@@ -38,19 +41,17 @@ public class RouteStep {
 		this.id = id;
 	}
 	
-	public RouteStep(Integer id, RouteFather route, Address origin, Address destiny) {
+	public RouteStep(Integer id, Address origin, Address destiny) {
 		super();
 		this.id = id;
-		this.route = route;
 		this.origin = origin;
 		this.destiny = destiny;
 	}
 	
 	
 
-	public RouteStep(RouteFather route, Address origin, Address destiny) {
+	public RouteStep(Address origin, Address destiny) {
 		super();
-		this.route = route;
 		this.origin = origin;
 		this.destiny = destiny;
 	}
@@ -63,12 +64,13 @@ public class RouteStep {
 		this.id = id;
 	}
 
-	public RouteFather getRoute() {
-		return route;
+	
+	public List<RouteFather> getRouteFathers() {
+		return routeFathers;
 	}
 
-	public void setRoute(RouteFather route) {
-		this.route = route;
+	public void setRouteFathers(List<RouteFather> routeFathers) {
+		this.routeFathers = routeFathers;
 	}
 
 	public Address getOrigin() {

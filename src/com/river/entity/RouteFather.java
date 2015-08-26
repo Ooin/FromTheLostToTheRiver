@@ -5,10 +5,13 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -41,7 +44,14 @@ public class RouteFather {
 		this.rates.add(rate);
 	}
 	
-	@OneToMany(mappedBy ="route")
+	@ManyToMany( fetch= FetchType.EAGER)
+	@JoinTable(name = "STEPROUTE",
+		joinColumns = {
+			@JoinColumn(name="fatherId", referencedColumnName="id")
+	},
+	inverseJoinColumns = {
+			@JoinColumn(name = "stepId", referencedColumnName = "id")
+	})           
 	List<RouteStep> routeSteps = new ArrayList<>();
 	
 	public void addRouteStep(RouteStep routeStep){

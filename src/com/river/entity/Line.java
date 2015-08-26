@@ -1,11 +1,17 @@
 package com.river.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -24,6 +30,16 @@ public class Line {
 	@ManyToOne
 	@JoinColumn(name = "transportId")
 	Transport transport;
+	
+	@ManyToMany(fetch= FetchType.EAGER)
+	@JoinTable(name = "STOPLINE",
+		joinColumns = {
+			@JoinColumn(name="lineId", referencedColumnName="id")
+	},
+	inverseJoinColumns = {
+			@JoinColumn(name = "stopId", referencedColumnName = "id")
+	})           
+	List<Stop> stops = new ArrayList<>();
 
 	public Line(Integer id, String name, Transport transport) {
 		super();
@@ -59,6 +75,16 @@ public class Line {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	
+	public List<Stop> getStops() {
+		return stops;
+	}
+
+	public void setStops(List<Stop> stops) {
+		this.stops = stops;
+	}
+
 	public Transport getTransport() {
 		return transport;
 	}

@@ -37,7 +37,7 @@ public class RouteFacade extends Facade{
 		List<RouteFather> matchRoutes = new ArrayList<>();
 		
 		for(RouteFather r: routes){
-			if (r.get)
+			//if (r.get)
 		}
 		return new RouteFather();
 	}

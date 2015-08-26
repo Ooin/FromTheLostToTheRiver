@@ -17,7 +17,7 @@ public class RouteStepDAOImpl extends AbstractDAO  implements RouteStepDAO{
 
 	public RouteStep create(RouteStep toCreate) {
 
-		if (toCreate.getRoute() != null && toCreate.getOrigin() != null && toCreate.getDestiny() != null) {
+		if (toCreate.getOrigin() != null && toCreate.getDestiny() != null) {
 			Session session = sessionFactory.getCurrentSession();
 			
 

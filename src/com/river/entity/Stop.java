@@ -1,11 +1,15 @@
 package com.river.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -22,6 +26,29 @@ public class Stop {
 	@ManyToOne
 	@JoinColumn(name="addressId")
 	private Address address;
+
+	@ManyToMany(mappedBy="stops",fetch= FetchType.EAGER)
+	private List<Line> lines;
+	
+	
+	
+	
+	
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	public List<Line> getLines() {
+		return lines;
+	}
+
+	public void setLines(List<Line> lines) {
+		this.lines = lines;
+	}
 
 	public Stop(Integer id) {
 		super();

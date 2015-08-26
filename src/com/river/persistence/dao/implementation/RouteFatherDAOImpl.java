@@ -45,7 +45,6 @@ public class RouteFatherDAOImpl extends AbstractDAO implements RouteFatherDAO {
 		
 		readed = (RouteFather) session.get(RouteFather.class, toRead.getId());// (RouteFather)
 																				// query.list().get(0);
-		
 
 		return readed;
 

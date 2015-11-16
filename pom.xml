@@ -5,6 +5,8 @@
    <artifactId>FromTheLostToTheRiver</artifactId>
    <version>0.0.1-SNAPSHOT</version>
    <build>
+   
+   <!-- achuuus -->
       <sourceDirectory>src</sourceDirectory>
       <plugins>
          <plugin>

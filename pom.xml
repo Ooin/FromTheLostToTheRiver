@@ -5,7 +5,7 @@
    <artifactId>FromTheLostToTheRiver</artifactId>
    <version>0.0.1-SNAPSHOT</version>
    <build>
-   	<!-- -->
+   	<!-- --> echo
       <sourceDirectory>src</sourceDirectory>
       <plugins>
          <plugin>

@@ -5,14 +5,21 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.river.entity.Rafter;
-import com.river.persistence.dao.implementation.RafterDAOImpl;
 import com.river.persistence.dao.interfaces.RafterDAO;
 
+@TransactionConfiguration(defaultRollback = true)
+@ContextConfiguration({ "classpath:config/spring-config.xml" })
+@Transactional  
+@RunWith(SpringJUnit4ClassRunner.class)  
 public class RafterDAOImplTest {
 	
 	RafterDAO rafterDAO;
@@ -37,6 +44,7 @@ public class RafterDAOImplTest {
 	 
 	 //add a new rafter
 	 @Test
+	 @Transactional
 	 public void addANonExistingRafter(){
 		 Rafter test = rafterDAO.create(new Rafter("capullo","12354", "testRaft3er@gmail.com", "9999-99-99"));
 		 Assert.assertNotNull("it should returns not null", test);

@@ -3,6 +3,7 @@ package com.river.persistence.dao.implementation;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -11,26 +12,25 @@ import org.springframework.stereotype.Service;
 
 import com.river.entity.Address;
 import com.river.entity.RouteFather;
-import com.river.persistence.dao.interfaces.DAO;
 import com.river.persistence.dao.interfaces.RouteFatherDAO;
 
 
 @Service
 public class RouteFatherDAOImpl extends AbstractDAO implements RouteFatherDAO {
 
-
+	@Override
 	public RouteFather create(RouteFather toCreate) {
 
 		if (toCreate.getCreator() != null) {
 			Session session = sessionFactory.getCurrentSession();
-			Transaction tx = session.beginTransaction();
+			
 			try {
 				session.persist(toCreate);
-				tx.commit();
+				
 			} catch (HibernateException e) {
 				e.printStackTrace();
 				toCreate = null;
-				tx.rollback();
+				
 			}
 		} else {
 			toCreate = null;
@@ -38,42 +38,44 @@ public class RouteFatherDAOImpl extends AbstractDAO implements RouteFatherDAO {
 		return toCreate;
 	}
 
+	@Override
 	public RouteFather read(RouteFather toRead) {
 		RouteFather readed = null;
 		Session session = sessionFactory.getCurrentSession();
-		Transaction transaction = session.beginTransaction();
+		
 		readed = (RouteFather) session.get(RouteFather.class, toRead.getId());// (RouteFather)
 																				// query.list().get(0);
-		transaction.commit();
 
 		return readed;
 
 	}
 
+	@Override
 	@SuppressWarnings("unchecked")
 	public List<RouteFather> read() {
 		List<RouteFather> routeFathers = new ArrayList<RouteFather>();
 		Session session = sessionFactory.getCurrentSession();
-		Transaction transaction = session.beginTransaction();
+		
 		Query query = session.createQuery("from RouteFather");
 		routeFathers = (List<RouteFather>) query.list();
-		transaction.commit();
+		
 		return routeFathers;
 	}
 
+	@Override
 	public RouteFather update(RouteFather toUpdate) {
 
 		if (toUpdate.getId() != null) {
 
 			Session session = sessionFactory.getCurrentSession();
-			Transaction tx = session.beginTransaction();
+			
 			try {
 				session.update(toUpdate);
-				tx.commit();
+				
 			} catch (HibernateException e) {
 				e.printStackTrace();
 				toUpdate = null;
-				tx.rollback();
+				
 			}
 		} else {
 			toUpdate = null;
@@ -82,17 +84,18 @@ public class RouteFatherDAOImpl extends AbstractDAO implements RouteFatherDAO {
 		return toUpdate;
 	}
 
+	@Override
 	public RouteFather delete(RouteFather toDelete) {
 		if (toDelete.getId() != null) {
 			Session session = sessionFactory.getCurrentSession();
-			Transaction tx = session.beginTransaction();
+			
 			try {
 				session.delete(toDelete);
-				tx.commit();
+			
 			} catch (HibernateException e) {
 				e.printStackTrace();
 				toDelete = null;
-				tx.rollback();
+				
 			}
 		} else {
 			toDelete = null;
@@ -106,4 +109,27 @@ public class RouteFatherDAOImpl extends AbstractDAO implements RouteFatherDAO {
 		return null;
 	}
 
+	@Override
+	public RouteFather readRouteFatherWithRatesList(RouteFather routeFather) {
+		RouteFather readed = null;
+		Session session = sessionFactory.getCurrentSession();
+		
+		readed = (RouteFather) session.get(RouteFather.class, routeFather.getId());// (RouteFather)
+																				// query.list().get(0);
+		Hibernate.initialize(readed);
+		Hibernate.initialize(readed.getRates());
+
+		return readed;
+	}
+
+	@Override
+	public RouteFather readRouteFatherWithStepsList(RouteFather routeFather) {
+		RouteFather readed = null;
+		Session session = sessionFactory.getCurrentSession();
+		readed = (RouteFather) session.get(RouteFather.class, routeFather.getId());
+		Hibernate.initialize(readed);
+		Hibernate.initialize(readed.getRouteSteps());
+		return readed;
+	}
+	
 }

@@ -1,13 +1,18 @@
 package com.river.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -18,28 +23,38 @@ public class Line {
 	@Column(name="id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	@Column(name="name")
 	private String name;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "transportId")
 	Transport transport;
 	
+	@ManyToMany(fetch= FetchType.EAGER)
+	@JoinTable(name = "STOPLINE",
+		joinColumns = {
+			@JoinColumn(name="lineId", referencedColumnName="id")
+	},
+	inverseJoinColumns = {
+			@JoinColumn(name = "stopId", referencedColumnName = "id")
+	})           
+	List<Stop> stops = new ArrayList<>();
+
 	public Line(Integer id, String name, Transport transport) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.transport = transport;
 	}
-	
+
 	public Line(String name, Transport transport) {
 		super();
-		
+
 		this.name = name;
 		this.transport = transport;
 	}
-	
+
 	public Line(Integer id) {
 		super();
 		this.id = id;
@@ -47,7 +62,7 @@ public class Line {
 	public Line() {
 		super();
 	}
-	
+
 	public Integer getId() {
 		return id;
 	}
@@ -60,6 +75,16 @@ public class Line {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	
+	public List<Stop> getStops() {
+		return stops;
+	}
+
+	public void setStops(List<Stop> stops) {
+		this.stops = stops;
+	}
+
 	public Transport getTransport() {
 		return transport;
 	}
@@ -110,6 +135,6 @@ public class Line {
 		builder.append("]");
 		return builder.toString();
 	}
-	
-	
+
+
 }

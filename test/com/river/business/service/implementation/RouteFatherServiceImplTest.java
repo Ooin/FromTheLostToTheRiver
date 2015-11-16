@@ -6,8 +6,14 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.transaction.TransactionConfiguration;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.river.entity.Rafter;
 import com.river.entity.RouteFather;
 import com.river.persistence.dao.implementation.RafterDAOImpl;
@@ -15,17 +21,21 @@ import com.river.persistence.dao.implementation.RouteFatherDAOImpl;
 import com.river.persistence.dao.interfaces.RafterDAO;
 import com.river.persistence.dao.interfaces.RouteFatherDAO;
 
+@TransactionConfiguration(defaultRollback = true)
+@ContextConfiguration({ "classpath:config/spring-config.xml" })
+@Transactional  
+@RunWith(SpringJUnit4ClassRunner.class)  
 public class RouteFatherServiceImplTest {
 	RouteFatherDAO routeFatherDAO;
 	RafterDAO rafterDAO;
 	RouteFather routeFather;
-	ApplicationContext context = new ClassPathXmlApplicationContext("config/spring-config.xml");
+	ApplicationContext context = new ClassPathXmlApplicationContext("classpath:config/spring-config.xml");
 	Rafter rafter;
 	
 	 @Before
 	 public void initTest(){
-		routeFatherDAO = (RouteFatherDAO) context.getBean(RouteFatherDAOImpl.class);
-		rafterDAO = (RafterDAO) context.getBean(RafterDAOImpl.class);
+		routeFatherDAO = (RouteFatherDAO) context.getBean("routeFatherDAOImpl");
+		rafterDAO = (RafterDAO) context.getBean("rafterDAOImpl");
 		this.rafter = new Rafter("testRafter","1234", "testRafter@gmail.com", "9999-99-99");
 		this.rafter = rafterDAO.create(rafter);
 		this.routeFather = new RouteFather("rutatest2", "desctes2t", "asdfas2","2012-02-02", this.rafter);

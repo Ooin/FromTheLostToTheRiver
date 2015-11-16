@@ -3,7 +3,6 @@ package com.river.business.service.implementation;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,7 +23,7 @@ public class TransportServiceImplTest {
 	public void initTest() {
 		this.transport = new Transport("Linea 2 metro");
 		this.transportNull = new Transport(null, null);
-		transportService = (TransportService) context.getBean(TransportServiceImpl.class);
+		transportService = (TransportService) context.getBean("transportServiceImpl");
 	}
 
 	// ############## CREATE ##############

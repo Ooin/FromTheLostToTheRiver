@@ -8,25 +8,20 @@ import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.river.entity.Rafter;
 import com.river.persistence.dao.interfaces.RafterDAO;
 
 @Service
-public class RafterDAOImpl extends AbstractDAO implements RafterDAO{
-	
-	
-	
+public class RafterDAOImpl extends AbstractDAO implements RafterDAO {
+
 	public Rafter create(Rafter toCreate) {
 		Session session = sessionFactory.getCurrentSession();
-		
-		try{
+
+		try {
 			session.persist(toCreate);
-			
-		}catch(HibernateException e){
+		} catch (HibernateException e) {
 			e.printStackTrace();
 			toCreate = null;
 		}
@@ -36,10 +31,10 @@ public class RafterDAOImpl extends AbstractDAO implements RafterDAO{
 	public Rafter read(Rafter toRead) {
 		Rafter readed = null;
 		Session session = sessionFactory.getCurrentSession();
-		readed = (Rafter) session.get(Rafter.class, toRead.getId());//(Rafter) query.list().get(0);
-		
+		readed = (Rafter) session.get(Rafter.class, toRead.getId());
+
 		return readed;
-		
+
 	}
 
 	@SuppressWarnings("unchecked")
@@ -52,59 +47,63 @@ public class RafterDAOImpl extends AbstractDAO implements RafterDAO{
 	}
 
 	public Rafter update(Rafter toUpdate) {
-		
-		if(toUpdate.getId() != null){
-			
-			
+
+		if (toUpdate.getId() != null) {
+
 			Session session = sessionFactory.getCurrentSession();
-			Transaction tx = session.beginTransaction();
-			try{
+			
+			try {
 				session.update(toUpdate);
-				tx.commit();
-			}catch(HibernateException e){
+				
+			} catch (HibernateException e) {
 				e.printStackTrace();
 				toUpdate = null;
-				tx.rollback();
+				
 			}
-			}else{
-				toUpdate = null;
-			}
-			
-			
-		
+		} else {
+			toUpdate = null;
+		}
+
 		return toUpdate;
 	}
 
 	public Rafter delete(Rafter toDelete) {
 		if (toDelete.getId() != null) {
 			Session session = sessionFactory.getCurrentSession();
-			Transaction tx = session.beginTransaction();
-			try{
+			
+			try {
 				session.delete(toDelete);
-				tx.commit();
-			}catch(HibernateException e){
+				
+			} catch (HibernateException e) {
 				e.printStackTrace();
 				toDelete = null;
-				tx.rollback();
+				
 			}
-		}else{
+		} else {
 			toDelete = null;
 		}
 		return toDelete;
 	}
 
+	
 	@Override
-	public Rafter readWithInitializedlist(Rafter rafter) {
+	public Rafter readWithInitializedRateslist(Rafter rafter) {
 		Rafter readed = null;
 		Session session = sessionFactory.getCurrentSession();
-		readed = (Rafter) session.get(Rafter.class, rafter.getId());//(Rafter) query.list().get(0);
+		readed = (Rafter) session.get(Rafter.class, rafter.getId());
+		Hibernate.initialize(readed);
+		Hibernate.initialize(readed.getRates());
+		return readed;
+	}
+
+	@Override
+	public Rafter readWithInitializedRouteslist(Rafter rafter) {
+		Rafter readed = null;
+		Session session = sessionFactory.getCurrentSession();
+		readed = (Rafter) session.get(Rafter.class, rafter.getId());
 		Hibernate.initialize(readed);
 		Hibernate.initialize(readed.getRoutes());
 		return readed;
 	}
 
-
-	
-	
-	
 }

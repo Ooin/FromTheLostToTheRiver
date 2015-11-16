@@ -2,8 +2,6 @@ package com.river.business.service.implementation;
 
 import java.util.List;
 
-import org.hibernate.Hibernate;
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,7 +15,7 @@ public class RafterServiceImpl implements RafterService{
 
 	@Autowired
 	RafterDAO rafterDAO;
-	
+
 	public RafterDAO getRafterDAO() {
 		return rafterDAO;
 	}
@@ -53,6 +51,7 @@ public class RafterServiceImpl implements RafterService{
 	}
 
 	@Override
+	@Transactional 
 	public Rafter update(Rafter toUpdate) {
 		Rafter rafter = null;
 		if(toUpdate != null && toUpdate.getId() != null){
@@ -62,6 +61,7 @@ public class RafterServiceImpl implements RafterService{
 	}
 
 	@Override
+	@Transactional 
 	public Rafter delete(Rafter toDelete) {
 		Rafter rafter = null;
 		if(toDelete != null && toDelete.getId() != null){
@@ -70,9 +70,16 @@ public class RafterServiceImpl implements RafterService{
 		return rafter;
 	}
 
+
 	@Override
 	@Transactional
-	public Rafter readWithInitializedlist(Rafter rafter){
-		return rafterDAO.readWithInitializedlist(rafter);
+	public Rafter readWithInitializedRateslist(Rafter rafter) {
+		return rafterDAO.readWithInitializedRateslist(rafter);
+	}
+
+	@Override
+	@Transactional
+	public Rafter readWithInitializedRouteslist(Rafter rafter) {
+		return rafterDAO.readWithInitializedRouteslist(rafter);
 	}
 }

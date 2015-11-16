@@ -4,10 +4,10 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -26,12 +26,13 @@ public class Address {
 	@Column(name = "roadName", unique = true)
 	private String roadName;
 
-	@OneToMany(mappedBy = "address")
+	@OneToMany(mappedBy = "address", fetch = FetchType.LAZY)
 	private List<Stop> stops;
 
-	@OneToMany(mappedBy = "origin")
+	@OneToMany(mappedBy = "origin", fetch = FetchType.LAZY)
 	List<RouteStep> origins;
-	@OneToMany(mappedBy = "destiny")
+
+	@OneToMany(mappedBy = "destiny", fetch = FetchType.LAZY)
 	List<RouteStep> destinies;
 
 	public Address(Integer zipCode, String roadType, String roadName) {
@@ -75,8 +76,6 @@ public class Address {
 	public Address() {
 		super();
 	}
-	
-	
 
 	public Address(Integer id) {
 		super();

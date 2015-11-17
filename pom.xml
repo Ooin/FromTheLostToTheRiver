@@ -5,7 +5,9 @@
    <artifactId>FromTheLostToTheRiver</artifactId>
    <version>0.0.1-SNAPSHOT</version>
    <build>
-   	<!-- --> echo
+   
+   <!-- achuuus -->
+   	<!--  echo aitor_tx-->
    	<!-- echo 2 3-->
       <sourceDirectory>src</sourceDirectory>
       <plugins>

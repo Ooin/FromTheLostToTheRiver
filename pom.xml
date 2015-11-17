@@ -5,10 +5,15 @@
    <artifactId>FromTheLostToTheRiver</artifactId>
    <version>0.0.1-SNAPSHOT</version>
    <build>
+<<<<<<< HEAD
    
    <!-- achuuus -->
    	<!--  echo aitor_tx-->
    	<!-- echo 2 -->
+=======
+   	<!-- --> echo
+   	<!-- echo 2 3-->
+>>>>>>> refs/heads/master
       <sourceDirectory>src</sourceDirectory>
       <plugins>
          <plugin>

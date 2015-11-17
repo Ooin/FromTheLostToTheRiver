@@ -31,6 +31,7 @@ public class TestingClass {
 		Statement stmt = null;
 		try {
 			Class.forName("org.sqlite.JDBC");
+			System.out.println("commif from feature 1");
 			c = DriverManager.getConnection("jdbc:sqlite:riverDatabaseF");
 			System.out.println("Opened database successfully");
 

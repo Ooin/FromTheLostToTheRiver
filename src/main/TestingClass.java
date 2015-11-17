@@ -30,6 +30,7 @@ public class TestingClass {
 		Connection c = null;
 		Statement stmt = null;
 		try {
+			System.out.println("sysout for test");
 			Class.forName("org.sqlite.JDBC");
 			c = DriverManager.getConnection("jdbc:sqlite:riverDatabaseF");
 			System.out.println("Opened database successfully");

@@ -6,7 +6,7 @@
    <version>0.0.1-SNAPSHOT</version>
    <build>
    	<!-- --> echo
-   	<!-- echo 2 -->
+   	<!-- echo 2 3-->
       <sourceDirectory>src</sourceDirectory>
       <plugins>
          <plugin>
